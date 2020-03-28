@@ -33,6 +33,9 @@ gem 'devise'
 gem 'activeadmin'
 
 group :development, :test do
+  gem 'annotate'
+  gem 'rails-erd'
+
   gem 'pry'
   gem 'overcommit'
   gem 'rubocop'

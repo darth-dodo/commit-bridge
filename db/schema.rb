@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_143303) do
+ActiveRecord::Schema.define(version: 2020_03_28_195907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -42,4 +42,97 @@ ActiveRecord::Schema.define(version: 2020_03_28_143303) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "commits", force: :cascade do |t|
+    t.string "message", null: false
+    t.string "sha", null: false
+    t.datetime "commit_timestamp", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "release_id"
+    t.index ["release_id"], name: "index_commits_on_release_id"
+    t.index ["user_id"], name: "index_commits_on_user_id"
+  end
+
+  create_table "event_commits", force: :cascade do |t|
+    t.bigint "commit_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commit_id"], name: "index_event_commits_on_commit_id"
+    t.index ["event_id"], name: "index_event_commits_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "event_type", null: false
+    t.datetime "event_timestamp", null: false
+    t.jsonb "payload", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "repository_id"
+    t.index ["repository_id"], name: "index_events_on_repository_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.text "description"
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.string "tag", null: false
+    t.integer "application_id", null: false
+    t.datetime "released_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_releases_on_event_id"
+  end
+
+  create_table "repositories", force: :cascade do |t|
+    t.integer "application_id", null: false
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ticket_commits", force: :cascade do |t|
+    t.bigint "ticket_id", null: false
+    t.bigint "commit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commit_id"], name: "index_ticket_commits_on_commit_id"
+    t.index ["ticket_id"], name: "index_ticket_commits_on_ticket_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.text "description"
+    t.integer "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_tickets_on_project_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "application_id", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "commits", "releases"
+  add_foreign_key "commits", "users"
+  add_foreign_key "event_commits", "commits"
+  add_foreign_key "event_commits", "events"
+  add_foreign_key "events", "repositories"
+  add_foreign_key "events", "users"
+  add_foreign_key "releases", "events"
+  add_foreign_key "ticket_commits", "commits"
+  add_foreign_key "ticket_commits", "tickets"
+  add_foreign_key "tickets", "projects"
 end
