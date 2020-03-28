@@ -1,9 +1,9 @@
 # commit-bridge
 
 ## Feature List
-- [x] Roadmap
-- [x] Setup RVM and Ruby
-- [x] Setup precommit hooks using [OverCommit](https://github.com/sds/overcommit)
+- [x] Roadmap - [PR #1](https://github.com/darth-dodo/commit-bridge/pull/1)
+- [x] Setup RVM and Ruby - [PR #2](https://github.com/darth-dodo/commit-bridge/pull/2)
+- [x] Setup precommit hooks using [OverCommit](https://github.com/sds/overcommit)  - [PR #3](https://github.com/darth-dodo/commit-bridge/pull/3)
     - [x] Standard OverCommit Hooks
     - [x] [Rubocop](https://github.com/rubocop-hq/rubocop) and [Shopify Rubocop yaml](https://github.com/Shopify/ruby-style-guide/blob/master/rubocop.yml) - Static Code Analyzer
     - [x] [rails_best_practices](https://github.com/flyerhzm/rails_best_practices) - Code quality metric tool (downside checks whole project on every commit)
@@ -12,7 +12,7 @@
     - [x] [Fasterer](https://github.com/DamirSvrtan/fasterer) - Speed improvement suggestions
     - [x] Forbidden Branches
     - [x] PostCheckout Hooks
-- [ ] Setup Rails 5 API app
+- [x] Setup Rails 5 API app - [PR #4](https://github.com/darth-dodo/commit-bridge/pull/4)
 - [ ] Setup Testing
     - [ ] RSpec
     - [ ] Factory Bot
