@@ -28,8 +28,8 @@
     - [x] `Project`
     - [x] `Ticket`
     - [x] `TicketCommit`
-    - [ ] `Release`
-    - [ ] `Repository`
+    - [x] `Release`
+    - [x] `Repository`
 - [ ] Immutability Concern
 - [ ] Incoming Webhook
     - [ ] Base API Controller

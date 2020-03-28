@@ -9,9 +9,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :bigint           not null
+#  repository_id   :bigint
 #
 # Foreign Keys
 #
+#  fk_rails_...  (repository_id => repositories.id)
 #  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'

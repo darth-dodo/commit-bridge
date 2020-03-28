@@ -1,20 +1,14 @@
 # == Schema Information
 #
-# Table name: releases
+# Table name: repositories
 #
 #  id             :bigint           not null, primary key
-#  tag            :string           not null
 #  application_id :integer          not null
-#  released_at    :datetime         not null
+#  slug           :string           not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
-#  event_id       :bigint
-#
-# Foreign Keys
-#
-#  fk_rails_...  (event_id => events.id)
 #
 FactoryBot.define do
-  factory :release do
+  factory :repository do
   end
 end

@@ -9,9 +9,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :bigint           not null
+#  repository_id   :bigint
 #
 # Foreign Keys
 #
+#  fk_rails_...  (repository_id => repositories.id)
 #  fk_rails_...  (user_id => users.id)
 #
 class Event < ApplicationRecord
@@ -23,6 +25,8 @@ class Event < ApplicationRecord
   }
 
   # associations
+  belongs_to :repository
+  has_one :release
   has_many :event_commits
   has_many :commits, through: :event_commits
 
