@@ -19,7 +19,7 @@
     - [x] [Faker](https://github.com/faker-ruby/faker)
     - [x] [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner)
     - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
-- [ ] Active Admin and Devise Setup (basic)
+- [x] Active Admin and Devise Setup (basic) - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
 - [ ] Schema Modelling
 - [ ] Incoming Webhook
     - [ ] Base API Controller
