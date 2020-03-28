@@ -5,11 +5,13 @@
 - [x] Setup RVM and Ruby
 - [ ] Setup precommit hooks using [OverCommit]()
     - [x] Standard OverCommit Hooks
-    - [ ] [Rubocop](https://github.com/rubocop-hq/rubocop) and [Shopify Rubocop yaml](https://github.com/Shopify/ruby-style-guide/blob/master/rubocop.yml) - Static Code Analyzer
-    - [ ] [rails_best_practices](https://github.com/flyerhzm/rails_best_practices) - Code quality metric tool (downside checks whole project on every commit)
-    - [ ] rails_schema_up_to_date
-    - [ ] [Brakeman](https://github.com/presidentbeef/brakeman) - Security vulnerabilities spotter
-    - [ ] [Fasterer](https://github.com/DamirSvrtan/fasterer) - Speed improvement suggestions
+    - [x] [Rubocop](https://github.com/rubocop-hq/rubocop) and [Shopify Rubocop yaml](https://github.com/Shopify/ruby-style-guide/blob/master/rubocop.yml) - Static Code Analyzer
+    - [x] [rails_best_practices](https://github.com/flyerhzm/rails_best_practices) - Code quality metric tool (downside checks whole project on every commit)
+    - [x] rails_schema_up_to_date
+    - [x] [Brakeman](https://github.com/presidentbeef/brakeman) - Security vulnerabilities spotter
+    - [x] [Fasterer](https://github.com/DamirSvrtan/fasterer) - Speed improvement suggestions
+    - [x] Forbidden Branches
+    - [x] PostCheckout Hooks
 - [ ] Setup Rails 5 API app
 - [ ] Setup Testing
     - [ ] RSpec
