@@ -13,11 +13,12 @@
     - [x] Forbidden Branches
     - [x] PostCheckout Hooks
 - [x] Setup Rails 5 API app - [PR #4](https://github.com/darth-dodo/commit-bridge/pull/4)
-- [ ] Setup Testing
-    - [ ] RSpec
-    - [ ] Factory Bot
-    - [ ] Faker
-    - [ ] Database Cleaner
+- [x] Setup Testing  - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
+    - [x] [RSpec](https://github.com/rspec/rspec-rails)
+    - [x] [Factory Bot](https://github.com/thoughtbot/factory_bot)
+    - [x] [Faker](https://github.com/faker-ruby/faker)
+    - [x] [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+    - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
 - [ ] Active Admin and Devise Setup (basic)
 - [ ] Schema Modelling
 - [ ] Incoming Webhook
