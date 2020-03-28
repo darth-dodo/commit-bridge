@@ -39,3 +39,8 @@
 ---
 ## Local Setup
 - Use RVM to create a gemset across Ruby version 2.6.0 using the command `rvm use 2.6.0@commit-bridge --create`
+- Install the precommit hooks using
+```
+overcommit --install
+overcommit --sign
+```
