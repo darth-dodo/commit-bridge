@@ -9,4 +9,5 @@ group :development, :test do
   gem 'rubocop'
   gem 'fasterer'
   gem 'rails_best_practices'
+  gem 'brakeman'
 end

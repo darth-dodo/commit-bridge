@@ -38,3 +38,6 @@ PreCommit:
 
   RailsBestPractices:
     enabled: true
+
+  Brakeman:
+    enabled: true
