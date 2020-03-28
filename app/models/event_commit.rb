@@ -14,8 +14,18 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class EventCommit < ApplicationRecord
+  # associations
   belongs_to :event
   belongs_to :commit
 
+  # validations
   validates_presence_of :event, :commit
+
+  # scopes
+
+  # class methods
+
+  # instance methods
+
+  # callbacks
 end

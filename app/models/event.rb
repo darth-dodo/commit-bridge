@@ -37,5 +37,5 @@ class Event < ApplicationRecord
 
   # instance methods
 
-  # signals
+  # callbacks
 end

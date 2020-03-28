@@ -20,7 +20,7 @@
     - [x] [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner)
     - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
 - [x] Active Admin and Devise Setup (basic) - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
-- [ ] Schema Modelling
+- [x] Schema Modelling - [PR #6](https://github.com/darth-dodo/commit-bridge/pull/6)
     - [x] `User`
     - [x] `Event`
     - [x] `Commit`
@@ -73,3 +73,4 @@ password: commit-bridge-123
 
 ### Good to haves:
 - Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
+- PaperTrail in case of changing the data

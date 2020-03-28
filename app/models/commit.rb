@@ -17,6 +17,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Commit < ApplicationRecord
+  # associations
   belongs_to :user
   belongs_to :release
 
@@ -26,5 +27,14 @@ class Commit < ApplicationRecord
   has_many :ticket_commits
   has_many :tickets, through: :ticket_commits
 
+  # validations
   validates_presence_of :message, :commit_timestamp, :sha
+
+  # scopes
+
+  # class methods
+
+  # instance methods
+
+  # callbacks
 end

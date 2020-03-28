@@ -9,5 +9,16 @@
 #  updated_at     :datetime         not null
 #
 class Repository < ApplicationRecord
+  # associations
   has_many :events
+
+  # validations
+
+  # scopes
+
+  # class methods
+
+  # instance methods
+
+  # callbacks
 end
