@@ -42,8 +42,20 @@
 ---
 ## Local Setup
 - Use RVM to create a gemset across Ruby version 2.6.0 using the command `rvm use 2.6.0@commit-bridge --create`
+- Clone the repo
+- Install the dependencies using the command `bundle install`
 - Install the precommit hooks using
 ```
 overcommit --install
 overcommit --sign
+```
+- The database can be created using the command `rake db:create` 
+- generate the schema using `rake db:migrate`
+- The Active Admin related seed data can be generated using the command `   `
+- You can start the server using `rails s` or use the Rails console `rails c`
+- ActiveAdmin is installed for having a visual representation of the data. Log in the admin panel at
+`localhost:3000/admin` using the `secure` credentials
+```
+username: admin@commit-bridge.com
+password: commit-bridge-123
 ```

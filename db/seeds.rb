@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Rails.env.development?
+  AdminUser.create!(
+    email: 'admin@commit-bridge.com',
+    password: 'commit-bridge-123',
+    password_confirmation: 'commit-bridge-123'
+  )
+end
