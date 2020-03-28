@@ -23,10 +23,10 @@ PreCommit:
 
   MergeConflicts:
     enabled: true
-    
+
   YamlSyntax:
     enabled: true
-    
+
   BundleCheck:
     enabled: true
 
@@ -34,4 +34,7 @@ PreCommit:
     enabled: true
 
   Fasterer:
-    enabled: true    
+    enabled: true
+
+  RailsBestPractices:
+    enabled: true

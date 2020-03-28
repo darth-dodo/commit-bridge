@@ -8,4 +8,5 @@ group :development, :test do
   gem 'overcommit'
   gem 'rubocop'
   gem 'fasterer'
+  gem 'rails_best_practices'
 end
