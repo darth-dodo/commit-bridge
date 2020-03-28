@@ -30,6 +30,7 @@
     - [x] `TicketCommit`
     - [ ] `Release`
     - [ ] `Repository`
+- [ ] Immutability Concern
 - [ ] Incoming Webhook
     - [ ] Base API Controller
     - [ ] Webhook API

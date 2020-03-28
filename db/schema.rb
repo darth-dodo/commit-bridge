@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_192626) do
+ActiveRecord::Schema.define(version: 2020_03_28_194120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_03_28_192626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.bigint "release_id"
+    t.index ["release_id"], name: "index_commits_on_release_id"
     t.index ["user_id"], name: "index_commits_on_user_id"
   end
 
@@ -74,6 +76,14 @@ ActiveRecord::Schema.define(version: 2020_03_28_192626) do
   create_table "projects", force: :cascade do |t|
     t.text "description"
     t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.string "tag", null: false
+    t.integer "application_id", null: false
+    t.datetime "released_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_192626) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "commits", "releases"
   add_foreign_key "commits", "users"
   add_foreign_key "event_commits", "commits"
   add_foreign_key "event_commits", "events"
