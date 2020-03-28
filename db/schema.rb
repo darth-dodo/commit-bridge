@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_143303) do
+ActiveRecord::Schema.define(version: 2020_03_28_175821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -42,4 +42,31 @@ ActiveRecord::Schema.define(version: 2020_03_28_143303) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "commits", force: :cascade do |t|
+    t.string "message", null: false
+    t.string "sha", null: false
+    t.datetime "commit_timestamp", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_commits", force: :cascade do |t|
+    t.bigint "commit_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commit_id"], name: "index_event_commits_on_commit_id"
+    t.index ["event_id"], name: "index_event_commits_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "event_type", null: false
+    t.datetime "event_timestamp", null: false
+    t.jsonb "payload", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "event_commits", "commits"
+  add_foreign_key "event_commits", "events"
 end

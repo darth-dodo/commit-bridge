@@ -21,6 +21,13 @@
     - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
 - [x] Active Admin and Devise Setup (basic) - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
 - [ ] Schema Modelling
+    - [ ] `User`
+    - [x] `Event`
+    - [x] `Commit`
+    - [x] `EventCommit`
+    - [ ] `Release`
+    - [ ] `Ticket`
+    - [ ] `Project`
 - [ ] Incoming Webhook
     - [ ] Base API Controller
     - [ ] Webhook API
@@ -49,7 +56,7 @@
 overcommit --install
 overcommit --sign
 ```
-- The database can be created using the command `rake db:create` 
+- The database can be created using the command `rake db:create`
 - generate the schema using `rake db:migrate`
 - The Active Admin related seed data can be generated using the command `   `
 - You can start the server using `rails s` or use the Rails console `rails c`
@@ -59,3 +66,7 @@ overcommit --sign
 username: admin@commit-bridge.com
 password: commit-bridge-123
 ```
+
+
+### Good to haves:
+- Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
