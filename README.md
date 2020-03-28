@@ -1,10 +1,10 @@
 # commit-bridge
 
 ## Feature List
-- [ ] Roadmap
-- [ ] Setup RVM and Ruby
-- [ ] Setup precommit hooks using OverCommit
-    - [ ] Standard OverCommit Hooks
+- [x] Roadmap
+- [x] Setup RVM and Ruby
+- [ ] Setup precommit hooks using [OverCommit]()
+    - [x] Standard OverCommit Hooks
     - [ ] [Rubocop](https://github.com/rubocop-hq/rubocop) and [Shopify Rubocop yaml](https://github.com/Shopify/ruby-style-guide/blob/master/rubocop.yml) - Static Code Analyzer
     - [ ] [rails_best_practices](https://github.com/flyerhzm/rails_best_practices) - Code quality metric tool (downside checks whole project on every commit)
     - [ ] rails_schema_up_to_date

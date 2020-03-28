@@ -11,6 +11,10 @@ CommitMsg:
   TextWidth:
     enabled: false
 
+PostCheckout:
+    BundleInstall:
+      enabled: true
+
 PreCommit:
   ALL:
     on_warn: fail
@@ -32,12 +36,18 @@ PreCommit:
 
   RuboCop:
     enabled: true
+    problem_on_unmodified_line: ignore
 
   Fasterer:
     enabled: true
 
   RailsBestPractices:
     enabled: true
+    problem_on_unmodified_line: ignore
 
   Brakeman:
     enabled: true
+
+  ForbiddenBranches:
+    enabled: true
+    branch_patterns: ['master']
