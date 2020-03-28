@@ -21,14 +21,14 @@
     - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
 - [x] Active Admin and Devise Setup (basic) - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
 - [ ] Schema Modelling
-    - [ ] `User`
+    - [x] `User`
     - [x] `Event`
     - [x] `Commit`
     - [x] `EventCommit`
-    - [ ] `Repository`
+    - [x] `Project`
+    - [x] `Ticket`
     - [ ] `Release`
-    - [ ] `Ticket`
-    - [ ] `Project`
+    - [ ] `Repository`
 - [ ] Incoming Webhook
     - [ ] Base API Controller
     - [ ] Webhook API
