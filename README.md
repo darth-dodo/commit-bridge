@@ -25,6 +25,7 @@
     - [x] `Event`
     - [x] `Commit`
     - [x] `EventCommit`
+    - [ ] `Repository`
     - [ ] `Release`
     - [ ] `Ticket`
     - [ ] `Project`

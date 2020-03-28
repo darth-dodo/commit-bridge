@@ -8,6 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Foreign Keys
+#
+#  fk_rails_...  (commit_id => commits.id)
+#  fk_rails_...  (event_id => events.id)
+#
 require 'rails_helper'
 
 RSpec.describe(EventCommit, type: :model) do

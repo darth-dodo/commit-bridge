@@ -10,6 +10,7 @@
 #  updated_at       :datetime         not null
 #
 class Commit < ApplicationRecord
+  belongs_to :user
   has_many :event_commits
   has_many :events, through: :event_commits
 

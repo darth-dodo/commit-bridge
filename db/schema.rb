@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_175821) do
+ActiveRecord::Schema.define(version: 2020_03_28_190647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_03_28_175821) do
     t.datetime "commit_timestamp", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_commits_on_user_id"
   end
 
   create_table "event_commits", force: :cascade do |t|
@@ -65,8 +67,20 @@ ActiveRecord::Schema.define(version: 2020_03_28_175821) do
     t.jsonb "payload", default: "{}", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer "application_id", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "commits", "users"
   add_foreign_key "event_commits", "commits"
   add_foreign_key "event_commits", "events"
+  add_foreign_key "events", "users"
 end
