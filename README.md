@@ -27,6 +27,7 @@
     - [x] `EventCommit`
     - [x] `Project`
     - [x] `Ticket`
+    - [x] `TicketCommit`
     - [ ] `Release`
     - [ ] `Repository`
 - [ ] Incoming Webhook

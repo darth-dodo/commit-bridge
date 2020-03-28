@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_191953) do
+ActiveRecord::Schema.define(version: 2020_03_28_192626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2020_03_28_191953) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ticket_commits", force: :cascade do |t|
+    t.bigint "ticket_id", null: false
+    t.bigint "commit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commit_id"], name: "index_ticket_commits_on_commit_id"
+    t.index ["ticket_id"], name: "index_ticket_commits_on_ticket_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.text "description"
     t.integer "code"
@@ -99,5 +108,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_191953) do
   add_foreign_key "event_commits", "commits"
   add_foreign_key "event_commits", "events"
   add_foreign_key "events", "users"
+  add_foreign_key "ticket_commits", "commits"
+  add_foreign_key "ticket_commits", "tickets"
   add_foreign_key "tickets", "projects"
 end

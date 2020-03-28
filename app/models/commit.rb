@@ -16,8 +16,12 @@
 #
 class Commit < ApplicationRecord
   belongs_to :user
+
   has_many :event_commits
   has_many :events, through: :event_commits
+
+  has_many :ticket_commits
+  has_many :tickets, through: :ticket_commits
 
   validates_presence_of :message, :commit_timestamp, :sha
 end
