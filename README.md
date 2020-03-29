@@ -31,13 +31,12 @@
     - [x] `Release`
     - [x] `Repository`
     - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
-- [x] Incoming Webhook
+- [x] Incoming Webhook - [PR #8](https://github.com/darth-dodo/commit-bridge/pull/8)
     - [x] Base API Controller
     - [x] Base Webhook Controller
     - [x] Webhook API
-- [ ] Service Layer
-    - [ ] Base Service
-    - [ ] Event Delegator Service
+- [ ] Base Service
+- [ ] Event Delegator Service
 - [ ] Exception Middlewares
 - [ ] Pull Request Parser Service
 - [ ] Push Request Parser Service
