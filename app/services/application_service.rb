@@ -10,13 +10,13 @@ class ApplicationService
   end
 
   def validate
-    puts "running super validate"
+    puts "running base service validate"
     @ran_validations = true
     valid?
   end
 
   def execute
-    puts "running super execute"
+    puts "running base service execute"
     unless @ran_validations
       validate
     end
@@ -46,5 +46,10 @@ class ApplicationService
 
   def valid?
     @valid = @errors.blank?
+    unless @valid
+      @service_response_data = { errors: error_messages }
+      @valid = false
+    end
+    @valid
   end
 end

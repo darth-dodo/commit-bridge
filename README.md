@@ -35,8 +35,8 @@
     - [x] Base API Controller
     - [x] Base Webhook Controller
     - [x] Webhook API
-- [x] Base Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9
-- [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9
+- [x] Base Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
+- [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
 - [ ] Event Delegator Service
 - [ ] Exception Middlewares
 - [ ] Pull Request Parser Service
@@ -119,3 +119,4 @@ Generating models based on the Payload requirements
 - Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
 - PaperTrail in case of changing the data
 - Cleaner module/namespace specific routing and controller policy as the application grows
+- Writing a generator for quickstarting services
