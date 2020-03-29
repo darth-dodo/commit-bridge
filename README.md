@@ -38,7 +38,7 @@
 - [x] Base Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
 - [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
 - [x] Event Parser Strategy Service - [PR #10](https://github.com/darth-dodo/commit-bridge/pull/10)
-- [ ] Exception Middlewares
+- [x] Exception Middlewares  - [PR #11](https://github.com/darth-dodo/commit-bridge/pull/11)
 - [ ] Pull Request Parser Service
 - [ ] Push Request Parser Service
 - [ ] Release Request Parser Service
@@ -100,6 +100,16 @@ For brevity, the user journey is as follows:
 - `Tickets` belong to a `Project`
 - `Release` is a special `Event` which is made by a `User` by submitting multiple `Commits`
 - `Events` and `Commit` are attached to a `Repository`
+
+
+---
+### Controllers
+- `ApplicationController` is required for making `Devise` work
+- `ApiController` should be the base controller from which our all API controllers to be subclassed from
+- All webhook controllers should be subclassed from `BaseWebhookController`
+- The Git Cloud service consumes the controller `GitCloudWebhookCOntroller`
+- Exceptions are managed through `ExceptionHandler`
+- Custom Exceptions such as `CommitBridgeValidationError` can be defined as per usecase
 
 
 ---
