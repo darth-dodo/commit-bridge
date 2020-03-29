@@ -1,11 +1,16 @@
 class GitCloudWebhookController < BaseWebhookController
   def receive
-    begin
-      event = JSON.parse(request.body.read)
-      pp(event)
-    rescue JSON::ParserError
-      head(:unprocessable_entity)
+    event = JSON.parse(request.body.read)
+
+    service = GitCloudWebhook::EventParserService.new(event)
+
+    if service.execute
+      render(json: service.service_response_data, status: :ok)
+    else
+      render(json: service.service_response_data, status: :bad_request)
     end
-    head(:ok)
+
+  rescue JSON::ParserError
+    head(:unprocessable_entity)
   end
 end

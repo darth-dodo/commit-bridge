@@ -39,8 +39,8 @@ module Mock
     def validate
       puts "running demo validate"
       error('Event must be present') if @event.blank?
-      error('User details must be present') if @user_data.blank?
-      validate_some_complicated_logic
+      # error('User details must be present') if @user_data.blank?
+      # validate_some_complicated_logic
       super()
       valid?
     end
@@ -50,7 +50,8 @@ module Mock
       super()
       return false unless valid?
       puts "Executing for user data"
-      event_commit_creation
+      # event_commit_creation
+      @service_response_data = @context
       valid?
     end
 
