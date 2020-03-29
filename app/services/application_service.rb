@@ -26,7 +26,7 @@ class ApplicationService
   def execute!
     puts "running super execute!"
     unless execute
-      raise StandardError, error_messages
+      raise ExceptionHandler::CommitBridgeValidationError, error_messages
     end
   end
 
