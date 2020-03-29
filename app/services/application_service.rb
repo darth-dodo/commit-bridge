@@ -1,11 +1,12 @@
 class ApplicationService
   # Base Application Layer Service
-  attr_reader :errors, :valid
+  attr_reader :errors, :valid, :service_response_data
 
   def initialize
     @errors = []
     @valid = nil
     @ran_validations = false
+    @service_response_data = {}
   end
 
   def validate
