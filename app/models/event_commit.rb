@@ -3,10 +3,15 @@
 # Table name: event_commits
 #
 #  id         :bigint           not null, primary key
-#  commit_id  :bigint           not null
-#  event_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  commit_id  :bigint           not null
+#  event_id   :bigint           not null
+#
+# Indexes
+#
+#  index_event_commits_on_commit_id  (commit_id)
+#  index_event_commits_on_event_id   (event_id)
 #
 # Foreign Keys
 #
