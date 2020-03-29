@@ -30,7 +30,7 @@
     - [x] `TicketCommit`
     - [x] `Release`
     - [x] `Repository`
-    - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
+    - [x] Generate the Entity Relationship Diagram using [`rails-erd`](https://github.com/voormedia/rails-erd)
 - [x] Incoming Webhook - [PR #8](https://github.com/darth-dodo/commit-bridge/pull/8)
     - [x] Base API Controller
     - [x] Base Webhook Controller
