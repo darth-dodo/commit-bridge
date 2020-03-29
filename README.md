@@ -32,8 +32,9 @@
     - [x] `Repository`
     - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
 - [ ] Incoming Webhook
-    - [ ] Base API Controller
-    - [ ] Webhook API
+    - [x] Base API Controller
+    - [x] Base Webhook Controller
+    - [x] Webhook API
 - [ ] Service Layer
     - [ ] Base Service
     - [ ] Event Delegator Service
@@ -50,6 +51,7 @@
     - [ ] Payload generator
     - [ ] Requester
 - [ ] Immutability Concern
+- [ ] API Client Authentication
 
 
 ---
@@ -103,3 +105,4 @@ Generating models based on the Payload requirements
 ### Good to haves:
 - Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
 - PaperTrail in case of changing the data
+- Cleaner module/namespace specific routing and controller policy as the application grows
