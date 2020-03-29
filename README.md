@@ -30,14 +30,14 @@
     - [x] `TicketCommit`
     - [x] `Release`
     - [x] `Repository`
-    - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
-- [x] Incoming Webhook
+    - [x] Generate the Entity Relationship Diagram using [`rails-erd`](https://github.com/voormedia/rails-erd)
+- [x] Incoming Webhook - [PR #8](https://github.com/darth-dodo/commit-bridge/pull/8)
     - [x] Base API Controller
     - [x] Base Webhook Controller
     - [x] Webhook API
-- [ ] Service Layer
-    - [ ] Base Service
-    - [ ] Event Delegator Service
+- [x] Base Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9
+- [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9
+- [ ] Event Delegator Service
 - [ ] Exception Middlewares
 - [ ] Pull Request Parser Service
 - [ ] Push Request Parser Service
@@ -101,6 +101,19 @@ Generating models based on the Payload requirements
 - `Release` is a special `Event` which is made by a `User` by submitting multiple `Commits`
 - `Events` and `Commit` are attached to a `Repository`
 
+### Services
+- Validations can be broadly categories as two types: Business Related and Data Integrity related
+- For Non CRUD operations, sometimes a series of business rules need to be followed to make persistent changes in the application
+- Complex business processing logic is stored in service containers
+- Service containers are not a replace for model and data integrity logic
+- This Application works on a MVSC design paradigm
+- The Base Service is classified as [`ApplicationService`](https://github.com/darth-dodo/commit-bridge/blob/master/app/services/application_service.rb)
+- A [`DemoService`](https://github.com/darth-dodo/commit-bridge/blob/master/app/services/mock/demo_service.rb) showcasing how services work in the application layer
+- Some of the key benefits of adding Service are:
+    - Consistent interface for service consumers
+    - Cross component Pluggable eg. Using in Models, Rake tasks, Controllers, other Services
+    - Consistent API modelled similar to ActiveRecord
+    - Extendability allows for more powerful abstractions
 
 ### Good to haves:
 - Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
