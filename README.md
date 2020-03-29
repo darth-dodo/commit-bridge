@@ -31,7 +31,7 @@
     - [x] `Release`
     - [x] `Repository`
     - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
-- [ ] Incoming Webhook
+- [x] Incoming Webhook
     - [x] Base API Controller
     - [x] Base Webhook Controller
     - [x] Webhook API
