@@ -3,7 +3,7 @@
 ## Feature List
 - [x] Roadmap - [PR #1](https://github.com/darth-dodo/commit-bridge/pull/1)
 - [x] Setup RVM and Ruby - [PR #2](https://github.com/darth-dodo/commit-bridge/pull/2)
-- [x] Setup precommit hooks using [OverCommit](https://github.com/sds/overcommit)  - [PR #3](https://github.com/darth-dodo/commit-bridge/pull/3)
+- [x] Setup commit flow hooks using [OverCommit](https://github.com/sds/overcommit)  - [PR #3](https://github.com/darth-dodo/commit-bridge/pull/3)
     - [x] Standard OverCommit Hooks
     - [x] [Rubocop](https://github.com/rubocop-hq/rubocop) and [Shopify Rubocop yaml](https://github.com/Shopify/ruby-style-guide/blob/master/rubocop.yml) - Static Code Analyzer
     - [x] [rails_best_practices](https://github.com/flyerhzm/rails_best_practices) - Code quality metric tool (downside checks whole project on every commit)
@@ -19,8 +19,8 @@
     - [x] [Faker](https://github.com/faker-ruby/faker)
     - [x] [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner)
     - [x] [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
-- [x] Active Admin and Devise Setup (basic) - [PR #5](https://github.com/darth-dodo/commit-bridge/pull/5)
-- [x] Schema Modelling - [PR #6](https://github.com/darth-dodo/commit-bridge/pull/6)
+- [x] Active Admin and Devise Setup (basic) - [PR #6](https://github.com/darth-dodo/commit-bridge/pull/6)
+- [x] Schema Modelling - [PR #7](https://github.com/darth-dodo/commit-bridge/pull/7)
     - [x] `User`
     - [x] `Event`
     - [x] `Commit`
@@ -30,11 +30,11 @@
     - [x] `TicketCommit`
     - [x] `Release`
     - [x] `Repository`
-    - [x] Generate the Entity Relationship Diagram
-- [ ] Immutability Concern
-- [ ] Incoming Webhook
-    - [ ] Base API Controller
-    - [ ] Webhook API
+    - [x] Generate the Entity Relationship Diagram using `[rails-erd](https://github.com/voormedia/rails-erd)`
+- [x] Incoming Webhook
+    - [x] Base API Controller
+    - [x] Base Webhook Controller
+    - [x] Webhook API
 - [ ] Service Layer
     - [ ] Base Service
     - [ ] Event Delegator Service
@@ -43,11 +43,15 @@
 - [ ] Push Request Parser Service
 - [ ] Release Request Parser Service
 - [ ] Commit Creation
+- [ ] Model Test Cases
+- [ ] Controller Test Cases
 - [ ] Service Test Cases
 - [ ] HTTP Adapter Layer using [HTTParty](https://github.com/jnunemaker/httparty)
 - [ ] Outgoing Webhook
     - [ ] Payload generator
     - [ ] Requester
+- [ ] Immutability Concern
+- [ ] API Client Authentication
 
 
 ---
@@ -62,7 +66,7 @@ overcommit --sign
 ```
 - The database can be created using the command `rake db:create`
 - generate the schema using `rake db:migrate`
-- The Active Admin related seed data can be generated using the command `   `
+- The Active Admin related seed data can be generated using the command `rake db:seed`
 - You can start the server using `rails s` or use the Rails console `rails c`
 - ActiveAdmin is installed for having a visual representation of the data. Log in the admin panel at
 `localhost:3000/admin` using the `secure` credentials
@@ -101,3 +105,4 @@ Generating models based on the Payload requirements
 ### Good to haves:
 - Using [`JSON validator`](https://github.com/mirego/activerecord_json_validator) to validate the payload before saving in the model
 - PaperTrail in case of changing the data
+- Cleaner module/namespace specific routing and controller policy as the application grows

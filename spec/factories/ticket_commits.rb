@@ -3,10 +3,15 @@
 # Table name: ticket_commits
 #
 #  id         :bigint           not null, primary key
-#  ticket_id  :bigint           not null
-#  commit_id  :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  commit_id  :bigint           not null
+#  ticket_id  :bigint           not null
+#
+# Indexes
+#
+#  index_ticket_commits_on_commit_id  (commit_id)
+#  index_ticket_commits_on_ticket_id  (ticket_id)
 #
 # Foreign Keys
 #

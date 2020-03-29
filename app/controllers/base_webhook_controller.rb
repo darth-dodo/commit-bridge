@@ -1,0 +1,2 @@
+class BaseWebhookController < ApiController
+end

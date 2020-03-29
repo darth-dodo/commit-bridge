@@ -3,13 +3,18 @@
 # Table name: commits
 #
 #  id               :bigint           not null, primary key
+#  commit_timestamp :datetime         not null
 #  message          :string           not null
 #  sha              :string           not null
-#  commit_timestamp :datetime         not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  user_id          :bigint           not null
 #  release_id       :bigint
+#  user_id          :bigint           not null
+#
+# Indexes
+#
+#  index_commits_on_release_id  (release_id)
+#  index_commits_on_user_id     (user_id)
 #
 # Foreign Keys
 #
