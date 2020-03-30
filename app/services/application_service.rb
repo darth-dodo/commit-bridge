@@ -26,7 +26,7 @@ class ApplicationService
   def execute!
     puts "running super execute!"
     unless execute
-      raise ExceptionHandler::CommitBridgeValidationError, error_messages
+      raise ExceptionHandler::CommitBridgeValidationError, @errors
     end
   end
 
@@ -51,5 +51,12 @@ class ApplicationService
       @valid = false
     end
     @valid
+  end
+
+  def raise_rollback_unless_valid
+    unless valid?
+      puts "Rolling back"
+      raise ActiveRecord::Rollback
+    end
   end
 end

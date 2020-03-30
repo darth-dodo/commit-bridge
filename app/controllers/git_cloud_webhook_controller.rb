@@ -2,7 +2,7 @@ class GitCloudWebhookController < BaseWebhookController
   def receive
     event = JSON.parse(request.body.read)
 
-    service = GitCloudWebhook::EventParserService.new(event)
+    service = GitCloudWebhook::WebhookEventParser.new(event)
     service.execute!
 
     json_response(service.service_response_data)

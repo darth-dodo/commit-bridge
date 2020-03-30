@@ -31,12 +31,14 @@ class Event < ApplicationRecord
 
   # associations
   belongs_to :repository
+  belongs_to :user
   has_one :release
   has_many :event_commits
   has_many :commits, through: :event_commits
 
   # validations
   validates_presence_of :event_type, :event_timestamp
+  validates_uniqueness_of :payload, scope: :event_type, message: "Duplicate event with the same payload!"
 
   # class methods
 

@@ -4,7 +4,7 @@ module ExceptionHandler
 
   class CommitBridgeValidationError < StandardError
     attr_reader :message
-    def initialize(message = nil, _status_code = nil, _log_level = nil)
+    def initialize(message = nil)
       @message = message || Message.default_error_message
     end
   end

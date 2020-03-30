@@ -15,10 +15,17 @@ class User < ApplicationRecord
   has_many :events
 
   # validations
+  validates_presence_of :application_id, :email, :name
+  validates_uniqueness_of :application_id, :email
+  validates_numericality_of :application_id
+  # TODO: validate user email
 
   # scopes
 
   # class methods
+  def self.human_attribute_name(attr, options = {})
+    attr == :application_id ? 'Application ID' : super
+  end
 
   # instance methods
 
