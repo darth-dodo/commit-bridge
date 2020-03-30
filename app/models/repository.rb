@@ -13,6 +13,9 @@ class Repository < ApplicationRecord
   has_many :events
 
   # validations
+  validates_presence_of :application_id, :slug
+  validates_uniqueness_of :application_id, :slug
+  validates_numericality_of :application_id
 
   # scopes
 

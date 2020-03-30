@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_195907) do
+ActiveRecord::Schema.define(version: 2020_03_30_172513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_03_28_195907) do
     t.bigint "user_id", null: false
     t.bigint "release_id"
     t.index ["release_id"], name: "index_commits_on_release_id"
+    t.index ["sha"], name: "index_commits_on_sha", unique: true
     t.index ["user_id"], name: "index_commits_on_user_id"
   end
 

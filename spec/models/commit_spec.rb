@@ -14,6 +14,7 @@
 # Indexes
 #
 #  index_commits_on_release_id  (release_id)
+#  index_commits_on_sha         (sha) UNIQUE
 #  index_commits_on_user_id     (user_id)
 #
 # Foreign Keys

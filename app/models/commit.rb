@@ -14,6 +14,7 @@
 # Indexes
 #
 #  index_commits_on_release_id  (release_id)
+#  index_commits_on_sha         (sha) UNIQUE
 #  index_commits_on_user_id     (user_id)
 #
 # Foreign Keys
@@ -24,7 +25,7 @@
 class Commit < ApplicationRecord
   # associations
   belongs_to :user
-  belongs_to :release
+  belongs_to :release, optional: true
 
   has_many :event_commits
   has_many :events, through: :event_commits

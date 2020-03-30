@@ -52,4 +52,11 @@ class ApplicationService
     end
     @valid
   end
+
+  def raise_rollback_unless_valid
+    unless valid?
+      puts "Rolling back"
+      raise ActiveRecord::Rollback
+    end
+  end
 end

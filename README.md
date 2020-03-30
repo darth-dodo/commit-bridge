@@ -50,9 +50,9 @@
 - [ ] Outgoing Webhook
     - [ ] Payload generator
     - [ ] Requester
+- [ ] Indexes and Validations round 2
 - [ ] Immutability Concern
 - [ ] API Client Authentication
-
 
 ---
 ## Local Setup

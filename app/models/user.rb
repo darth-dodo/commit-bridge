@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :events
 
   # validations
+  validates_presence_of :application_id, :email, :name
+  validates_uniqueness_of :application_id, :email
+  validates_numericality_of :application_id
 
   # scopes
 

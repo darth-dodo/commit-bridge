@@ -1,5 +1,5 @@
 module GitCloudWebhook
-  class EventParserService < ApplicationService
+  class WebhookEventParser < ApplicationService
     def initialize(context)
       super()
       @context = Hashie::Mash.new(context)
