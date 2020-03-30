@@ -58,15 +58,15 @@ class PushRequestParser < ApplicationService
   end
 
   def create_event_object
-    new_event = Event.new
-    new_event.payload = @context
-    new_event.event_timestamp = @pushed_at
-    new_event.event_type = :release
-    new_event.repository = @repo
-    new_event.user = @pusher
+    @event = Event.new
+    @event.payload = @context
+    @event.event_timestamp = @pushed_at
+    @event.event_type = :release
+    @event.repository = @repo
+    @event.user = @pusher
 
-    unless new_event.save
-      error(new_event.errors.full_messages.map { |current_error| current_error.prepend("Event Creation Error: ") })
+    unless @event.save
+      error(@event.errors.full_messages.map { |current_error| current_error.prepend("Event Creation Error: ") })
     end
   end
 
@@ -86,6 +86,6 @@ class PushRequestParser < ApplicationService
   end
 
   def create_service_response_data
-    @service_response_data = @event.as_json
+    @service_response_data = @event.as_json(except: [:payload])
   end
 end
