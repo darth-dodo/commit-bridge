@@ -28,9 +28,9 @@ module GitCloudWebhook
     private
 
     def event_parsing_strategy
-      return Mock::DemoService.new(@context.merge({ event: :pull_request })) if pull_request_event?
+      return PushRequestParser.new(@context) if push_request_event?
 
-      return Mock::DemoService.new(@context.merge({ event: :push_request })) if push_request_event?
+      return Mock::DemoService.new(@context.merge({ event: :pull_request })) if pull_request_event?
 
       return Mock::DemoService.new(@context.merge({ event: :release_request })) if release_request_event?
     end

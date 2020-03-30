@@ -20,6 +20,9 @@ class Repository < ApplicationRecord
   # scopes
 
   # class methods
+  def self.human_attribute_name(attr, options = {})
+    attr == :application_id ? 'Application ID' : super
+  end
 
   # instance methods
 

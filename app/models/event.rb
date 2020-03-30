@@ -31,6 +31,7 @@ class Event < ApplicationRecord
 
   # associations
   belongs_to :repository
+  belongs_to :user
   has_one :release
   has_many :event_commits
   has_many :commits, through: :event_commits
