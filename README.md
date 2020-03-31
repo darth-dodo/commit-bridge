@@ -39,7 +39,7 @@
 - [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
 - [x] Event Parser Strategy Service - [PR #10](https://github.com/darth-dodo/commit-bridge/pull/10)
 - [x] Exception Middlewares  - [PR #11](https://github.com/darth-dodo/commit-bridge/pull/11)
-- [ ] Pull Request Parser Service
+- [x] Pull Request Parser Service - [PR #13](https://github.com/darth-dodo/commit-bridge/pull/13)
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
 - [ ] Release Request Parser Service
 - [ ] Commit Creation
