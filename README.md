@@ -139,3 +139,32 @@ For brevity, the user journey is as follows:
 - PaperTrail in case of changing the data
 - Cleaner module/namespace specific routing and controller policy as the application grows
 - Writing a generator for quickstarting services
+- TDD/BDD
+
+
+## Project Philosophies
+These were some of the things I keep in mind while writing software
+
+- T. A. [R. O. T.] mindset - Top/Bottom, Algorithms/Steps, Refactor, Optimize, Test. R, O, T are reordered according to priority
+- Think schemas as entities or actors
+- SRP and Open/Close
+- Consistency matters (eg. Service objects, Rubcop, Best Practise)
+- Sometimes `magic` is good (`execute!` and middlewares)
+- Make it run. Make it run faster (if required)
+- Code is as good as the tests
+
+## Cleaner Approach
+- If the event could be posted to `slug` based params, event types delegation will be responsibility of the client which can be directly routed to the appropriate service from the `WebhookEventParser` service
+```
+- localhost:3000/webhooks/git/pull/
+- localhost:3000/webhooks/git/push/
+- localhost:3000/webhooks/git/release/
+```
+
+
+## Alternative Architecture Decisions
+- In increasing order of complexity
+- Using Sidekiq or Reque to process the API payloads in background
+- Fault tolerance for the external facing API
+- Event driven arch using Message Queue
+- Event Driven Arch using Message Bus
