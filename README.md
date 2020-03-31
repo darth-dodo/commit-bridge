@@ -131,6 +131,9 @@ For brevity, the user journey is as follows:
 #### Application Services
 - The `EventParserService` is the parent service used by the webhook and abstract the persistent data creation logic
 - It is consumed by the controller to parse the payload and find the required payload parser service
+- Services can be nested in other services
+- Services can be standalone software components or common logic can be extracted into Helper Concerns
+- The disadvantage of DRYing out in Helper Concerns is increased maintained complexity and coupling between multiple services through the Concerns
 
 
 ---
@@ -145,11 +148,12 @@ For brevity, the user journey is as follows:
 ## Project Philosophies
 These were some of the things I keep in mind while writing software
 
-- T. A. [R. O. T.] mindset - Top/Bottom, Algorithms/Steps, Refactor, Optimize, Test. R, O, T are reordered according to priority
+- T. A. [R. O. T.] mindset - Top/Bottom, Algorithms/Steps, Refactor, Optimize, Test. *R, O, T are reordered according to priority*
+- APIs are User Interface for Developers
 - Think schemas as entities or actors
 - SRP and Open/Close
 - Consistency matters (eg. Service objects, Rubcop, Best Practise)
-- Sometimes `magic` is good (`execute!` and middlewares)
+- Sometimes `magic` is good (`execute!` and middlewares) (only sometimes*)
 - Make it run. Make it run faster (if required)
 - Code is as good as the tests
 
