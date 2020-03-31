@@ -30,22 +30,22 @@ module GitCloudWebhook
     def event_parsing_strategy
       return PushRequestParser.new(@context) if push_request_event?
 
-      return Mock::DemoService.new(@context.merge({ event: :pull_request })) if pull_request_event?
+      return PullRequestParser.new(@context.merge({ event: :pull_request })) if pull_request_event?
 
       return Mock::DemoService.new(@context.merge({ event: :release_request })) if release_request_event?
     end
 
     def pull_request_event?
       valid_pull_request_actions = %w[closed created approved]
-      valid_pull_request_actions.include?(@context.try(:action))
+      valid_pull_request_actions.include?(@context.action)
     end
 
     def push_request_event?
-      @context.try(:pushed_at).present? && @context.try(:pusher).present?
+      @context.pushed_at.present? && @context.pull_request_user.present?
     end
 
     def release_request_event?
-      @context.try(:action) == "released"
+      @context.action == "released"
     end
   end
 end

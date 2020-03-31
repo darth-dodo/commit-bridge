@@ -39,7 +39,7 @@
 - [x] Demo Service - [PR #9](https://github.com/darth-dodo/commit-bridge/pull/9)
 - [x] Event Parser Strategy Service - [PR #10](https://github.com/darth-dodo/commit-bridge/pull/10)
 - [x] Exception Middlewares  - [PR #11](https://github.com/darth-dodo/commit-bridge/pull/11)
-- [ ] Pull Request Parser Service
+- [x] Pull Request Parser Service - [PR #13](https://github.com/darth-dodo/commit-bridge/pull/13)
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
 - [ ] Release Request Parser Service
 - [ ] Commit Creation
@@ -131,6 +131,9 @@ For brevity, the user journey is as follows:
 #### Application Services
 - The `EventParserService` is the parent service used by the webhook and abstract the persistent data creation logic
 - It is consumed by the controller to parse the payload and find the required payload parser service
+- Services can be nested in other services
+- Services can be standalone software components or common logic can be extracted into Helper Concerns
+- The disadvantage of DRYing out in Helper Concerns is increased maintained complexity and coupling between multiple services through the Concerns
 
 
 ---
@@ -139,3 +142,33 @@ For brevity, the user journey is as follows:
 - PaperTrail in case of changing the data
 - Cleaner module/namespace specific routing and controller policy as the application grows
 - Writing a generator for quickstarting services
+- TDD/BDD
+
+
+## Project Philosophies
+These were some of the things I keep in mind while writing software
+
+- T. A. [R. O. T.] mindset - Top/Bottom, Algorithms/Steps, Refactor, Optimize, Test. *R, O, T are reordered according to priority*
+- APIs are User Interface for Developers
+- Think schemas as entities or actors
+- SRP and Open/Close
+- Consistency matters (eg. Service objects, Rubcop, Best Practise)
+- Sometimes `magic` is good (`execute!` and middlewares) (only sometimes*)
+- Make it run. Make it run faster (if required)
+- Code is as good as the tests
+
+## Cleaner Approach
+- If the event could be posted to `slug` based params, event types delegation will be responsibility of the client which can be directly routed to the appropriate service from the `WebhookEventParser` service
+```
+- localhost:3000/webhooks/git/pull/
+- localhost:3000/webhooks/git/push/
+- localhost:3000/webhooks/git/release/
+```
+
+
+## Alternative Architecture Decisions
+- In increasing order of complexity
+- Using Sidekiq or Reque to process the API payloads in background
+- Fault tolerance for the external facing API
+- Event driven arch using Message Queue
+- Event Driven Arch using Message Bus

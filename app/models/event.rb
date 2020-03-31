@@ -24,8 +24,8 @@
 class Event < ApplicationRecord
   # enums
   enum event_type: {
-    pull: 0,
-    push: 1,
+    pull_request: 0,
+    push_request: 1,
     release: 2,
   }
 

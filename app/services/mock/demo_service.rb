@@ -38,7 +38,7 @@ module Mock
 
     def validate
       puts "running demo validate"
-      error('Event must be present') if @event.blank?
+      # error('Event must be present') if @event.blank?
       # error('User details must be present') if @user_data.blank?
       # validate_some_complicated_logic
       super()
