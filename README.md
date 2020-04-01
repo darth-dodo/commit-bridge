@@ -41,7 +41,7 @@
 - [x] Exception Middlewares  - [PR #11](https://github.com/darth-dodo/commit-bridge/pull/11)
 - [x] Pull Request Parser Service - [PR #13](https://github.com/darth-dodo/commit-bridge/pull/13)
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
-- [ ] Release Request Parser Service
+- [x] Release Request Parser Service - [PR #14](https://github.com/darth-dodo/commit-bridge/pull/14)
 - [ ] Commit Creation
 - [ ] Model Test Cases
 - [ ] Controller Test Cases
