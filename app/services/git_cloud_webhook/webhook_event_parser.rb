@@ -32,7 +32,7 @@ module GitCloudWebhook
 
       return PullRequestParser.new(@context.merge({ event: :pull_request })) if pull_request_event?
 
-      return Mock::DemoService.new(@context.merge({ event: :release_request })) if release_request_event?
+      return ReleaseRequestParser.new(@context.merge({ event: :release_request })) if release_request_event?
     end
 
     def pull_request_event?

@@ -30,6 +30,7 @@ module GitWebhookServiceHelpers
 
   def execute_commit_payload_parser_service
     @commit_info.each do |current_commit|
+      current_commit[:event] = @event
       commit_creator_service = Mock::DemoService.new(current_commit)
 
       next if commit_creator_service.execute
