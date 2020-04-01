@@ -15,6 +15,7 @@ class PushRequestParser < ApplicationService
     error('Invalid Commits structuring') unless @commit_info.is_a?(Array)
 
     super()
+    valid?
   end
 
   def execute
