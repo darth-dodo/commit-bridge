@@ -38,7 +38,7 @@ class Event < ApplicationRecord
 
   # validations
   validates_presence_of :event_type, :event_timestamp
-  validates_uniqueness_of :payload, scope: :event_type, message: "Duplicate event with the same payload!"
+  validates_uniqueness_of :payload, scope: :event_type, message: "present across existing event of the same type!"
 
   # class methods
 
