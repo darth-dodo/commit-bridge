@@ -35,13 +35,13 @@ class ReleaseRequestParser < ApplicationService
       create_event_object(:release)
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
-      raise_rollback_unless_valid
-
       create_release_object
       raise_rollback_unless_valid
 
       attach_release_object_to_event_commits
+      raise_rollback_unless_valid
+
+      execute_commit_payload_parser_service
       raise_rollback_unless_valid
     end
 

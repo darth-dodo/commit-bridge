@@ -99,7 +99,7 @@ class CommitParser < ApplicationService
     ticket_slugs = ticket_slugs.split(',')
 
     ticket_slugs.each do |current_slug|
-      current_slug = current_slug.split("-")
+      current_slug = current_slug.sub("#", "").split("-")
       project_code = current_slug[0]
       ticket_code = current_slug[1]
 
@@ -152,5 +152,6 @@ class CommitParser < ApplicationService
   end
 
   def attach_commit_to_tickets
+    @commit.tickets << @ticket_objects
   end
 end
