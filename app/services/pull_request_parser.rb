@@ -7,13 +7,13 @@ class PullRequestParser < ApplicationService
     @repository_info = @context.repository
     pull_request_info = @context.pull_request
     @event_created_at = pull_request_info.try(:created_at)
-    @event_user_info = pull_request_info.try(:user)
+    @user_info = pull_request_info.try(:user)
     @commit_info = pull_request_info.try(:commits)
   end
 
   def validate
     error('Repository information is required!') if @repository_info.blank?
-    error('Pull request User information is required!') if @event_user_info.blank?
+    error('Pull request User information is required!') if @user_info.blank?
     error('Invalid Commits structuring') unless @commit_info.is_a?(Array)
 
     super()

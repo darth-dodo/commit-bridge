@@ -16,13 +16,14 @@ class CommitParser < ApplicationService
 
     @context = Hashie::Mash.new(context)
     @event = @context.event
-    @user = @context.author
+    @event_user_info = @context.author
     @commit_message = @context.message
+    @ticket_objects = []
   end
 
   def validate
     error('Event information is required!') if @event.blank?
-    error('Commit Author is required!') if @user.blank?
+    error('Commit Author is required!') if @event_user_info.blank?
     error('Commit message is required!') if @commit_message.blank?
     unless @event.is_a?(Event)
       @event = Event.find(@event)
@@ -39,19 +40,21 @@ class CommitParser < ApplicationService
     super()
     return false unless valid?
 
-    find_or_create_user_object unless @user.is_a?(User)
-    raise_rollback_unless_valid
+    # TODO: refactor these common methods to handle instance and locals more elegantly
+    find_or_create_user_object
+    return false unless valid?
 
     find_or_create_ticket_objects_from_commit_message
+    return false unless valid?
 
     create_commit_object
-    raise_rollback_unless_valid
+    return false unless valid?
 
     attach_commit_to_event
-    raise_rollback_unless_valid
+    return false unless valid?
 
     attach_release_to_commit if @event.release?
-    raise_rollback_unless_valid
+    return false unless valid?
 
     attach_commit_to_tickets
 
@@ -67,14 +70,46 @@ class CommitParser < ApplicationService
 
   # executors
 
-  def find_or_create_project_object
+  def find_or_create_project_object(project_code)
+    project = Project.find_or_create_by(code: project_code)
+    if project.errors.present?
+      error(project.errors.full_messages.map do |current_error|
+        current_error.prepend("Project Creation Error for #{project_code}: ")
+      end)
+    else
+      project
+    end
   end
 
-  def find_or_create_ticket_objects
+  def find_or_create_ticket_object(project_object, ticket_code)
+    ticket = Ticket.find_or_create_by(project: project_object, code: ticket_code)
+
+    if ticket.errors.present?
+      error(ticket.errors.full_messages.map do |current_error|
+              current_error.prepend("Ticket Creation Error for Code #{ticket_code}: ")
+            end)
+    else
+      ticket
+    end
   end
 
   def find_or_create_ticket_objects_from_commit_message
-    @commit_message.rpartition('Ref:')
+    ticket_slugs = @commit_message.rpartition('Ref:')[-1]
+    ticket_slugs.strip!
+    ticket_slugs = ticket_slugs.split(',')
+
+    ticket_slugs.each do |current_slug|
+      current_slug = current_slug.split("-")
+      project_code = current_slug[0]
+      ticket_code = current_slug[1]
+
+      project_object = find_or_create_project_object(project_code)
+
+      if project_object.present?
+        ticket_object = find_or_create_ticket_object(project_object, ticket_code)
+        @ticket_objects << ticket_object
+      end
+    end
   end
 
   def create_commit_object
@@ -104,12 +139,18 @@ class CommitParser < ApplicationService
 
   def attach_release_to_commit
     release_event = @event.release
-    error("Event should have release attached to it!") if release_event.blank?
+    if release_event.blank?
+      error("Event should have release attached to it!")
+      return
+    end
     @commit.release = release_event
     unless @commit.save
       error(@commit.errors.full_messages.map do |current_error|
         current_error.prepend("Commit and Release Mapping Error: ")
       end)
     end
+  end
+
+  def attach_commit_to_tickets
   end
 end

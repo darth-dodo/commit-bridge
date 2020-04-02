@@ -31,12 +31,10 @@ module GitWebhookServiceHelpers
   def execute_commit_payload_parser_service
     @commit_info.each do |current_commit|
       current_commit[:event] = @event
-      commit_creator_service = Mock::DemoService.new(current_commit)
+      commit_creator_service = CommitParser.new(current_commit)
 
       next if commit_creator_service.execute
       puts "Errors while parsing #{current_commit.sha}"
-
-      # TODO: create a prepend error method in the base service
       commit_creator_service.errors.map do |current_error|
         current_error.prepend("Commit SHA: #{current_commit.sha} payload error: ")
       end
