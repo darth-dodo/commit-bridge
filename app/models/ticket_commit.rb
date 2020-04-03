@@ -24,6 +24,7 @@ class TicketCommit < ApplicationRecord
   belongs_to :commit
 
   validates_presence_of :ticket, :commit
+  validates_uniqueness_of :ticket, scope: :commit
 
   # validations
 

@@ -30,16 +30,18 @@ class ReleaseRequestParser < ApplicationService
     ActiveRecord::Base.transaction do
       find_or_create_repo_object
       find_or_create_user_object("Release Author Error: ")
-      raise_rollback_unless_valid
+      return false unless valid?
 
       create_event_object(:release)
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
+      create_release_object
       raise_rollback_unless_valid
 
-      create_release_object
       attach_release_object_to_event_commits
+      raise_rollback_unless_valid
+
+      execute_commit_payload_parser_service
       raise_rollback_unless_valid
     end
 

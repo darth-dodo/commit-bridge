@@ -41,11 +41,12 @@ module GitCloudWebhook
     end
 
     def push_request_event?
-      @context.pushed_at.present? && @context.pull_request_user.present?
+      @context.pushed_at.present? && @context.pusher.present?
     end
 
     def release_request_event?
-      @context.action == "released"
+      valid_release_request_actions = ["released"]
+      valid_release_request_actions.include?(@context.action)
     end
   end
 end
