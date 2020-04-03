@@ -42,7 +42,7 @@
 - [x] Pull Request Parser Service - [PR #13](https://github.com/darth-dodo/commit-bridge/pull/13)
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
 - [x] Release Request Parser Service - [PR #14](https://github.com/darth-dodo/commit-bridge/pull/14)
-- [ ] Commit Creation
+- [x] Commit Creation - [PR #17](https://github.com/darth-dodo/commit-bridge/pull/17)
 - [ ] Model Test Cases
 - [ ] Controller Test Cases
 - [ ] Service Test Cases
