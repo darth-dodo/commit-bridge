@@ -33,12 +33,20 @@ module GitWebhookServiceHelpers
       current_commit[:event] = @event
       commit_creator_service = CommitParser.new(current_commit)
 
-      next if commit_creator_service.execute
-      puts "Errors while parsing #{current_commit.sha}"
-      commit_creator_service.errors.map do |current_error|
-        current_error.prepend("Commit SHA: #{current_commit.sha} payload error: ")
+      if commit_creator_service.execute
+        if @service_response_data[:commits].is_a?(Array)
+          @service_response_data[:commits] << commit_creator_service.service_response_data[:commit]
+        else
+          @service_response_data[:commits] = [commit_creator_service.service_response_data[:commit]]
+        end
+
+      else
+        puts "Errors while parsing #{current_commit.sha}"
+        commit_creator_service.errors.map do |current_error|
+          current_error.prepend("Commit SHA: #{current_commit.sha} payload error: ")
+        end
+        error(commit_creator_service.errors)
       end
-      error(commit_creator_service.errors)
     end
   end
 
@@ -56,6 +64,6 @@ module GitWebhookServiceHelpers
   end
 
   def create_service_response_data
-    @service_response_data = @event.as_json(except: [:payload], include: [:user, :repository])
+    @service_response_data[:event] = @event.as_json(except: [:payload], include: [:user, :repository])
   end
 end

@@ -22,10 +22,9 @@ class CommitParser < ApplicationService
   end
 
   def validate
-    error('Event information is required!') if @event.blank?
     error('Commit Author is required!') if @event_user_info.blank?
     error('Commit message is required!') if @commit_message.blank?
-    unless @event.is_a?(Event)
+    if @event.present? && !@event.is_a?(Event)
       @event = Event.find(@event)
     end
     error('Event is required!') if @event.blank?
@@ -40,15 +39,23 @@ class CommitParser < ApplicationService
     super()
     return false unless valid?
 
-    # TODO: refactor these common methods to handle instance and locals more elegantly
-    find_or_create_user_object
-    return false unless valid?
+    @commit = Commit.find_by_sha(@context.sha)
+    if @commit.present?
+      @ticket_objects = @commit.tickets
+    else
+      # TODO: refactor these common methods to handle instance and locals more elegantly
+      find_or_create_user_object
+      return false unless valid?
 
-    find_or_create_ticket_objects_from_commit_message
-    return false unless valid?
+      create_commit_object
+      return false unless valid?
 
-    create_commit_object
-    return false unless valid?
+      find_or_create_ticket_objects_from_commit_message
+      return false unless valid?
+
+      attach_commit_to_tickets
+      return false unless valid?
+    end
 
     attach_commit_to_event
     return false unless valid?
@@ -56,7 +63,7 @@ class CommitParser < ApplicationService
     attach_release_to_commit if @event.release?
     return false unless valid?
 
-    attach_commit_to_tickets
+    create_service_response_data
 
     valid?
   end
@@ -74,8 +81,9 @@ class CommitParser < ApplicationService
     project = Project.find_or_create_by(code: project_code)
     if project.errors.present?
       error(project.errors.full_messages.map do |current_error|
-        current_error.prepend("Project Creation Error for #{project_code}: ")
+        current_error.prepend("Project Creation Error: ")
       end)
+      valid?
     else
       project
     end
@@ -100,8 +108,8 @@ class CommitParser < ApplicationService
 
     ticket_slugs.each do |current_slug|
       current_slug = current_slug.sub("#", "").split("-")
-      project_code = current_slug[0]
-      ticket_code = current_slug[1]
+      project_code = current_slug[0].strip
+      ticket_code = current_slug[1].to_i
 
       project_object = find_or_create_project_object(project_code)
 
@@ -153,5 +161,10 @@ class CommitParser < ApplicationService
 
   def attach_commit_to_tickets
     @commit.tickets << @ticket_objects
+  end
+
+  def create_service_response_data
+    @service_response_data[:commit] = @commit.as_json(only:
+    [:sha, :message]).merge(linked_tickets_count: @commit.tickets.size)
   end
 end
