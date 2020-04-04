@@ -53,10 +53,13 @@
     - [x] Communicator Layer using Faraday
     - [x] API Client
     - [x] Echo controller for testing
-- [ ] Outgoing Webhook
-    - [ ] Payload generator module/helper
-    - [ ] Service calling the API Client
-    - [ ] State Management using `EventTracking` model
+- [x] Outgoing Webhook - [PR #20](https://github.com/darth-dodo/commit-bridge/pull/20)
+    - [x] Payload generator module/helper
+    - [x] Service calling the API Client
+    - [x] State Management using `EventCommitSync` model
+    - [x] Integrating `bangable` Outgoing webhook service in the controller layer
+    - [x] Exception propagation to the incoming webhook
+    - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
 - [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
