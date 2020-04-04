@@ -53,10 +53,13 @@
     - [x] Communicator Layer using Faraday
     - [x] API Client
     - [x] Echo controller for testing
-- [ ] Outgoing Webhook
-    - [ ] Payload generator module/helper
-    - [ ] Service calling the API Client
-    - [ ] State Management using `EventTracking` model
+- [x] Outgoing Webhook - [PR #20](https://github.com/darth-dodo/commit-bridge/pull/20)
+    - [x] Payload generator module/helper
+    - [x] Service calling the API Client
+    - [x] State Management using `EventCommitSync` model
+    - [x] Integrating `bangable` Outgoing webhook service in the controller layer
+    - [x] Exception propagation to the incoming webhook
+    - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
 - [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
@@ -82,6 +85,7 @@ overcommit --sign
 - generate the schema using `rake db:migrate`
 - The Active Admin related seed data can be generated using the command `rake db:seed`
 - You can start the server using `rails s` or use the Rails console `rails c`
+- `bundle exec puma` for running the Rails Server in multi threading mode (for Webhook external API echo feature)
 - ActiveAdmin is installed for having a visual representation of the data. Log in the admin panel at
 `localhost:3000/admin` using the `secure` credentials
 ```

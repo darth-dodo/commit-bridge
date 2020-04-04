@@ -36,6 +36,9 @@ class Ticket < ApplicationRecord
   # class methods
 
   # instance methods
+  def hash_code
+    "\##{project.code}-#{code}"
+  end
 
   # callbacks
 end

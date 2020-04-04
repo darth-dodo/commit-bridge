@@ -6,13 +6,13 @@ module TicketTrackingApi
   class Client
     include TicketTrackingCommunicator
 
-    TICKET_UPDATE_ENDPOINT = ENV["TICKET_UPDATE_ENDPOINT"]
+    UPDATE_TICKETS_ACROSS_COMMIT = ENV["UPDATE_TICKETS_ACROSS_COMMIT"]
 
     def initialize
     end
 
-    def ready_for_release(payload = {})
-      request(http_method: :post, endpoint: TICKET_UPDATE_ENDPOINT, params: payload.to_json)
+    def update_tickets_across_commit(payload = {})
+      request(http_method: :post, endpoint: UPDATE_TICKETS_ACROSS_COMMIT, params: payload.to_json)
     end
   end
 end

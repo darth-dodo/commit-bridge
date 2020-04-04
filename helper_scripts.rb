@@ -1,4 +1,5 @@
 def delete_all_records
+  puts(EventCommitSync.all.delete_all)
   puts(EventTicket.all.delete_all)
   puts(EventCommit.all.delete_all)
   puts(TicketCommit.all.delete_all)

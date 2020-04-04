@@ -116,6 +116,7 @@ class PushRequestParser < ApplicationService
 
   def create_service_response_data
     @service_response_data[:event] = @event
+    @service_response_data[:event_id] = @event.id
 
     # share  only the unique tickets across all the commits attached to this event
     @service_response_data[:tickets] = @service_response_data[:tickets].uniq

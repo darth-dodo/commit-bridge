@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_113914) do
+ActiveRecord::Schema.define(version: 2020_04_04_170532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2020_04_04_113914) do
     t.index ["release_id"], name: "index_commits_on_release_id"
     t.index ["sha"], name: "index_commits_on_sha", unique: true
     t.index ["user_id"], name: "index_commits_on_user_id"
+  end
+
+  create_table "event_commit_syncs", force: :cascade do |t|
+    t.bigint "event_commit_id", null: false
+    t.integer "status", null: false
+    t.datetime "sync_timestamp"
+    t.jsonb "response_payload", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_commit_id"], name: "index_event_commit_syncs_on_event_commit_id"
   end
 
   create_table "event_commits", force: :cascade do |t|
@@ -138,6 +148,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_113914) do
 
   add_foreign_key "commits", "releases"
   add_foreign_key "commits", "users"
+  add_foreign_key "event_commit_syncs", "event_commits"
   add_foreign_key "event_commits", "commits"
   add_foreign_key "event_commits", "events"
   add_foreign_key "event_tickets", "events"
