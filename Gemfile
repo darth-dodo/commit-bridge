@@ -35,8 +35,8 @@ gem 'devise'
 gem 'activeadmin'
 
 gem 'faraday'
-gem 'oj'
 gem 'dotenv-rails'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'annotate'

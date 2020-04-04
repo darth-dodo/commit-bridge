@@ -60,6 +60,8 @@
     - [x] Integrating `bangable` Outgoing webhook service in the controller layer
     - [x] Exception propagation to the incoming webhook
     - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
+- [x] CORS using [Rack CORS](https://github.com/cyu/rack-cors) - [PR #21](https://github.com/darth-dodo/commit-bridge/pull/21)
+- [ ] API throttling using Rack Attack
 - [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
@@ -68,8 +70,6 @@
     - [ ] Human readable validation errors
 - [ ] Immutability Concern
 - [ ] Internal API Client Authentication using JWT and Knock
-- [ ] CORs
-- [ ] API throttling using Rack Attack
 
 ---
 ## Local Setup
