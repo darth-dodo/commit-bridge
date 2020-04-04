@@ -26,7 +26,7 @@ class ApplicationService
   def execute!
     puts "running super execute!"
     unless execute
-      raise ExceptionHandler::CommitBridgeValidationError, @errors
+      raise CommitBridgeExceptions::CommitBridgeValidationError, @errors
     end
   end
 

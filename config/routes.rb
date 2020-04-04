@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   scope :webhooks do
     post "git", to: "git_cloud_webhook#receive"
+    post "ticket-tracking-echo", to: "git_cloud_webhook#echo"
   end
 end
