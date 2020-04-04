@@ -6,12 +6,12 @@ class GitCloudWebhookController < BaseWebhookController
     webhook_service.execute!
     event_id = webhook_service.service_response_data[:event_id]
 
-    # tracking_service = SyncEventCommitsWithTrackingApi.new(event_id)
-    # tracking_service.execute!
+    tracking_service = SyncEventCommitsWithTrackingApi.new(event_id)
+    tracking_service.execute!
 
     controller_response_data = {}
     controller_response_data[:webhook_service] = webhook_service.service_response_data
-    # controller_response_data[:tracking_service] = tracking_service.service_response_data
+    controller_response_data[:tracking_service] = tracking_service.service_response_data
 
     json_response(controller_response_data, :created)
 
