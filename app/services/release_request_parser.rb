@@ -1,5 +1,16 @@
 class ReleaseRequestParser < ApplicationService
   include GitWebhookServiceHelpers
+  #   - Consume `GitWebhookServiceHelpers` to store the common logic
+  #   - Get or Create Repo object
+  #   - Get or Create User object
+  #   - Rollback all the operations if any errors
+  #   - Create New Event Object of the type `:pull_request`
+  #   - Create the corresponding `Release` object
+  #   - Rollback all the operations if any errors
+  #   - Create all the commits using the `CommitParser` Service
+  #   - Rollback all the operations if any errors
+  #   - Attach the Tickets to the Event
+
   def initialize(context)
     super()
     @context = Hashie::Mash.new(context)
@@ -30,24 +41,21 @@ class ReleaseRequestParser < ApplicationService
     ActiveRecord::Base.transaction do
       find_or_create_repo_object
       find_or_create_user_object("Release Author Error: ")
-      return false unless valid?
+      raise_rollback_unless_valid
 
       create_event_object(:release)
-      return false unless valid?
+      raise_rollback_unless_valid
 
       create_release_object
-      return false unless valid?
-
-      attach_release_object_to_event_commits
-      return false unless valid?
+      raise_rollback_unless_valid
 
       execute_commit_payload_parser_service_for_event
-      return false unless valid?
+      raise_rollback_unless_valid
 
       attach_event_to_tickets
-      return false unless valid?
     end
 
+    return false unless valid?
     create_service_response_data
 
     valid?
@@ -68,7 +76,4 @@ class ReleaseRequestParser < ApplicationService
     end
   end
 
-  def attach_release_object_to_event_commits
-    @created_commits.update_all(release: @release)
-  end
 end

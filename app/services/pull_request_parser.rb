@@ -1,6 +1,6 @@
 class PullRequestParser < ApplicationService
   include GitWebhookServiceHelpers
-  #   - Consume `GitWehookServiceHelpers` to store the common logic
+  #   - Consume `GitWebhookServiceHelpers` to store the common logic
   #   - Get or Create Repo object
   #   - Get or Create User object
   #   - Rollback all the operations if any errors
