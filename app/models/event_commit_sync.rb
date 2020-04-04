@@ -29,6 +29,7 @@ class EventCommitSync < ApplicationRecord
   belongs_to :event_commit
 
   # validations
+  validates_uniqueness_of :event_commit_id
 
   # class methods
 

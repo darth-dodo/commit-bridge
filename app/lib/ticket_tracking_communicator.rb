@@ -17,8 +17,7 @@ module TicketTrackingCommunicator
     @_response = client.public_send(http_method, endpoint, params)
     parsed_response = JSON.parse(@_response.body)
     return parsed_response if response_successful?
-
-    raise error_class, "Code: #{@_response.status}, response: #{@_response.body}"
+    raise error_class.new(@_response.status, parsed_response)
   end
 
   def error_class

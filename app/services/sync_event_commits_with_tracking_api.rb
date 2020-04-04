@@ -22,16 +22,24 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
     return valid? if no_sync_required
 
     @event_commits.each do |current_event_commit|
+      current_commit_sha = current_event_commit.commit.sha
       sync_object = create_event_commit_sync_object(current_event_commit)
-      next unless valid?
+
+      if sync_object.errors.present?
+        next
+      end
+
       api_payload = create_api_payload_from_event_commit(current_event_commit)
       all_payloads << api_payload
-      puts(sync_object)
-      # begin
-      #   trigger_tracking_sync_api
-      # rescue CommitBridgeExceptions::ExternalApiException => e
-      #   puts e
-      # end
+
+      begin
+        trigger_tracking_sync_api(api_payload)
+      rescue CommitBridgeExceptions::ExternalApiException => e
+        sync_object.failed!
+        sync_object.response_payload = e.response
+        sync_object.save
+        error("API call failed for Commit SHA: #{current_commit_sha} with status code #{e.status_code}")
+      end
     end
 
     valid?
@@ -50,9 +58,10 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
 
     unless event_commit_sync.save
       error(event_commit_sync.errors.full_messages.map do |current_error|
-        current_error.prepend("Event Commit Sync Creation Error for Commit SHA #{event_commit.commit.sha}")
+        current_error.prepend("Event Commit Sync Creation Error for Commit SHA #{event_commit.commit.sha}: ")
       end)
     end
+    event_commit_sync
   end
 
   def create_api_payload_from_event_commit(event_commit)
@@ -97,6 +106,8 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
     all_codes
   end
 
-  def trigger_tracking_sync_api
+  def trigger_tracking_sync_api(api_payload)
+    api_client = TicketTrackingApi::Client.new
+    api_client.update_tickets_across_commit(api_payload)
   end
 end
