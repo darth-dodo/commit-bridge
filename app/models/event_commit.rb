@@ -22,6 +22,7 @@ class EventCommit < ApplicationRecord
   # associations
   belongs_to :event
   belongs_to :commit
+  has_one :event_commit_sync
 
   # validations
   validates_presence_of :event, :commit
