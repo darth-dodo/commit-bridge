@@ -43,6 +43,7 @@
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
 - [x] Release Request Parser Service - [PR #14](https://github.com/darth-dodo/commit-bridge/pull/14)
 - [x] Commit Creation - [PR #17](https://github.com/darth-dodo/commit-bridge/pull/17)
+- [ ] Refactoring Services
 - [ ] Model Test Cases
 - [ ] Controller Test Cases
 - [ ] Service Test Cases

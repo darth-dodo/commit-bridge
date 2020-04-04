@@ -30,8 +30,10 @@ class PushRequestParser < ApplicationService
       create_event_object
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
+      execute_commit_payload_parser_service_for_event
       raise_rollback_unless_valid
+
+      attach_event_to_tickets
     end
 
     create_service_response_data
@@ -70,29 +72,39 @@ class PushRequestParser < ApplicationService
     end
   end
 
-  def execute_commit_payload_parser_service
+  def execute_commit_payload_parser_service_for_event
+    @service_response_data[:commits] = []
+    @service_response_data[:tickets] = []
+
     @commit_info.each do |current_commit|
       current_commit[:event] = @event
-      commit_creator_service = CommitParser.new(current_commit)
+      commit_parser_service = CommitParser.new(current_commit)
 
-      if commit_creator_service.execute
-        if @service_response_data[:commits].is_a?(Array)
-          @service_response_data[:commits] << commit_creator_service.service_response_data[:commit]
-        else
-          @service_response_data[:commits] = [commit_creator_service.service_response_data[:commit]]
-        end
-
+      if commit_parser_service.execute
+        commit = commit_parser_service.service_response_data[:commit]
+        attached_tickets = commit_parser_service.service_response_data[:tickets]
+        @service_response_data[:commits] << commit
+        @service_response_data[:tickets] = @service_response_data[:tickets].concat(attached_tickets)
       else
         puts "Errors while parsing #{current_commit.sha}"
-        commit_creator_service.errors.map do |current_error|
+        commit_parser_service.errors.map do |current_error|
           current_error.prepend("Commit SHA: #{current_commit.sha} payload error: ")
         end
-        error(commit_creator_service.errors)
+        error(commit_parser_service.errors)
       end
     end
   end
 
+  def attach_event_to_tickets
+    event = @event
+    attached_tickets = @service_response_data[:tickets].uniq
+    event.tickets << attached_tickets
+  end
+
   def create_service_response_data
-    @service_response_data[:event] = @event.as_json(except: [:payload], include: [:user, :repository])
+    @service_response_data[:event] = @event
+
+    # share  only the unique tickets across all the commits attached to this event
+    @service_response_data[:tickets] = @service_response_data[:tickets].uniq
   end
 end

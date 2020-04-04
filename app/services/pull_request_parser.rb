@@ -32,12 +32,13 @@ class PullRequestParser < ApplicationService
       create_event_object(:pull_request)
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
+      execute_commit_payload_parser_service_for_event
       raise_rollback_unless_valid
     end
 
-    create_service_response_data
+    attach_event_to_tickets
 
+    create_service_response_data
     valid?
   end
 end

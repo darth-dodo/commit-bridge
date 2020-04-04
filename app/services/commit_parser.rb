@@ -18,7 +18,7 @@ class CommitParser < ApplicationService
     @event = @context.event
     @event_user_info = @context.author
     @commit_message = @context.message
-    @ticket_objects = []
+    @tickets = []
   end
 
   def validate
@@ -41,7 +41,7 @@ class CommitParser < ApplicationService
 
     @commit = Commit.find_by_sha(@context.sha)
     if @commit.present?
-      @ticket_objects = @commit.tickets
+      @tickets = @commit.tickets
     else
       # TODO: refactor these common methods to handle instance and locals more elegantly
       find_or_create_user_object
@@ -115,7 +115,7 @@ class CommitParser < ApplicationService
 
       if project_object.present?
         ticket_object = find_or_create_ticket_object(project_object, ticket_code)
-        @ticket_objects << ticket_object
+        @tickets << ticket_object
       end
     end
   end
@@ -160,11 +160,12 @@ class CommitParser < ApplicationService
   end
 
   def attach_commit_to_tickets
-    @commit.tickets << @ticket_objects
+    @commit.tickets << @tickets
   end
 
   def create_service_response_data
     @service_response_data[:commit] = @commit.as_json(only:
     [:sha, :message]).merge(linked_tickets_count: @commit.tickets.size)
+    @service_response_data[:tickets] = @tickets
   end
 end

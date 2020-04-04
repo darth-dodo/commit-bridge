@@ -41,9 +41,11 @@ class ReleaseRequestParser < ApplicationService
       attach_release_object_to_event_commits
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
+      execute_commit_payload_parser_service_for_event
       raise_rollback_unless_valid
     end
+
+    attach_event_to_tickets
 
     create_service_response_data
 
