@@ -10,4 +10,10 @@ class GitCloudWebhookController < BaseWebhookController
   rescue JSON::ParserError
     head(:unprocessable_entity)
   end
+
+  def echo
+    data = JSON.parse(request.body.read)
+    data[:time] = Time.now
+    json_response(data)
+  end
 end

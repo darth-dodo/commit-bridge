@@ -34,6 +34,10 @@ gem 'hashie'
 gem 'devise'
 gem 'activeadmin'
 
+gem 'faraday'
+gem 'oj'
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'annotate'
   gem 'rails-erd'

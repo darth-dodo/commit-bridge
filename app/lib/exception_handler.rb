@@ -1,17 +1,10 @@
 module ExceptionHandler
   extend ActiveSupport::Concern
-  class AuthenticationError < StandardError; end
-
-  class CommitBridgeValidationError < StandardError
-    attr_reader :message
-    def initialize(message = nil)
-      @message = message || Message.default_error_message
-    end
-  end
-
+  include CommitBridgeExceptions
   included do
-    rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
-    rescue_from ExceptionHandler::CommitBridgeValidationError, with: :four_zero_zero
+    rescue_from CommitBridgeExceptions::AuthenticationError, with: :unauthorized_request
+    rescue_from CommitBridgeExceptions::CommitBridgeValidationError, with: :four_zero_zero
+    rescue_from CommitBridgeExceptions::ExternalApiException, with: :four_zero_zero
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
   end
