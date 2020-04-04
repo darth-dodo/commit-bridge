@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_170532) do
     t.bigint "event_commit_id", null: false
     t.integer "status", null: false
     t.datetime "sync_timestamp"
-    t.jsonb "payload", default: "{}", null: false
+    t.jsonb "response_payload", default: "{}", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_commit_id"], name: "index_event_commit_syncs_on_event_commit_id"
@@ -82,16 +82,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_170532) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_tickets_on_event_id"
     t.index ["ticket_id"], name: "index_event_tickets_on_ticket_id"
-  end
-
-  create_table "event_tracking_syncs", force: :cascade do |t|
-    t.integer "status", null: false
-    t.jsonb "payload", default: "{}", null: false
-    t.bigint "event_id", null: false
-    t.datetime "last_tried"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_tracking_syncs_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -163,7 +153,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_170532) do
   add_foreign_key "event_commits", "events"
   add_foreign_key "event_tickets", "events"
   add_foreign_key "event_tickets", "tickets"
-  add_foreign_key "event_tracking_syncs", "events"
   add_foreign_key "events", "repositories"
   add_foreign_key "events", "users"
   add_foreign_key "releases", "events"

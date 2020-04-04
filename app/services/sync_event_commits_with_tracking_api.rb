@@ -1,5 +1,4 @@
 class SyncEventCommitsWithTrackingApi < ApplicationService
-
   def initialize(event_id)
     super()
     @event_id = event_id
@@ -7,8 +6,9 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
 
   def validate
     @event = Event.find(@event_id)
-    error 'Event is required for scheduling ticket tracking sync!' if @event.blank?
-    @commits = @event.commits
+    error('Event is required for scheduling ticket tracking sync!') if @event.blank?
+    @event_commits = @event.event_commits
+
     super()
     valid?
   end
@@ -16,65 +16,87 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
   def execute
     super()
     return false unless valid?
+    all_payloads = []
 
     # don't run the sync in case of the following conditions
     return valid? if no_sync_required
 
-    create_event_tracking_sync_object
-    return false unless valid?
-
-    create_tracking_api_payload
-
-    begin
-      trigger_tracking_sync_api
-    rescue CommitBridgeExceptions::ExternalApiException => e
-      binding.pry
-      puts e
+    @event_commits.each do |current_event_commit|
+      sync_object = create_event_commit_sync_object(current_event_commit)
+      next unless valid?
+      api_payload = create_api_payload_from_event_commit(current_event_commit)
+      all_payloads << api_payload
+      puts(sync_object)
+      # begin
+      #   trigger_tracking_sync_api
+      # rescue CommitBridgeExceptions::ExternalApiException => e
+      #   puts e
+      # end
     end
 
+    valid?
   end
 
   private
+
   def no_sync_required
-    return true if @event.pull_request?
+    true if @event.pull_request?
   end
 
-  def create_event_commit_sync_object
-    @event_commit_sync = EventCommitSync.new
-    @event_commit_sync.event_commit = @event
-    @event_commit_sync.status = :pending
+  def create_event_commit_sync_object(event_commit)
+    event_commit_sync = EventCommitSync.new
+    event_commit_sync.event_commit = event_commit
+    event_commit_sync.status = :pending
 
-    unless @event_tracking_sync.save
-      error(@event_tracking_sync.errors.full_messages.map do |current_error|
-        current_error.prepend("Event Tracking Sync Creation Error: ")
+    unless event_commit_sync.save
+      error(event_commit_sync.errors.full_messages.map do |current_error|
+        current_error.prepend("Event Commit Sync Creation Error for Commit SHA #{event_commit.commit.sha}")
       end)
     end
-
   end
 
-  def create_tracking_api_payload
-    if @event.push_request?
-      generate_push_event_ticket_tracking_payload
+  def create_api_payload_from_event_commit(event_commit)
+    event = event_commit.event
+    commit = event_commit.commit
+
+    if event.push_request?
+      return generate_push_event_ticket_tracking_payload_from_commit(commit)
     end
 
-    if @event.release?
-      generate_release_event_ticket_tracking_payload
+    if event.release?
+      return generate_release_event_ticket_tracking_payload_from_commit(commit)
     end
+
+    error("Unable to create API payload for for Commit SHA #{commit.sha}")
   end
 
-  def generate_push_event_ticket_tracking_payload
-    @api_payload = {}
-    @api_payload["query"] = "state \#{ready for release}"
-    @api_payload["issues"] = attach_event_ticket_codes
-    @api_payload["comment"] = "See SHA ##{}"
-
+  def generate_push_event_ticket_tracking_payload_from_commit(commit)
+    api_payload = {}
+    api_payload["query"] = "state \#{ready for release}"
+    api_payload["issues"] = attach_ticket_codes_from_commit(commit)
+    api_payload["comment"] = "See SHA ##{commit.sha}"
+    api_payload
   end
 
-  def generate_release_event_ticket_tracking_payload
+  def generate_release_event_ticket_tracking_payload_from_commit(commit)
+    api_payload = {}
+    api_payload["query"] = "state \#{released}"
+    api_payload["issues"] = attach_ticket_codes_from_commit(commit)
+    api_payload["comment"] = "Released in #{commit.release.tag}"
+    api_payload
+  end
 
+  def attach_ticket_codes_from_commit(commit)
+    all_codes = []
+    attached_ticket_commits = commit.ticket_commits
+    attached_ticket_commits.each do |current_ticket_commit|
+      current_code = {}
+      current_code[:id] = current_ticket_commit.ticket.hash_code
+      all_codes << current_code
+    end
+    all_codes
   end
 
   def trigger_tracking_sync_api
   end
-
 end
