@@ -40,31 +40,41 @@ class CommitParser < ApplicationService
     return false unless valid?
 
     @commit = Commit.find_by_sha(@context.sha)
-    if @commit.present?
-      @tickets = @commit.tickets
-    else
-      # TODO: refactor these common methods to handle instance and locals more elegantly
-      find_or_create_user_object
+
+    ActiveRecord::Base.transaction do
+      if @commit.present?
+        @tickets = @commit.tickets
+      else
+
+        # for creating new commits
+        ActiveRecord::Base.transaction do
+          find_or_create_user_object
+          raise_rollback_unless_valid
+
+          create_commit_object
+          raise_rollback_unless_valid
+
+          find_or_create_ticket_objects_from_commit_message
+          raise_rollback_unless_valid
+
+          attach_commit_to_tickets
+          raise_rollback_unless_valid
+        end
+      end
+
       return false unless valid?
 
-      create_commit_object
-      return false unless valid?
+      # irrespective of whether the commit is new or not, process for the event
+      attach_commit_to_event
+      raise_rollback_unless_valid
 
-      find_or_create_ticket_objects_from_commit_message
-      return false unless valid?
-
-      attach_commit_to_tickets
-      return false unless valid?
+      attach_release_to_commit if @event.release?
+      raise_rollback_unless_valid
     end
 
-    attach_commit_to_event
-    return false unless valid?
-
-    attach_release_to_commit if @event.release?
     return false unless valid?
 
     create_service_response_data
-
     valid?
   end
 
