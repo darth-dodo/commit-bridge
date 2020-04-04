@@ -36,6 +36,9 @@ class Event < ApplicationRecord
   has_many :event_commits
   has_many :commits, through: :event_commits
 
+  has_many :event_tickets
+  has_many :tickets, through: :event_tickets
+
   # validations
   validates_presence_of :event_type, :event_timestamp
   validates_uniqueness_of :payload, scope: :event_type, message: "present across existing event of the same type!"

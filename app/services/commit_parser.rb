@@ -18,7 +18,7 @@ class CommitParser < ApplicationService
     @event = @context.event
     @event_user_info = @context.author
     @commit_message = @context.message
-    @ticket_objects = []
+    @tickets = []
   end
 
   def validate
@@ -40,31 +40,41 @@ class CommitParser < ApplicationService
     return false unless valid?
 
     @commit = Commit.find_by_sha(@context.sha)
-    if @commit.present?
-      @ticket_objects = @commit.tickets
-    else
-      # TODO: refactor these common methods to handle instance and locals more elegantly
-      find_or_create_user_object
+
+    ActiveRecord::Base.transaction do
+      if @commit.present?
+        @tickets = @commit.tickets
+      else
+
+        # for creating new commits
+        ActiveRecord::Base.transaction do
+          find_or_create_user_object
+          raise_rollback_unless_valid
+
+          create_commit_object
+          raise_rollback_unless_valid
+
+          find_or_create_ticket_objects_from_commit_message
+          raise_rollback_unless_valid
+
+          attach_commit_to_tickets
+          raise_rollback_unless_valid
+        end
+      end
+
       return false unless valid?
 
-      create_commit_object
-      return false unless valid?
+      # irrespective of whether the commit is new or not, process for the event
+      attach_commit_to_event
+      raise_rollback_unless_valid
 
-      find_or_create_ticket_objects_from_commit_message
-      return false unless valid?
-
-      attach_commit_to_tickets
-      return false unless valid?
+      attach_release_to_commit if @event.release?
+      raise_rollback_unless_valid
     end
 
-    attach_commit_to_event
-    return false unless valid?
-
-    attach_release_to_commit if @event.release?
     return false unless valid?
 
     create_service_response_data
-
     valid?
   end
 
@@ -115,7 +125,7 @@ class CommitParser < ApplicationService
 
       if project_object.present?
         ticket_object = find_or_create_ticket_object(project_object, ticket_code)
-        @ticket_objects << ticket_object
+        @tickets << ticket_object
       end
     end
   end
@@ -126,12 +136,18 @@ class CommitParser < ApplicationService
     @commit.sha = @context.sha
     @commit.commit_timestamp = @context.date
     @commit.user = @user
+    @commit.commit_type = extract_commit_type_from_message
 
     unless @commit.save
       error(@commit.errors.full_messages.map do |current_error|
         current_error.prepend("Commit Creation Error: ")
       end)
     end
+  end
+
+  def extract_commit_type_from_message
+    # assuming the commit message structure is strict and perfect
+    @commit_message.partition(":")[0].downcase
   end
 
   def attach_commit_to_event
@@ -160,11 +176,12 @@ class CommitParser < ApplicationService
   end
 
   def attach_commit_to_tickets
-    @commit.tickets << @ticket_objects
+    @commit.tickets << @tickets
   end
 
   def create_service_response_data
     @service_response_data[:commit] = @commit.as_json(only:
     [:sha, :message]).merge(linked_tickets_count: @commit.tickets.size)
+    @service_response_data[:tickets] = @tickets
   end
 end

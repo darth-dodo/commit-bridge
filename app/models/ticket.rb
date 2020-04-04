@@ -24,6 +24,9 @@ class Ticket < ApplicationRecord
   has_many :ticket_commits
   has_many :commits, through: :ticket_commits
 
+  has_many :event_tickets
+  has_many :events, through: :event_tickets
+
   # validations
   validates_presence_of :code, :project
   validates_uniqueness_of :code, scope: :project

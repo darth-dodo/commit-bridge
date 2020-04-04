@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_172513) do
+ActiveRecord::Schema.define(version: 2020_04_04_113914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_172513) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "release_id"
+    t.integer "commit_type", null: false
     t.index ["release_id"], name: "index_commits_on_release_id"
     t.index ["sha"], name: "index_commits_on_sha", unique: true
     t.index ["user_id"], name: "index_commits_on_user_id"
@@ -62,6 +63,15 @@ ActiveRecord::Schema.define(version: 2020_03_30_172513) do
     t.datetime "updated_at", null: false
     t.index ["commit_id"], name: "index_event_commits_on_commit_id"
     t.index ["event_id"], name: "index_event_commits_on_event_id"
+  end
+
+  create_table "event_tickets", force: :cascade do |t|
+    t.bigint "ticket_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_tickets_on_event_id"
+    t.index ["ticket_id"], name: "index_event_tickets_on_ticket_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -130,6 +140,8 @@ ActiveRecord::Schema.define(version: 2020_03_30_172513) do
   add_foreign_key "commits", "users"
   add_foreign_key "event_commits", "commits"
   add_foreign_key "event_commits", "events"
+  add_foreign_key "event_tickets", "events"
+  add_foreign_key "event_tickets", "tickets"
   add_foreign_key "events", "repositories"
   add_foreign_key "events", "users"
   add_foreign_key "releases", "events"

@@ -1,5 +1,14 @@
 class PullRequestParser < ApplicationService
   include GitWebhookServiceHelpers
+  #   - Consume `GitWebhookServiceHelpers` to store the common logic
+  #   - Get or Create Repo object
+  #   - Get or Create User object
+  #   - Rollback all the operations if any errors
+  #   - Create New Event Object of the type `:pull_request`
+  #   - Rollback all the operations if any errors
+  #   - Create all the commits using the `CommitParser` Service
+  #   - Rollback all the operations if any errors
+  #   - Attach the Tickets to the Event
 
   def initialize(context)
     super()
@@ -32,12 +41,18 @@ class PullRequestParser < ApplicationService
       create_event_object(:pull_request)
       raise_rollback_unless_valid
 
-      execute_commit_payload_parser_service
+      execute_commit_payload_parser_service_for_event
       raise_rollback_unless_valid
+
+      attach_event_to_tickets
     end
 
-    create_service_response_data
+    # do not continue without checking for errors in the event of a rollback
+    # assume the internals will populate the errors to navigate the code flow
+    # and those errors need to be bubbled upward in the application
+    return false unless valid?
 
+    create_service_response_data
     valid?
   end
 end
