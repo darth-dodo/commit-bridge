@@ -1,4 +1,13 @@
 class PushRequestParser < ApplicationService
+  #   - Get or Create Repo object
+  #   - Get or Create User object
+  #   - Rollback all the operations if any errors
+  #   - Create New Event Object
+  #   - Rollback all the operations if any errors
+  #   - Create all the commits using the Commit Parser Service
+  #   - Rollback all the operations if any errors
+  #   - Attach the Tickets to the Event
+
   def initialize(context)
     super()
     @context = Hashie::Mash.new(context)
