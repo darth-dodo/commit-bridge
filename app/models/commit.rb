@@ -4,6 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  commit_timestamp :datetime         not null
+#  commit_type      :integer          not null
 #  message          :string           not null
 #  sha              :string           not null
 #  created_at       :datetime         not null
@@ -23,6 +24,13 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Commit < ApplicationRecord
+  # enums
+  enum commit_type: {
+    fix: 0,
+    chore: 1,
+    feat: 2,
+  }
+
   # associations
   belongs_to :user
   belongs_to :release, optional: true

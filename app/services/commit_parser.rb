@@ -126,12 +126,18 @@ class CommitParser < ApplicationService
     @commit.sha = @context.sha
     @commit.commit_timestamp = @context.date
     @commit.user = @user
+    @commit.commit_type = extract_commit_type_from_message
 
     unless @commit.save
       error(@commit.errors.full_messages.map do |current_error|
         current_error.prepend("Commit Creation Error: ")
       end)
     end
+  end
+
+  def extract_commit_type_from_message
+    # assuming the commit message structure is strict and perfect
+    @commit_message.partition(":")[0].downcase
   end
 
   def attach_commit_to_event

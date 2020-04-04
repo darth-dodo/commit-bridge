@@ -75,5 +75,4 @@ class ReleaseRequestParser < ApplicationService
       error(@release.errors.full_messages.map { |current_error| current_error.prepend("Release Error: ") })
     end
   end
-
 end

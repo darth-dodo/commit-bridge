@@ -4,6 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  commit_timestamp :datetime         not null
+#  commit_type      :integer          not null
 #  message          :string           not null
 #  sha              :string           not null
 #  created_at       :datetime         not null
