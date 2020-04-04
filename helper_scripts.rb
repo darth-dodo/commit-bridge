@@ -7,4 +7,19 @@ def delete_all_records
   puts(Commit.all.delete_all)
   puts(Release.all.delete_all)
   puts(Event.all.delete_all)
+  puts(Repository.all.delete_all)
+  puts(User.all.delete_all)
+end
+
+def count_all
+  puts(EventTicket.all.size)
+  puts(EventCommit.all.size)
+  puts(TicketCommit.all.size)
+  puts(Ticket.all.size)
+  puts(Project.all.size)
+  puts(Commit.all.size)
+  puts(Release.all.size)
+  puts(Event.all.size)
+  puts(Repository.all.size)
+  puts(User.all.size)
 end

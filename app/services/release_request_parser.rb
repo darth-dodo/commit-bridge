@@ -33,7 +33,7 @@ class ReleaseRequestParser < ApplicationService
       return false unless valid?
 
       create_event_object(:release)
-      raise_rollback_unless_valid
+      return false unless valid?
 
       create_release_object
       return false unless valid?

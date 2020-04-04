@@ -18,9 +18,11 @@ module GitCloudWebhook
       ActiveRecord::Base.transaction do
         unless @strategy.execute
           error(@strategy.errors)
-          return false unless valid?
+          raise_rollback_unless_valid
         end
       end
+
+      return false unless valid?
 
       @service_response_data = @strategy.service_response_data
       valid?

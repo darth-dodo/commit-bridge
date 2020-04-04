@@ -51,8 +51,11 @@
 - [ ] Outgoing Webhook
     - [ ] Payload generator
     - [ ] Requester
-- [ ] Indexes and Validations round 2
+- [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
+    - [ ] Database level unique indexes
+        - [ ] Commit SHA
+        - [ ] Event Payload
     - [ ] Human readable validation errors
 - [ ] Immutability Concern
 - [ ] API Client Authentication

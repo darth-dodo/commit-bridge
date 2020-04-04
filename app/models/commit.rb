@@ -35,6 +35,7 @@ class Commit < ApplicationRecord
 
   # validations
   validates_presence_of :message, :commit_timestamp, :sha
+  validates_uniqueness_of :sha
 
   # scopes
 
