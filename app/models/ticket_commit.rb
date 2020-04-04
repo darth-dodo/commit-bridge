@@ -24,7 +24,7 @@ class TicketCommit < ApplicationRecord
   belongs_to :commit
 
   validates_presence_of :ticket, :commit
-  validates_uniqueness_of :ticket, scope: :commit, message: "is already attached to the commit!"
+  validates_uniqueness_of :ticket, scope: :commit, message: "cannot be attached to the same commit more than once!"
 
   # validations
 
