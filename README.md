@@ -82,6 +82,7 @@ overcommit --sign
 - generate the schema using `rake db:migrate`
 - The Active Admin related seed data can be generated using the command `rake db:seed`
 - You can start the server using `rails s` or use the Rails console `rails c`
+- `bundle exec puma` for running the Rails Server in multi threading mode (for Webhook external API echo feature)
 - ActiveAdmin is installed for having a visual representation of the data. Log in the admin panel at
 `localhost:3000/admin` using the `secure` credentials
 ```

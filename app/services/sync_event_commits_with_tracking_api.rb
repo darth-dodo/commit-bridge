@@ -16,7 +16,7 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
   def execute
     super()
     return false unless valid?
-    all_payloads = []
+    all_syncs = []
 
     # don't run the sync in case of the following conditions
     return valid? if no_sync_required
@@ -30,10 +30,13 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
       end
 
       api_payload = create_api_payload_from_event_commit(current_event_commit)
-      all_payloads << api_payload
+      sync_object.sync_timestamp = Time.now
+      sync_object.save
 
       begin
         trigger_tracking_sync_api(api_payload)
+        sync_object.successful!
+        all_syncs << sync_object.as_json
       rescue CommitBridgeExceptions::ExternalApiException => e
         sync_object.failed!
         sync_object.response_payload = e.response
@@ -42,6 +45,7 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
       end
     end
 
+    create_service_response_data(all_syncs)
     valid?
   end
 
@@ -109,5 +113,9 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
   def trigger_tracking_sync_api(api_payload)
     api_client = TicketTrackingApi::Client.new
     api_client.update_tickets_across_commit(api_payload)
+  end
+
+  def create_service_response_data(sync_data)
+    @service_response_data[:event_commit_sync] = sync_data
   end
 end
