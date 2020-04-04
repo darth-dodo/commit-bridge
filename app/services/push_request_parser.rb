@@ -12,7 +12,7 @@ class PushRequestParser < ApplicationService
     error('Repository information is required!') if @repository_info.blank?
     error('Pusher information is required!') if @pusher_info.blank?
     error('Commit information is required!') if @commit_info.blank?
-    error('Invalid Commits structuring') unless @commit_info.is_a?(Array)
+    error('Invalid Commit payload structuring') unless @commit_info.is_a?(Array)
 
     super()
     valid?
@@ -36,6 +36,7 @@ class PushRequestParser < ApplicationService
       attach_event_to_tickets
     end
 
+    return false unless valid?
     create_service_response_data
 
     valid?
@@ -96,9 +97,8 @@ class PushRequestParser < ApplicationService
   end
 
   def attach_event_to_tickets
-    event = @event
     attached_tickets = @service_response_data[:tickets].uniq
-    event.tickets << attached_tickets
+    @event.tickets << attached_tickets
   end
 
   def create_service_response_data
