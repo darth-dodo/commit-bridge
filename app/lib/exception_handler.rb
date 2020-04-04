@@ -1,6 +1,7 @@
 module ExceptionHandler
   extend ActiveSupport::Concern
   include CommitBridgeExceptions
+
   included do
     rescue_from CommitBridgeExceptions::AuthenticationError, with: :unauthorized_request
     rescue_from CommitBridgeExceptions::CommitBridgeValidationError, with: :four_zero_zero

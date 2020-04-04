@@ -47,10 +47,16 @@
 - [ ] Model Test Cases
 - [ ] Controller Test Cases
 - [ ] Service Test Cases
-- [ ] HTTP Adapter Layer using [HTTParty](https://github.com/jnunemaker/httparty)
+- [x] HTTP Facade Layer using [Faraday](https://github.com/lostisland/faraday) - [PR #19](https://github.com/darth-dodo/commit-bridge/pull/19)
+    - [x] DotEnv External Token management
+    - [x] External Exception Management
+    - [x] Communicator Layer using Faraday
+    - [x] API Client
+    - [x] Echo controller for testing
 - [ ] Outgoing Webhook
-    - [ ] Payload generator
-    - [ ] Requester
+    - [ ] Payload generator module/helper
+    - [ ] Service calling the API Client
+    - [ ] State Management using `EventTracking` model
 - [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
@@ -58,7 +64,9 @@
         - [ ] Event Payload
     - [ ] Human readable validation errors
 - [ ] Immutability Concern
-- [ ] API Client Authentication
+- [ ] Internal API Client Authentication using JWT and Knock
+- [ ] CORs
+- [ ] API throttling using Rack Attack
 
 ---
 ## Local Setup
