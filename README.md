@@ -43,7 +43,7 @@
 - [x] Push Request Parser Service - [PR #12](https://github.com/darth-dodo/commit-bridge/pull/12)
 - [x] Release Request Parser Service - [PR #14](https://github.com/darth-dodo/commit-bridge/pull/14)
 - [x] Commit Creation - [PR #17](https://github.com/darth-dodo/commit-bridge/pull/17)
-- [ ] Refactoring Services
+- [x] Refactoring Services - [PR #18](https://github.com/darth-dodo/commit-bridge/pull/18)
 - [ ] Model Test Cases
 - [ ] Controller Test Cases
 - [ ] Service Test Cases
@@ -96,6 +96,7 @@ Generating models based on the Payload requirements
 - Project
 - Ticket
 - TicketCommit
+- EventTicket
 - Release
 - Repository
 
@@ -106,6 +107,7 @@ For brevity, the user journey is as follows:
 - `Tickets` belong to a `Project`
 - `Release` is a special `Event` which is made by a `User` by submitting multiple `Commits`
 - `Events` and `Commit` are attached to a `Repository`
+- An `Event` when registered belongs to one or more `Tickets` and a single `Ticket` can be across multiple `Events`
 
 
 ---
