@@ -36,16 +36,17 @@ class ReleaseRequestParser < ApplicationService
       raise_rollback_unless_valid
 
       create_release_object
-      raise_rollback_unless_valid
+      return false unless valid?
 
       attach_release_object_to_event_commits
-      raise_rollback_unless_valid
+      return false unless valid?
 
       execute_commit_payload_parser_service_for_event
-      raise_rollback_unless_valid
-    end
+      return false unless valid?
 
-    attach_event_to_tickets
+      attach_event_to_tickets
+      return false unless valid?
+    end
 
     create_service_response_data
 
@@ -68,7 +69,6 @@ class ReleaseRequestParser < ApplicationService
   end
 
   def attach_release_object_to_event_commits
-    # TODO: refactor this once the commit creator service is finished
     @created_commits.update_all(release: @release)
   end
 end

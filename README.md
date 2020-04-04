@@ -52,6 +52,8 @@
     - [ ] Payload generator
     - [ ] Requester
 - [ ] Indexes and Validations round 2
+    - [ ] Add Unique together indexes for M2M
+    - [ ] Human readable validation errors
 - [ ] Immutability Concern
 - [ ] API Client Authentication
 

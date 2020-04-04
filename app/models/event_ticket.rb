@@ -5,7 +5,7 @@ class EventTicket < ApplicationRecord
 
   # validations
   validates_presence_of :event, :ticket
-  validates_uniqueness_of :ticket, scope: :event
+  validates_uniqueness_of :ticket, scope: :event, message: "is already attached to the event!"
   # scopes
 
   # class methods
