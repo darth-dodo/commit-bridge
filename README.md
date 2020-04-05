@@ -44,9 +44,6 @@
 - [x] Release Request Parser Service - [PR #14](https://github.com/darth-dodo/commit-bridge/pull/14)
 - [x] Commit Creation - [PR #17](https://github.com/darth-dodo/commit-bridge/pull/17)
 - [x] Refactoring Services - [PR #18](https://github.com/darth-dodo/commit-bridge/pull/18)
-- [ ] Model Test Cases
-- [ ] Controller Test Cases
-- [ ] Service Test Cases
 - [x] HTTP Facade Layer using [Faraday](https://github.com/lostisland/faraday) - [PR #19](https://github.com/darth-dodo/commit-bridge/pull/19)
     - [x] DotEnv External Token management
     - [x] External Exception Management
@@ -61,7 +58,11 @@
     - [x] Exception propagation to the incoming webhook
     - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
 - [x] CORS using [Rack CORS](https://github.com/cyu/rack-cors) - [PR #21](https://github.com/darth-dodo/commit-bridge/pull/21)
-- [ ] API throttling using Rack Attack
+- [x] API throttling using [Rack Attack](https://github.com/kickstarter/rack-attack#throttling)- [PR #22](https://github.com/darth-dodo/commit-bridge/pull/22)
+- [ ] Incoming Webhooks Token Based Auth
+- [ ] Model Test Cases
+- [ ] Service Test Cases
+- [ ] Controller Test Cases
 - [ ] Database Indexes and Application Model Validations second iteration
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
@@ -69,7 +70,6 @@
         - [ ] Event Payload
     - [ ] Human readable validation errors
 - [ ] Immutability Concern
-- [ ] Internal API Client Authentication using JWT and Knock
 
 ---
 ## Local Setup
@@ -92,7 +92,8 @@ overcommit --sign
 username: admin@commit-bridge.com
 password: commit-bridge-123
 ```
-
+- If you want to test the API throttling using Redis, setup Redis and start the Redis server
+- Change the `.env.example` as required to match your setup
 ---
 ## Application Details
 - The Entity relationship diagram is present [over here](https://github.com/darth-dodo/commit-bridge/blob/master/erd.pdf)
@@ -192,3 +193,44 @@ These were some of the things I keep in mind while writing software
 - Fault tolerance for the external facing API
 - Event driven arch using Message Queue
 - Event Driven Arch using Message Bus
+
+
+## API Throttling
+- API throttling is done using Rack Attack with the cache store as Redis.
+- The limits can be controlled through the `.env` variable ` DAILY_IP_REQUEST_QUOTA`
+- More complex throttling policies and feedbacks can be set using an approach similar to [this](https://vitobotta.com/2019/09/24/protecting-rails-app-from-small-scripted-attacks/) or [this](https://blog.bigbinary.com/2018/05/15/how-to-mitigate-ddos-using-rack-attack.html) with exponential back-offs and detailed logging
+- Load testing response from `Artillery` when the request quota is set to `10/per day/ip`
+```
+Elapsed time: 1 second
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  200
+  Mean response/sec: 147.06
+  Response time (msec):
+    min: 3.3
+    max: 1206.4
+    median: 10.9
+    p95: 45.1
+    p99: 213.6
+  Codes:
+    200: 10
+    429: 190
+
+All virtual users finished
+Summary report @ 12:08:03(+0200) 2020-04-05
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  200
+  Mean response/sec: 145.99
+  Response time (msec):
+    min: 3.3
+    max: 1206.4
+    median: 10.9
+    p95: 45.1
+    p99: 213.6
+  Scenario counts:
+    0: 10 (100%)
+  Codes:
+    200: 10
+    429: 190
+```
