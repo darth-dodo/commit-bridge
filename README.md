@@ -192,3 +192,8 @@ These were some of the things I keep in mind while writing software
 - Fault tolerance for the external facing API
 - Event driven arch using Message Queue
 - Event Driven Arch using Message Bus
+
+
+## API Throttling
+- API throttling is done using Rack Attack
+- More complex throttling policies and feedbacks can be set using an approach similar to [this](https://vitobotta.com/2019/09/24/protecting-rails-app-from-small-scripted-attacks/) or [this](https://blog.bigbinary.com/2018/05/15/how-to-mitigate-ddos-using-rack-attack.html) with exponential back-offs and detailed logging

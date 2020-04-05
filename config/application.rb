@@ -44,6 +44,9 @@ module CommitBridge
       end
     end
 
+    # api throttling using rack-attack
+    config.middleware.use(Rack::Attack)
+
     # Middleware for ActiveAdmin
     config.middleware.use(Rack::MethodOverride)
     config.middleware.use(ActionDispatch::Flash)

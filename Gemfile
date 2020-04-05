@@ -37,6 +37,7 @@ gem 'activeadmin'
 gem 'faraday'
 gem 'dotenv-rails'
 gem 'rack-cors'
+gem 'rack-attack'
 
 group :development, :test do
   gem 'annotate'
