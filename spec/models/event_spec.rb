@@ -42,5 +42,14 @@ RSpec.describe(Event, type: :model) do
   end
 
   describe "Model Associations" do
+    it { should belong_to(:repository) }
+    it { should belong_to(:user) }
+    it { should have_one(:release) }
+
+    it { should have_many(:event_commits) }
+    it { should have_many(:commits).through(:event_commits) }
+
+    it { should have_many(:event_tickets) }
+    it { should have_many(:tickets).through(:event_tickets) }
   end
 end
