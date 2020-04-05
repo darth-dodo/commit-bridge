@@ -30,6 +30,7 @@ class EventCommitSync < ApplicationRecord
 
   # validations
   validates_uniqueness_of :event_commit_id
+  validates_presence_of :event_commit_id, :status
 
   # class methods
 

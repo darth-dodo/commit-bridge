@@ -20,5 +20,26 @@
 #
 FactoryBot.define do
   factory :event_commit_sync do
+    status { :pending }
+    sync_timestamp { Time.now }
+    association :event_commit
+
+    trait :sync_pending do
+      status { :pending }
+    end
+
+    trait :sync_failed do
+      status { :failed }
+      response_payload { JSON.parse(File.read("spec/fixtures/event_commit_failed_sync_paylaod.json")) }
+    end
+
+    trait :sync_successful do
+      status { :successful }
+      response_payload { JSON.parse(File.read("spec/fixtures/event_commit_successful_sync_payload.json")) }
+    end
+
+    factory :pending_event_commit_sync, traits: [:sync_pending]
+    factory :failed_event_commit_sync, traits: [:sync_failed]
+    factory :successful_event_commit_sync, traits: [:sync_successful]
   end
 end

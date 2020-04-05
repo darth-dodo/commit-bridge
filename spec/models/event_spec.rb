@@ -31,9 +31,7 @@ RSpec.describe(Event, type: :model) do
 
   # https://github.com/thoughtbot/shoulda-matchers/blob/master/lib/shoulda/matchers/active_record/validate_uniqueness_of_matcher.rb#L56
   describe "Uniqueness Validations" do
-    pull_request_fixture_data = JSON.parse(File.read("spec/fixtures/pull_request_payload.json"))
-
-    subject { create(:event, payload: pull_request_fixture_data) }
+    subject { create(:pull_request_event) }
     it {
       should validate_uniqueness_of(:payload)
         .scoped_to(:event_type)
