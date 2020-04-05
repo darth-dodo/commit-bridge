@@ -9,6 +9,7 @@
 - `rake db:seed` for seeding the db
 - `rake db:drop && rake db:create && rake db:migrate && rake db:seed` - for resetting the database
 - `bundle exec puma` for running the Rails Server in multi threading mode (for echo feature)
+- `rspec spec/ -fd` for running RSpec in verbose mode
 
 
 ## Caching

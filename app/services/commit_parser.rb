@@ -24,9 +24,13 @@ class CommitParser < ApplicationService
   def validate
     error('Commit Author is required!') if @event_user_info.blank?
     error('Commit message is required!') if @commit_message.blank?
-    if @event.present? && !@event.is_a?(Event)
-      @event = Event.find(@event)
+
+    unless @event.is_a?(Event)
+      if @event.present?
+        @event = Event.find_by(id: @event.to_i)
+      end
     end
+
     error('Event is required!') if @event.blank?
 
     validate_commit_message_structure

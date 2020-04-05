@@ -9,6 +9,8 @@ class PullRequestParser < ApplicationService
   #   - Create all the commits using the `CommitParser` Service
   #   - Rollback all the operations if any errors
   #   - Attach the Tickets to the Event
+  #
+  #   sample context: /spec/fixtures/pull_request_payload.json
 
   def initialize(context)
     super()

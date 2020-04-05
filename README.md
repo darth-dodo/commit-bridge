@@ -63,10 +63,17 @@
     - [x] Adding `ApiClient` model
     - [x] Adding Token based Authentication action in the `BaseWebhookController`
     - [x] Exception Management in case of invalid requests
-- [x] Model Test Cases  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
-- [ ] Service Test Cases
+- [x] Model RSpec  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
+- [ ] Service RSpec
+    - [x] Commit Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
+    - [x] Pull Request Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
+    - [ ] Push Request Parser Service
+    - [ ] Release Request Parser Service
+    - [ ] Event Delegator Service
+    - [ ] Ticket Tracking API service
+- [ ] Service Edge Cases RSpec [Future iteration]
 - [ ] Controller Test Cases
-- [ ] Database Indexes and Application Model Validations second iteration
+- [ ] Database Indexes and Application Model Validations optimization look
     - [ ] Add Unique together indexes for M2M
     - [ ] Database level unique indexes
         - [ ] Commit SHA
