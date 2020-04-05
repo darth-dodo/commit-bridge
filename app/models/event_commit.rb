@@ -26,7 +26,7 @@ class EventCommit < ApplicationRecord
 
   # validations
   validates_presence_of :event, :commit
-  validates_uniqueness_of :commit, scope: :event
+  validates_uniqueness_of :commit_id, scope: :event_id
   # scopes
 
   # class methods

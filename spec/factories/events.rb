@@ -25,6 +25,7 @@ FactoryBot.define do
   factory :event do
     event_timestamp { Time.now }
     event_type { :pull_request }
+    payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
     association :repository
     association :user
   end
