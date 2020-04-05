@@ -92,7 +92,8 @@ overcommit --sign
 username: admin@commit-bridge.com
 password: commit-bridge-123
 ```
-
+- If you want to test the API throttling using Redis, setup Redis and start the Redis server
+- Change the `.env.example` as required to match your setup
 ---
 ## Application Details
 - The Entity relationship diagram is present [over here](https://github.com/darth-dodo/commit-bridge/blob/master/erd.pdf)
@@ -197,3 +198,38 @@ These were some of the things I keep in mind while writing software
 ## API Throttling
 - API throttling is done using Rack Attack
 - More complex throttling policies and feedbacks can be set using an approach similar to [this](https://vitobotta.com/2019/09/24/protecting-rails-app-from-small-scripted-attacks/) or [this](https://blog.bigbinary.com/2018/05/15/how-to-mitigate-ddos-using-rack-attack.html) with exponential back-offs and detailed logging
+- Load testing response from `Artillery` when the request quota is set to `10/per day/ip`
+```
+Elapsed time: 1 second
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  200
+  Mean response/sec: 147.06
+  Response time (msec):
+    min: 3.3
+    max: 1206.4
+    median: 10.9
+    p95: 45.1
+    p99: 213.6
+  Codes:
+    200: 10
+    429: 190
+
+All virtual users finished
+Summary report @ 12:08:03(+0200) 2020-04-05
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  200
+  Mean response/sec: 145.99
+  Response time (msec):
+    min: 3.3
+    max: 1206.4
+    median: 10.9
+    p95: 45.1
+    p99: 213.6
+  Scenario counts:
+    0: 10 (100%)
+  Codes:
+    200: 10
+    429: 190
+```

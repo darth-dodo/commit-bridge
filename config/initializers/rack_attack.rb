@@ -1,15 +1,14 @@
 module Rack
   class Attack
     # `Rack::Attack` is configured to use the `Rails.cache` value by default
-    Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
     # Allow all local traffic
     # whitelist('allow-localhost') do |req|
     #   '127.0.0.1' == req.ip || '::1' == req.ip
     # end
 
-    # Allow an IP address to make 5 requests every 5 seconds
-    throttle('req/ip', limit: ENV["IP_REQUEST_QUOTA"].to_i, period: 15.minute, &:ip)
+    # Allow an IP address to make DAILY_IP_REQUEST_QUOTA requests every 1 day
+    throttle('req/ip', limit: ENV["DAILY_IP_REQUEST_QUOTA"].to_i, period: 1.day, &:ip)
 
     # Send the following response to throttled clients
     self.throttled_response = ->(env) {
@@ -17,7 +16,7 @@ module Rack
       [
         429,
         { 'Content-Type' => 'application/json', 'Retry-After' => retry_after.to_s },
-        [{ error: "Throttle limit reached. Retry later." }.to_json],
+        [{ error_message: "Throttle limit reached. Retry later." }.to_json],
       ]
     }
   end

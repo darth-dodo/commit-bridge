@@ -38,6 +38,7 @@ gem 'faraday'
 gem 'dotenv-rails'
 gem 'rack-cors'
 gem 'rack-attack'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'annotate'
