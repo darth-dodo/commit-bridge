@@ -333,6 +333,7 @@ GEM
     thread_safe (0.3.6)
     thread_safe (0.3.6-java)
     tilt (2.0.10)
+    timecop (0.9.1)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.3)
@@ -383,6 +384,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   spring
   spring-watcher-listen (~> 2.0.0)
+  timecop
   tzinfo-data
 
 RUBY VERSION

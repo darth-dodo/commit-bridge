@@ -16,5 +16,6 @@
 #
 FactoryBot.define do
   factory :api_client do
+    code { Faker::Name.initials }
   end
 end
