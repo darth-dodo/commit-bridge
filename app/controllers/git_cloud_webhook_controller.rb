@@ -1,4 +1,6 @@
 class GitCloudWebhookController < BaseWebhookController
+  skip_before_action :authenticate_api_key, only: :echo
+
   def receive
     event = JSON.parse(request.body.read)
 

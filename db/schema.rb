@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_170532) do
+ActiveRecord::Schema.define(version: 2020_04_05_102904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2020_04_04_170532) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "api_clients", force: :cascade do |t|
+    t.string "code"
+    t.text "description"
+    t.string "api_key", null: false
+    t.datetime "expiry", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_key"], name: "index_api_clients_on_api_key"
   end
 
   create_table "commits", force: :cascade do |t|

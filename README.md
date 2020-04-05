@@ -59,7 +59,7 @@
     - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
 - [x] CORS using [Rack CORS](https://github.com/cyu/rack-cors) - [PR #21](https://github.com/darth-dodo/commit-bridge/pull/21)
 - [x] API throttling using [Rack Attack](https://github.com/kickstarter/rack-attack#throttling)- [PR #22](https://github.com/darth-dodo/commit-bridge/pull/22)
-- [ ] Incoming Webhooks Token Based Auth
+- [x] Incoming Webhooks Token Based Auth
 - [ ] Model Test Cases
 - [ ] Service Test Cases
 - [ ] Controller Test Cases
@@ -234,3 +234,35 @@ Summary report @ 12:08:03(+0200) 2020-04-05
     200: 10
     429: 190
 ```
+
+## Authentication
+### Internal Facing
+- Token based Authentication is considered for this application
+- Incoming Webhooks need to provide token which are stored in the `ApiClient` model
+- Auth needs to be provided in the request headers eg.
+```
+Content-Type:application/json
+Authorization:Token token=fK2qGmQa73iH758DAuaWphtk
+```
+- API keys can be expired by changing the `expiry` value
+- The authentication happens in the `BaseWebhookController` and can be customized if required
+- The following scenarios are possible:
+    - Status code `401` Unauthorized when the key has expired with the payload
+    ```
+    {
+        "error_message": "API Key Expired!"
+    }
+    ```
+    - Status code `403` when an invalid key is provided
+    ```
+    {
+        "error_message": "Please provide a valid token!"
+    }
+    ```
+  - Status code `403` when no headers are provided
+  ```
+    {
+        "error_message": "Please provide Auth Headers!"
+    }
+  ```
+- Future scope: Moving the authentication from simple Token based to JWT and exposing refresh token functionality over an API

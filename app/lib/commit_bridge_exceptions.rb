@@ -1,6 +1,7 @@
 module CommitBridgeExceptions
   class CommitBridgeBaseException < StandardError; end
   class AuthenticationError < CommitBridgeBaseException; end
+  class ForbiddenError < CommitBridgeBaseException; end
 
   class ExternalApiException < CommitBridgeBaseException
     attr_reader :status_code, :response
