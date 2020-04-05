@@ -63,7 +63,7 @@
     - [x] Adding `ApiClient` model
     - [x] Adding Token based Authentication action in the `BaseWebhookController`
     - [x] Exception Management in case of invalid requests
-- [ ] Model Test Cases
+- [x] Model Test Cases  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
 - [ ] Service Test Cases
 - [ ] Controller Test Cases
 - [ ] Database Indexes and Application Model Validations second iteration
