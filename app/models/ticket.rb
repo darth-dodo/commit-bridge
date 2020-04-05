@@ -29,7 +29,7 @@ class Ticket < ApplicationRecord
 
   # validations
   validates_presence_of :code, :project
-  validates_uniqueness_of :code, scope: :project
+  validates_uniqueness_of :code, scope: :project_id
 
   # scopes
 

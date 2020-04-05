@@ -24,5 +24,30 @@
 require 'rails_helper'
 
 RSpec.describe(Event, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should validate_presence_of(:event_type) }
+    it { should validate_presence_of(:event_timestamp) }
+  end
+
+  # https://github.com/thoughtbot/shoulda-matchers/blob/master/lib/shoulda/matchers/active_record/validate_uniqueness_of_matcher.rb#L56
+  describe "Uniqueness Validations" do
+    subject { create(:pull_request_event) }
+    it {
+      should validate_uniqueness_of(:payload)
+        .scoped_to(:event_type)
+        .with_message("present across existing event of the same type!")
+    }
+  end
+
+  describe "Model Associations" do
+    it { should belong_to(:repository) }
+    it { should belong_to(:user) }
+    it { should have_one(:release) }
+
+    it { should have_many(:event_commits) }
+    it { should have_many(:commits).through(:event_commits) }
+
+    it { should have_many(:event_tickets) }
+    it { should have_many(:tickets).through(:event_tickets) }
+  end
 end

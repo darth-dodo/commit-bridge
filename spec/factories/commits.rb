@@ -25,5 +25,10 @@
 #
 FactoryBot.define do
   factory :commit do
+    sha { Faker::Crypto.sha1 }
+    message { Faker::Movies::StarWars.quote }
+    commit_timestamp { Time.now }
+    commit_type { :fix }
+    association :user
   end
 end

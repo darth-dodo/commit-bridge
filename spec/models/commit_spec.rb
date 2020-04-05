@@ -26,5 +26,27 @@
 require 'rails_helper'
 
 RSpec.describe(Commit, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should validate_presence_of(:message) }
+    it { should validate_presence_of(:commit_timestamp) }
+    it { should validate_presence_of(:sha) }
+    it { should define_enum_for(:commit_type) }
+  end
+
+  # https://github.com/thoughtbot/shoulda-matchers/blob/master/lib/shoulda/matchers/active_record/validate_uniqueness_of_matcher.rb#L56
+  describe "Uniqueness Validations" do
+    subject { create(:commit) }
+    it { should validate_uniqueness_of(:sha) }
+  end
+
+  describe "Model Associations" do
+    it { should belong_to(:user) }
+    it { should belong_to(:release) }
+
+    it { should have_many(:event_commits) }
+    it { should have_many(:events).through(:event_commits) }
+
+    it { should have_many(:ticket_commits) }
+    it { should have_many(:tickets).through(:ticket_commits) }
+  end
 end

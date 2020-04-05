@@ -21,5 +21,22 @@
 require 'rails_helper'
 
 RSpec.describe(TicketCommit, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should validate_presence_of(:ticket) }
+    it { should validate_presence_of(:commit) }
+  end
+
+  describe "Uniqueness Validations" do
+    subject { create(:ticket_commit) }
+    it {
+      should validate_uniqueness_of(:ticket_id)
+        .scoped_to(:commit_id)
+        .with_message("cannot be attached to the same commit more than once!")
+    }
+  end
+
+  describe "Model Associations" do
+    it { should belong_to(:ticket) }
+    it { should belong_to(:commit) }
+  end
 end

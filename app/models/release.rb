@@ -24,7 +24,7 @@ class Release < ApplicationRecord
   belongs_to :event
 
   # validations
-  validates_presence_of :application_id, :tag, :released_at
+  validates_presence_of :application_id, :tag, :released_at, :event
   validate :release_event?
 
   # scopes
@@ -35,8 +35,13 @@ class Release < ApplicationRecord
 
   # validation methods
   def release_event?
+    if event.blank?
+      errors.add(:base, "Release should be attached to an Event!")
+      return
+    end
+
     unless event.release?
-      errors << "Associated Event should be a Release Event"
+      errors.add(:base, "Associated Event should be a Release Event")
     end
   end
   # callbacks

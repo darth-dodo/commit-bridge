@@ -20,5 +20,7 @@
 #
 FactoryBot.define do
   factory :ticket_commit do
+    association :ticket
+    association :commit
   end
 end

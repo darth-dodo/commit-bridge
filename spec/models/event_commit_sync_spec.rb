@@ -21,5 +21,18 @@
 require 'rails_helper'
 
 RSpec.describe(EventCommitSync, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should define_enum_for(:status) }
+    it { should validate_presence_of(:event_commit_id) }
+    it { should validate_presence_of(:status) }
+  end
+
+  describe "Uniqueness Validations" do
+    subject { create(:failed_event_commit_sync) }
+    it { should validate_uniqueness_of(:event_commit_id) }
+  end
+
+  describe "Model Associations" do
+    it { should belong_to(:event_commit) }
+  end
 end

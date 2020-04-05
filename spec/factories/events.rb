@@ -23,5 +23,28 @@
 #
 FactoryBot.define do
   factory :event do
+    event_timestamp { Time.now }
+    event_type { :pull_request }
+    payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+    association :repository
+    association :user
+
+    trait :pull_request_payload do
+      payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+    end
+
+    trait :push_request_payload do
+      event_type { :push_request }
+      payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+    end
+
+    trait :release_request_payload do
+      event_type { :release }
+      payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+    end
+
+    factory :pull_request_event, traits: [:pull_request_payload]
+    factory :push_request_event, traits: [:push_request_payload]
+    factory :release_request_event, traits: [:release_request_payload]
   end
 end

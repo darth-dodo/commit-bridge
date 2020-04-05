@@ -11,5 +11,11 @@
 require 'rails_helper'
 
 RSpec.describe(Project, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should validate_presence_of(:code) }
+  end
+
+  describe "Model Associations" do
+    it { should have_many(:tickets) }
+  end
 end

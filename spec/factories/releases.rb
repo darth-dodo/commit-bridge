@@ -20,5 +20,9 @@
 #
 FactoryBot.define do
   factory :release do
+    tag { Faker::App.semantic_version }
+    application_id { Faker::Number.number(digits: 5) }
+    released_at { Time.now }
+    association :event, factory: :release_request_event
   end
 end

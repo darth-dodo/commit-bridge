@@ -20,5 +20,7 @@
 #
 FactoryBot.define do
   factory :event_commit do
+    association :event
+    association :commit
   end
 end

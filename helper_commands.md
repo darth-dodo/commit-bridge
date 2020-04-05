@@ -4,8 +4,10 @@
 
 # Rails
 - `rake db:create` for creating the db
-- `rake db:seed` for seeding the db
 - `rake db:drop` for dropping the db
+- `rake db:migrate` for doing the database migrations
+- `rake db:seed` for seeding the db
+- `rake db:drop && rake db:create && rake db:migrate && rake db:seed` - for resetting the database
 - `bundle exec puma` for running the Rails Server in multi threading mode (for echo feature)
 
 
