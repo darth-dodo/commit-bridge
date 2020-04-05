@@ -25,7 +25,7 @@ class CommitParser < ApplicationService
     error('Commit Author is required!') if @event_user_info.blank?
     error('Commit message is required!') if @commit_message.blank?
     if @event.present? && !@event.is_a?(Event)
-      @event = Event.find(@event)
+      @event = Event.find_by(id: @event)
     end
     error('Event is required!') if @event.blank?
 
