@@ -21,5 +21,20 @@
 require 'rails_helper'
 
 RSpec.describe(Release, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    let(:release_event) { create(:release_request_event) }
+    let(:release) { create(:release, event: release_event) }
+    it "should the validations" do
+      subject { :release }
+      should validate_presence_of(:application_id)
+      should validate_presence_of(:event)
+      should validate_presence_of(:tag)
+      should validate_presence_of(:released_at)
+    end
+  end
+
+  describe "Model Associations" do
+    it { should belong_to(:event) }
+    it { should have_many(:commits) }
+  end
 end
