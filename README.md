@@ -65,8 +65,8 @@
     - [x] Exception Management in case of invalid requests
 - [x] Model RSpec  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
 - [ ] Service RSpec
-    - [x] Commit Parser Service
-    - [ ] Pull Request Parser Service
+    - [x] Commit Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
+    - [x] Pull Request Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
     - [ ] Push Request Parser Service
     - [ ] Release Request Parser Service
     - [ ] Event Delegator Service
