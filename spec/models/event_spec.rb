@@ -24,5 +24,23 @@
 require 'rails_helper'
 
 RSpec.describe(Event, type: :model) do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Model Validations" do
+    it { should validate_presence_of(:event_type) }
+    it { should validate_presence_of(:event_timestamp) }
+  end
+
+  # https://github.com/thoughtbot/shoulda-matchers/blob/master/lib/shoulda/matchers/active_record/validate_uniqueness_of_matcher.rb#L56
+  describe "Uniqueness Validations" do
+    pull_request_fixture_data = JSON.parse(File.read("spec/fixtures/pull_request_payload.json"))
+
+    subject { create(:event, payload: pull_request_fixture_data) }
+    it {
+      should validate_uniqueness_of(:payload)
+        .scoped_to(:event_type)
+        .with_message("present across existing event of the same type!")
+    }
+  end
+
+  describe "Model Associations" do
+  end
 end

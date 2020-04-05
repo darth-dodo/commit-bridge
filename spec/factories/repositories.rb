@@ -10,5 +10,7 @@
 #
 FactoryBot.define do
   factory :repository do
+    application_id { Faker::Number.number(digits: 5) }
+    slug { Faker::Internet.slug }
   end
 end

@@ -33,6 +33,7 @@ RSpec.describe(Commit, type: :model) do
     it { should define_enum_for(:commit_type) }
   end
 
+  # https://github.com/thoughtbot/shoulda-matchers/blob/master/lib/shoulda/matchers/active_record/validate_uniqueness_of_matcher.rb#L56
   describe "Uniqueness Validations" do
     subject { create(:commit) }
     it { should validate_uniqueness_of(:sha) }

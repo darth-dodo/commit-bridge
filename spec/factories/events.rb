@@ -23,5 +23,9 @@
 #
 FactoryBot.define do
   factory :event do
+    event_timestamp { Time.now }
+    event_type { :pull_request }
+    association :repository
+    association :user
   end
 end
