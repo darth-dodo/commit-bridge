@@ -58,8 +58,11 @@
     - [x] Exception propagation to the incoming webhook
     - [x] Echo Endpoint testing using [`Puma`](https://github.com/puma/puma) for multithreading
 - [x] CORS using [Rack CORS](https://github.com/cyu/rack-cors) - [PR #21](https://github.com/darth-dodo/commit-bridge/pull/21)
-- [x] API throttling using [Rack Attack](https://github.com/kickstarter/rack-attack#throttling)- [PR #22](https://github.com/darth-dodo/commit-bridge/pull/22)
-- [x] Incoming Webhooks Token Based Auth
+- [x] API throttling using [Rack Attack](https://github.com/kickstarter/rack-attack#throttling) - [PR #22](https://github.com/darth-dodo/commit-bridge/pull/22)
+- [x] Incoming Webhooks Token Based Auth  - [PR #23](https://github.com/darth-dodo/commit-bridge/pull/23)
+    - [x] Adding `ApiClient` model
+    - [x] Adding Token based Authentication action in the `BaseWebhookController`
+    - [x] Exception Management in case of invalid requests
 - [ ] Model Test Cases
 - [ ] Service Test Cases
 - [ ] Controller Test Cases
