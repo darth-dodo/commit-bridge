@@ -11,15 +11,6 @@
 require 'rails_helper'
 
 RSpec.describe(Project, type: :model) do
-  # describe "Model Validations" do
-  # end
-  #
-  # describe "Uniqueness Validations" do
-  # end
-  #
-  # describe "Model Associations" do
-  # end
-
   describe "Model Validations" do
     it { should validate_presence_of(:code) }
   end
