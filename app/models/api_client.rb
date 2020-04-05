@@ -21,4 +21,8 @@ class ApiClient < ApplicationRecord
   def extend_expiry
     self.expiry = Time.now + 2.week
   end
+
+  def api_key_expired?
+    expiry < Time.now
+  end
 end

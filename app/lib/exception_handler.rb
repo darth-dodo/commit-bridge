@@ -4,6 +4,7 @@ module ExceptionHandler
 
   included do
     rescue_from CommitBridgeExceptions::AuthenticationError, with: :unauthorized_request
+    rescue_from CommitBridgeExceptions::ForbiddenError, with: :forbidden_request
     rescue_from CommitBridgeExceptions::CommitBridgeValidationError, with: :four_zero_zero
     rescue_from CommitBridgeExceptions::ExternalApiException, with: :four_zero_zero
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -26,5 +27,9 @@ module ExceptionHandler
 
   def unauthorized_request(e)
     json_response({ error_message: e.message }, :unauthorized)
+  end
+
+  def forbidden_request(e)
+    json_response({ error_message: e.message }, :forbidden)
   end
 end
