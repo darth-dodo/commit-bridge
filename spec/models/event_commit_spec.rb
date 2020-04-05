@@ -21,13 +21,12 @@
 require 'rails_helper'
 
 RSpec.describe(EventCommit, type: :model) do
-  # describe "Model Validations" do
-  #   it { should validate_presence_of(:commit) }
-  #   it { should validate_presence_of(:event) }
-  # end
+  describe "Model Validations" do
+    it { should validate_presence_of(:commit) }
+    it { should validate_presence_of(:event) }
+  end
 
   describe "Uniqueness Validations" do
-    # subject{create(:event_commit, event: create(:event), commit: create(:commit))}
     subject { create(:event_commit) }
     it { should validate_uniqueness_of(:commit_id).scoped_to(:event_id) }
   end
