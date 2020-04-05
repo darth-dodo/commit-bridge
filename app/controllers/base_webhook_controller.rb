@@ -7,13 +7,13 @@ class BaseWebhookController < ApiController
   protected
 
   def authenticate_api_key
+    raise ForbiddenError, "Please provide Auth Headers!" if request.headers["Authorization"].blank?
+
     authenticate_with_http_token do |token, _options|
-      raise ForbiddenError, "Token Missing!" if token.blank?
       @current_api_client = ApiClient.find_by(api_key: token)
     end
 
     raise ForbiddenError, "Please provide a valid token!" if @current_api_client.blank?
-
     raise AuthenticationError, "API Key Expired!" if @current_api_client.api_key_expired?
   end
 end
