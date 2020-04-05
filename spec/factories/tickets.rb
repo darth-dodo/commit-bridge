@@ -19,5 +19,7 @@
 #
 FactoryBot.define do
   factory :ticket do
+    code { Faker::Number.number(digits: 3) }
+    association :project
   end
 end

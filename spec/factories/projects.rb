@@ -10,5 +10,6 @@
 #
 FactoryBot.define do
   factory :project do
+    code { Faker::NatoPhoneticAlphabet.code_word }
   end
 end
