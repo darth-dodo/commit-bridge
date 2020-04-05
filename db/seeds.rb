@@ -11,4 +11,12 @@ if Rails.env.development?
     password: 'commit-bridge-123',
     password_confirmation: 'commit-bridge-123'
   )
+
+  ApiClient.create!(
+    code: "Device 1"
+  )
+
+  ApiClient.create!(
+    code: "Device 2"
+  )
 end
