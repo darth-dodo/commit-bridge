@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates_presence_of :application_id, :email, :name
   validates_uniqueness_of :application_id, :email
   validates_numericality_of :application_id
-  # TODO: validate user email
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   # scopes
 

@@ -12,12 +12,21 @@
 require 'rails_helper'
 
 RSpec.describe(User, type: :model) do
-  # describe "Model Validations" do
-  # end
-  #
-  # describe "Uniqueness Validations" do
-  # end
-  #
-  # describe "Model Associations" do
-  # end
+  describe "Model Validations" do
+    it { should validate_presence_of(:application_id) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:name) }
+    it { should validate_numericality_of(:application_id) }
+  end
+
+  describe "Uniqueness Validations" do
+    subject { create(:user) }
+    it { should validate_uniqueness_of(:application_id) }
+    it { should validate_uniqueness_of(:email) }
+  end
+
+  describe "Model Associations" do
+    it { should have_many(:commits) }
+    it { should have_many(:events) }
+  end
 end

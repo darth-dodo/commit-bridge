@@ -19,6 +19,7 @@ RSpec.describe(Repository, type: :model) do
 
   describe "Uniqueness Validations" do
     subject { create(:repository) }
+    it { should validate_uniqueness_of(:application_id) }
   end
 
   describe "Model Associations" do
