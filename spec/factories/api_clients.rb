@@ -17,5 +17,11 @@
 FactoryBot.define do
   factory :api_client do
     code { Faker::Name.initials }
+
+    factory :api_client_with_expired_key do
+      after(:create) do |api_client|
+        api_client.expiry = Faker::Date.between(from: 20.days.ago, to: 1.days.ago)
+      end
+    end
   end
 end

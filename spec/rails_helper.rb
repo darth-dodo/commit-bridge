@@ -78,6 +78,7 @@ RSpec.configure do |config|
   end
 
   config.include(CommitBridgeSpecHelper)
+  config.include(ControllerSpecHelper)
 
   # start the transaction strategy as examples are run
   config.around(:each) do |example|
