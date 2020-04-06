@@ -22,7 +22,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+					"raw": "{\n  \"commits\": [\n\t{\n\t  \"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t  \"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t  \"date\": \"2018-05-14T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t},\n\t{\n\t  \"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t  \"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t  \"date\": \"2018-05-27T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t}\n  ],\n  \"repository\": {\n\t\"id\": 1354927974,\n\t\"name\": \"suite_apk\"\n  },\n  \"pushed_at\": \"2018-05-29T20:18:44Z\",\n  \"pusher\": {\n\t\"id\": 21431007,\n\t\"name\": \"ahmed\",\n\t\"email\": \"ahmed@suitepad.de\"\n  }\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3000/webhooks/git/",
@@ -40,27 +40,25 @@
 			},
 			"response": [
 				{
-					"id": "f7a58984-eecb-4b4b-8c9b-7c848dc4f13c",
-					"name": "Push Request Event Success",
+					"id": "154e34e0-1686-4f0c-b76d-e7945b23e90c",
+					"name": "Push Request Event Successful",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text",
 								"disabled": false
 							},
 							{
 								"key": "Authorization",
 								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
 								"disabled": false
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"commits\": [\n\t{\n\t  \"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t  \"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t  \"date\": \"2018-05-14T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t},\n\t{\n\t  \"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t  \"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t  \"date\": \"2018-05-27T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t}\n  ],\n  \"repository\": {\n\t\"id\": 1354927974,\n\t\"name\": \"suite_apk\"\n  },\n  \"pushed_at\": \"2018-05-29T20:18:44Z\",\n  \"pusher\": {\n\t\"id\": 21431007,\n\t\"name\": \"ahmed\",\n\t\"email\": \"ahmed@suitepad.de\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -94,7 +92,7 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"788a251f341b7581485f17f5d4648cfd\"",
+							"value": "W/\"dc3151bda5e871f98f966b4e0b60986f\"",
 							"name": "ETag",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
@@ -112,13 +110,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "5cfc9ae7-89b1-43f0-98b8-165dbf6e1882",
+							"value": "3e2fc5b4-b2f1-40c3-a976-9914a44dc8d8",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "3.264960",
+							"value": "0.253386",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -152,31 +150,27 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 3649,
-					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131, #happ-1224\",\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"linked_tickets_count\":2},{\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"linked_tickets_count\":1}],\"tickets\":[{\"id\":7,\"description\":null,\"code\":131,\"created_at\":\"2020-04-06T11:43:32.063Z\",\"updated_at\":\"2020-04-06T11:43:32.063Z\",\"project_id\":6},{\"id\":8,\"description\":null,\"code\":1224,\"created_at\":\"2020-04-06T11:43:32.077Z\",\"updated_at\":\"2020-04-06T11:43:32.077Z\",\"project_id\":7},{\"id\":9,\"description\":null,\"code\":124,\"created_at\":\"2020-04-06T11:43:32.280Z\",\"updated_at\":\"2020-04-06T11:43:32.280Z\",\"project_id\":6}],\"event\":{\"id\":4,\"event_type\":\"push_request\",\"event_timestamp\":\"2018-05-29T20:18:44.000Z\",\"payload\":{\"commits\":[{\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131, #happ-1224\",\"date\":\"2018-05-14T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},{\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"date\":\"2018-05-27T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}}],\"repository\":{\"id\":1354927974,\"name\":\"suite_apk\"},\"pushed_at\":\"2018-05-29T20:18:44Z\",\"pusher\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},\"created_at\":\"2020-04-06T11:43:31.730Z\",\"updated_at\":\"2020-04-06T11:43:31.730Z\",\"user_id\":5,\"repository_id\":3},\"event_id\":4},\"tracking_service\":{\"event_commit_sync\":[{\"id\":1,\"event_commit_id\":7,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:43:32.474Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:43:32.439Z\",\"updated_at\":\"2020-04-06T11:43:32.747Z\"},{\"id\":2,\"event_commit_id\":8,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:43:32.763Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:43:32.756Z\",\"updated_at\":\"2020-04-06T11:43:32.794Z\"}]}}"
+					"responseTime": 273,
+					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"linked_tickets_count\":1},{\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"linked_tickets_count\":1}],\"tickets\":[{\"id\":29,\"description\":null,\"code\":131,\"created_at\":\"2020-04-06T16:56:58.268Z\",\"updated_at\":\"2020-04-06T16:56:58.268Z\",\"project_id\":25},{\"id\":30,\"description\":null,\"code\":124,\"created_at\":\"2020-04-06T16:56:58.290Z\",\"updated_at\":\"2020-04-06T16:56:58.290Z\",\"project_id\":25}],\"event\":{\"id\":15,\"event_type\":\"push_request\",\"event_timestamp\":\"2018-05-29T20:18:44.000Z\",\"payload\":{\"commits\":[{\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\"date\":\"2018-05-14T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},{\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"date\":\"2018-05-27T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}}],\"repository\":{\"id\":1354927974,\"name\":\"suite_apk\"},\"pushed_at\":\"2018-05-29T20:18:44Z\",\"pusher\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},\"created_at\":\"2020-04-06T16:56:58.254Z\",\"updated_at\":\"2020-04-06T16:56:58.254Z\",\"user_id\":19,\"repository_id\":11},\"event_id\":15},\"tracking_service\":{\"event_commit_sync\":[{\"id\":21,\"event_commit_id\":29,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T16:56:58.333Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T16:56:58.325Z\",\"updated_at\":\"2020-04-06T16:56:58.385Z\"},{\"id\":22,\"event_commit_id\":30,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T16:56:58.401Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T16:56:58.393Z\",\"updated_at\":\"2020-04-06T16:56:58.436Z\"}]}}"
 				},
 				{
-					"id": "b6f458e8-1417-40d4-8bba-c6f1a5a25229",
-					"name": "Push Request Event Duplicate Event",
+					"id": "0dcb263a-2b99-4913-9491-122705d11ed7",
+					"name": "Push Request Event Duplicate Event Error",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
-								"disabled": false
+								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"commits\": [\n\t{\n\t  \"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t  \"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t  \"date\": \"2018-05-14T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t},\n\t{\n\t  \"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t  \"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t  \"date\": \"2018-05-27T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t}\n  ],\n  \"repository\": {\n\t\"id\": 1354927974,\n\t\"name\": \"suite_apk\"\n  },\n  \"pushed_at\": \"2018-05-29T20:18:44Z\",\n  \"pusher\": {\n\t\"id\": 21431007,\n\t\"name\": \"ahmed\",\n\t\"email\": \"ahmed@suitepad.de\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -222,13 +216,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "ae240249-edfd-4823-aafe-163173a3a644",
+							"value": "6239d7f2-56b3-4c0b-8052-ea6114e6b091",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.096299",
+							"value": "0.061071",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -262,8 +256,116 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 141,
+					"responseTime": 80,
 					"body": "{\"error_message\":[\"Event Creation Error: Payload present across existing event of the same type!\"]}"
+				},
+				{
+					"id": "93eb5189-8208-418f-a892-10731991cc6d",
+					"name": "Push Request Event Missing Token Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							},
+							{
+								"key": "Authorization",
+								"value": "Token token=",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"commits\": [\n\t{\n\t  \"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t  \"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t  \"date\": \"2018-05-14T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t},\n\t{\n\t  \"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t  \"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t  \"date\": \"2018-05-27T16:00:49Z\",\n\t  \"author\": {\n\t\t\"id\": 21431007,\n\t\t\"name\": \"ahmed\",\n\t\t\"email\": \"ahmed@suitepad.de\"\n\t  }\n\t}\n  ],\n  \"repository\": {\n\t\"id\": 1354927974,\n\t\"name\": \"suite_apk\"\n  },\n  \"pushed_at\": \"2018-05-29T20:18:44Z\",\n  \"pusher\": {\n\t\"id\": 21431007,\n\t\"name\": \"ahmed\",\n\t\"email\": \"ahmed@suitepad.de\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "localhost:3000/webhooks/git/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"webhooks",
+								"git",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "Vary",
+							"value": "Origin",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "b16ce194-dfc0-4f11-a2f7-fdf765e52ff1",
+							"name": "X-Request-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.049379",
+							"name": "X-Runtime",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "QXk1S0NvMm9HVnVnNW4xV0dzckZ4d01zNzRTK2FLbFJkT3NBVU1KL3FMR09xUWd4RzJZaVlDU0VPRUVtTEJHbEhiOTZhYlFuYlZkOFlxcU4waVNQUkI3c1U1aE9rK3o3RFdlUnVVeVR5MitUWWo0WVp1Q05QNUU3eEw5ZEEwMUhPUEJPaXNUZklqNlQwMmNYV05WSStrc3czeVpUSnl2RGxENVVwdDBXTG5nM1RoUENNSzlwQVpOUGlOTDFqenFvOUoxek9qQmI3MGZxN0lRdi9ZV3JnanlrQVBncG9IZ1NobmtxZXV1blhrUUhrNmxzZzdOL3NDcC9DU05iNW1HZGhGbkdyUHhKWkN6NXVNT2l1S00xUi80L3VuUlM3aVVRRDZVOXAxZUNDbnBEak5tNGY0bXJWVDBMWDBpOXZjSndyTCtOQURZa1c4cFQwTk9mVWlWeFRnPT0tLWcwSFlZTDg4UFZkblZxazZLdFJSQVE9PQ%3D%3D--4a26f87dc99b01f8c55d86a091c1341cc271f623",
+							"key": "_SmartPaddle_session"
+						},
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "Rp0EOha%2FPVu9COrru0vOI2S9lIfcfYCD5KGn6CaVb3NFLKr%2F0tmMhq9GUSzyPKDabUd9KDdFfhOjqtxVW5MTCgH0EWq%2B8rYiBAwjO9ZUauBUQsf1T%2FM9g9rIDoWvzcvSOfI%2BhSor4wfG0qNYAys%3D--oMvS9goKK4alJvkx--%2Fp1veE4JKg6fIbYy6KRLXg%3D%3D",
+							"key": "_session_id"
+						},
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "Kr2CAnlI%2BA7iUscZGKWSzh93qLADOkvPGQH%2FkCyop9eHnexhW9axwgXIKjPaYWtE8mVVMMDpIbtKfqCU%2BUARmMsC6U5gnqNSV2MDhe8A9epn1eU5uSkpY4SKlLzh3lf0WTAd1BOsV2NtcZ6NAqs%3D--L0ZUUiX0CxA%2BEzL%2F--ORxhmjzfwjzssgfE7QdSSA%3D%3D",
+							"key": "_gringotts_backend_session"
+						}
+					],
+					"responseTime": 72,
+					"body": "{\"error_message\":\"Please provide a valid token!\"}"
 				}
 			]
 		},
@@ -283,7 +385,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+					"raw": "{\n  \"action\": \"closed\",\n  \"number\": 142,\n  \"pull_request\": {\n\t\"id\": 191568743,\n\t\"number\": 1,\n\t\"state\": \"closed\",\n\t\"title\": \"Update the README with deploy information\",\n\t\"user\": {\n\t  \"id\": 11010367,\n\t  \"name\": \"tarek\",\n\t  \"email\": \"tarek@suitepad.de\"\n\t},\n\t\"body\": \"This is a pretty simple change that we need to pull into master.\",\n\t\"created_at\": \"2018-05-30T20:18:30Z\",\n\t\"updated_at\": \"2018-05-30T20:18:50Z\",\n\t\"closed_at\": \"2018-05-30T20:18:50Z\",\n\t\"merge_commit_sha\": \"414cb0069601a32b00bd122a2380cd283626a8e5\",\n\t\"head\": {\n\t  \"sha\": \"34c5c7793cb3b279e22454cb6750c80560547b3a\"\n\t},\n\t\"commits\": [\n\t  {\n\t\t\"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t\t\"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t\t\"date\": \"2018-05-14T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  },\n\t  {\n\t\t\"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t\t\"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t\t\"date\": \"2018-05-27T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  }\n\t]\n  },\n  \"repository\": {\n\t\"id\": 135493233,\n\t\"name\": \"suitepad_api\"\n  }\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3000/webhooks/git/",
@@ -301,27 +403,23 @@
 			},
 			"response": [
 				{
-					"id": "0f83a3e6-87b3-49ad-88aa-917e433bb8ee",
+					"id": "e08acae5-39e7-4bb7-9be3-fdb273624616",
 					"name": "Pull Request Event Successful",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
-								"disabled": false
+								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"action\": \"closed\",  // \"closed\", \"created\" or \"approved\"\n  \"number\": 142,\n  \"pull_request\": {\n\t\"id\": 191568743,\n\t\"number\": 1,\n\t\"state\": \"closed\",\n\t\"title\": \"Update the README with deploy information\",\n\t\"user\": {\n\t  \"id\": 11010367,\n\t  \"name\": \"tarek\",\n\t  \"email\": \"tarek@suitepad.de\"\n\t},\n\t\"body\": \"This is a pretty simple change that we need to pull into master.\",\n\t\"created_at\": \"2018-05-30T20:18:30Z\",\n\t\"updated_at\": \"2018-05-30T20:18:50Z\",\n\t\"closed_at\": \"2018-05-30T20:18:50Z\",\n\t\"merge_commit_sha\": \"414cb0069601a32b00bd122a2380cd283626a8e5\",\n\t\"head\": {\n\t  \"sha\": \"34c5c7793cb3b279e22454cb6750c80560547b3a\"\n\t},\n\t\"commits\": [\n\t  {\n\t\t\"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t\t\"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t\t\"date\": \"2018-05-14T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  },\n\t  {\n\t\t\"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t\t\"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t\t\"date\": \"2018-05-27T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  }\n\t]\n  },\n  \"repository\": {\n\t\"id\": 135493233,\n\t\"name\": \"suitepad_api\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -355,7 +453,7 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"515c56e60ec703313bf9ed64973dc14a\"",
+							"value": "W/\"fbf6ed5bf3eb53a25feaa4bdfdc208a9\"",
 							"name": "ETag",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
@@ -373,13 +471,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "7ead848d-d63b-4525-a803-4fdb5aa2899e",
+							"value": "d25360a6-f279-4513-9272-08c6792df5ff",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.504200",
+							"value": "0.210358",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -413,31 +511,27 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 630,
-					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131, #happ-1224\",\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"linked_tickets_count\":2},{\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"linked_tickets_count\":1}],\"tickets\":[{\"id\":7,\"description\":null,\"code\":131,\"created_at\":\"2020-04-06T11:43:32.063Z\",\"updated_at\":\"2020-04-06T11:43:32.063Z\",\"project_id\":6},{\"id\":8,\"description\":null,\"code\":1224,\"created_at\":\"2020-04-06T11:43:32.077Z\",\"updated_at\":\"2020-04-06T11:43:32.077Z\",\"project_id\":7},{\"id\":9,\"description\":null,\"code\":124,\"created_at\":\"2020-04-06T11:43:32.280Z\",\"updated_at\":\"2020-04-06T11:43:32.280Z\",\"project_id\":6}],\"event\":{\"id\":5,\"event_type\":\"pull_request\",\"event_timestamp\":\"2018-05-30T20:18:30.000Z\",\"payload\":{\"action\":\"closed\",\"number\":142,\"pull_request\":{\"id\":191568743,\"number\":1,\"state\":\"closed\",\"title\":\"Update the README with deploy information\",\"user\":{\"id\":11010367,\"name\":\"tarek\",\"email\":\"tarek@suitepad.de\"},\"body\":\"This is a pretty simple change that we need to pull into master.\",\"created_at\":\"2018-05-30T20:18:30Z\",\"updated_at\":\"2018-05-30T20:18:50Z\",\"closed_at\":\"2018-05-30T20:18:50Z\",\"merge_commit_sha\":\"414cb0069601a32b00bd122a2380cd283626a8e5\",\"head\":{\"sha\":\"34c5c7793cb3b279e22454cb6750c80560547b3a\"},\"commits\":[{\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\"date\":\"2018-05-14T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},{\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124, #happ-1224\",\"date\":\"2018-05-27T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}}]},\"repository\":{\"id\":135493233,\"name\":\"suitepad_api\"},\"event\":\"pull_request\"},\"created_at\":\"2020-04-06T11:48:38.184Z\",\"updated_at\":\"2020-04-06T11:48:38.184Z\",\"user_id\":6,\"repository_id\":4},\"event_id\":5},\"tracking_service\":{}}"
+					"responseTime": 231,
+					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"linked_tickets_count\":1},{\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"linked_tickets_count\":1}],\"tickets\":[{\"id\":29,\"description\":null,\"code\":131,\"created_at\":\"2020-04-06T16:56:58.268Z\",\"updated_at\":\"2020-04-06T16:56:58.268Z\",\"project_id\":25},{\"id\":30,\"description\":null,\"code\":124,\"created_at\":\"2020-04-06T16:56:58.290Z\",\"updated_at\":\"2020-04-06T16:56:58.290Z\",\"project_id\":25}],\"event\":{\"id\":16,\"event_type\":\"pull_request\",\"event_timestamp\":\"2018-05-30T20:18:30.000Z\",\"payload\":{\"action\":\"closed\",\"number\":142,\"pull_request\":{\"id\":191568743,\"number\":1,\"state\":\"closed\",\"title\":\"Update the README with deploy information\",\"user\":{\"id\":11010367,\"name\":\"tarek\",\"email\":\"tarek@suitepad.de\"},\"body\":\"This is a pretty simple change that we need to pull into master.\",\"created_at\":\"2018-05-30T20:18:30Z\",\"updated_at\":\"2018-05-30T20:18:50Z\",\"closed_at\":\"2018-05-30T20:18:50Z\",\"merge_commit_sha\":\"414cb0069601a32b00bd122a2380cd283626a8e5\",\"head\":{\"sha\":\"34c5c7793cb3b279e22454cb6750c80560547b3a\"},\"commits\":[{\"sha\":\"f66997d4630d353901a64f39df5f92d22e4bc634\",\"message\":\"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\"date\":\"2018-05-14T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}},{\"sha\":\"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\"message\":\"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\"date\":\"2018-05-27T16:00:49Z\",\"author\":{\"id\":21431007,\"name\":\"ahmed\",\"email\":\"ahmed@suitepad.de\"}}]},\"repository\":{\"id\":135493233,\"name\":\"suitepad_api\"},\"event\":\"pull_request\"},\"created_at\":\"2020-04-06T16:58:52.094Z\",\"updated_at\":\"2020-04-06T16:58:52.094Z\",\"user_id\":20,\"repository_id\":12},\"event_id\":16},\"tracking_service\":{}}"
 				},
 				{
-					"id": "9f28a311-f35d-419d-b83f-04be3f677637",
-					"name": "Pull Request Event Duplicate Event",
+					"id": "d6013c9e-a46e-4346-8e74-5eb3a9a4ae23",
+					"name": "Pull Request Event Duplicate Payload",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
-								"disabled": false
+								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"action\": \"closed\",\n  \"number\": 142,\n  \"pull_request\": {\n\t\"id\": 191568743,\n\t\"number\": 1,\n\t\"state\": \"closed\",\n\t\"title\": \"Update the README with deploy information\",\n\t\"user\": {\n\t  \"id\": 11010367,\n\t  \"name\": \"tarek\",\n\t  \"email\": \"tarek@suitepad.de\"\n\t},\n\t\"body\": \"This is a pretty simple change that we need to pull into master.\",\n\t\"created_at\": \"2018-05-30T20:18:30Z\",\n\t\"updated_at\": \"2018-05-30T20:18:50Z\",\n\t\"closed_at\": \"2018-05-30T20:18:50Z\",\n\t\"merge_commit_sha\": \"414cb0069601a32b00bd122a2380cd283626a8e5\",\n\t\"head\": {\n\t  \"sha\": \"34c5c7793cb3b279e22454cb6750c80560547b3a\"\n\t},\n\t\"commits\": [\n\t  {\n\t\t\"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t\t\"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t\t\"date\": \"2018-05-14T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  },\n\t  {\n\t\t\"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t\t\"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t\t\"date\": \"2018-05-27T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  }\n\t]\n  },\n  \"repository\": {\n\t\"id\": 135493233,\n\t\"name\": \"suitepad_api\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -483,13 +577,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "d8952ba5-6eee-4b5b-ac1f-eadccffbc899",
+							"value": "5f0e5d4c-fe6c-43bd-875d-d6cc0d79cfd5",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.029162",
+							"value": "0.025899",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -523,8 +617,116 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 35,
+					"responseTime": 31,
 					"body": "{\"error_message\":[\"Event Creation Error: Payload present across existing event of the same type!\"]}"
+				},
+				{
+					"id": "ca599fd8-80da-41c8-86e4-f67523b641f8",
+					"name": "Pull Request Event Missing Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							},
+							{
+								"key": "Authorization",
+								"value": "Token token=",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"action\": \"closed\",\n  \"number\": 142,\n  \"pull_request\": {\n\t\"id\": 191568743,\n\t\"number\": 1,\n\t\"state\": \"closed\",\n\t\"title\": \"Update the README with deploy information\",\n\t\"user\": {\n\t  \"id\": 11010367,\n\t  \"name\": \"tarek\",\n\t  \"email\": \"tarek@suitepad.de\"\n\t},\n\t\"body\": \"This is a pretty simple change that we need to pull into master.\",\n\t\"created_at\": \"2018-05-30T20:18:30Z\",\n\t\"updated_at\": \"2018-05-30T20:18:50Z\",\n\t\"closed_at\": \"2018-05-30T20:18:50Z\",\n\t\"merge_commit_sha\": \"414cb0069601a32b00bd122a2380cd283626a8e5\",\n\t\"head\": {\n\t  \"sha\": \"34c5c7793cb3b279e22454cb6750c80560547b3a\"\n\t},\n\t\"commits\": [\n\t  {\n\t\t\"sha\": \"f66997d4630d353901a64f39df5f92d22e4bc634\",\n\t\t\"message\": \"FEAT: Support Android 8.1 devices \\n\\nRef: #sp-131\",\n\t\t\"date\": \"2018-05-14T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  },\n\t  {\n\t\t\"sha\": \"fbea31d5a04cd9e238fd45f3f27f314ebf707479\",\n\t\t\"message\": \"FIX: hide url not being passed to PDF URL\\n\\nRef: #sp-124\",\n\t\t\"date\": \"2018-05-27T16:00:49Z\",\n\t\t\"author\": {\n\t\t  \"id\": 21431007,\n\t\t  \"name\": \"ahmed\",\n\t\t  \"email\": \"ahmed@suitepad.de\"\n\t\t}\n\t  }\n\t]\n  },\n  \"repository\": {\n\t\"id\": 135493233,\n\t\"name\": \"suitepad_api\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "localhost:3000/webhooks/git/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"webhooks",
+								"git",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache",
+							"name": "Cache-Control",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "Vary",
+							"value": "Origin",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "b752ffd2-d035-4891-b635-0b82b4022885",
+							"name": "X-Request-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.019625",
+							"name": "X-Runtime",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "QXk1S0NvMm9HVnVnNW4xV0dzckZ4d01zNzRTK2FLbFJkT3NBVU1KL3FMR09xUWd4RzJZaVlDU0VPRUVtTEJHbEhiOTZhYlFuYlZkOFlxcU4waVNQUkI3c1U1aE9rK3o3RFdlUnVVeVR5MitUWWo0WVp1Q05QNUU3eEw5ZEEwMUhPUEJPaXNUZklqNlQwMmNYV05WSStrc3czeVpUSnl2RGxENVVwdDBXTG5nM1RoUENNSzlwQVpOUGlOTDFqenFvOUoxek9qQmI3MGZxN0lRdi9ZV3JnanlrQVBncG9IZ1NobmtxZXV1blhrUUhrNmxzZzdOL3NDcC9DU05iNW1HZGhGbkdyUHhKWkN6NXVNT2l1S00xUi80L3VuUlM3aVVRRDZVOXAxZUNDbnBEak5tNGY0bXJWVDBMWDBpOXZjSndyTCtOQURZa1c4cFQwTk9mVWlWeFRnPT0tLWcwSFlZTDg4UFZkblZxazZLdFJSQVE9PQ%3D%3D--4a26f87dc99b01f8c55d86a091c1341cc271f623",
+							"key": "_SmartPaddle_session"
+						},
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "Rp0EOha%2FPVu9COrru0vOI2S9lIfcfYCD5KGn6CaVb3NFLKr%2F0tmMhq9GUSzyPKDabUd9KDdFfhOjqtxVW5MTCgH0EWq%2B8rYiBAwjO9ZUauBUQsf1T%2FM9g9rIDoWvzcvSOfI%2BhSor4wfG0qNYAys%3D--oMvS9goKK4alJvkx--%2Fp1veE4JKg6fIbYy6KRLXg%3D%3D",
+							"key": "_session_id"
+						},
+						{
+							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "Kr2CAnlI%2BA7iUscZGKWSzh93qLADOkvPGQH%2FkCyop9eHnexhW9axwgXIKjPaYWtE8mVVMMDpIbtKfqCU%2BUARmMsC6U5gnqNSV2MDhe8A9epn1eU5uSkpY4SKlLzh3lf0WTAd1BOsV2NtcZ6NAqs%3D--L0ZUUiX0CxA%2BEzL%2F--ORxhmjzfwjzssgfE7QdSSA%3D%3D",
+							"key": "_gringotts_backend_session"
+						}
+					],
+					"responseTime": 30,
+					"body": "{\"error_message\":\"Please provide a valid token!\"}"
 				}
 			]
 		},
@@ -544,7 +746,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+					"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3000/webhooks/git/",
@@ -562,27 +764,23 @@
 			},
 			"response": [
 				{
-					"id": "c1d340b2-255d-4a0a-9446-f20fea128616",
+					"id": "09959118-ac49-49db-a6db-e813f8f30ae4",
 					"name": "Release Request Event Successful",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
-								"disabled": false
+								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -616,7 +814,7 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"48c81abf73f334e33f9e54e827669599\"",
+							"value": "W/\"036195a5d85bd21f150f25e7283bde5b\"",
 							"name": "ETag",
 							"description": "An identifier for a specific version of a resource, often a message digest"
 						},
@@ -634,13 +832,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "ff81b9ab-56a0-4323-bcc4-c42009cd0a9e",
+							"value": "930acfaa-c0e4-46d6-9d3f-14bd00ab6e1a",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.817931",
+							"value": "0.337585",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -674,137 +872,27 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 849,
-					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"linked_tickets_count\":3},{\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"linked_tickets_count\":2}],\"tickets\":[{\"id\":8,\"description\":null,\"code\":1224,\"created_at\":\"2020-04-06T11:43:32.077Z\",\"updated_at\":\"2020-04-06T11:43:32.077Z\",\"project_id\":7},{\"id\":10,\"description\":null,\"code\":22,\"created_at\":\"2020-04-06T11:49:55.593Z\",\"updated_at\":\"2020-04-06T11:49:55.593Z\",\"project_id\":8},{\"id\":11,\"description\":null,\"code\":43,\"created_at\":\"2020-04-06T11:49:55.601Z\",\"updated_at\":\"2020-04-06T11:49:55.601Z\",\"project_id\":9},{\"id\":12,\"description\":null,\"code\":12,\"created_at\":\"2020-04-06T11:49:55.672Z\",\"updated_at\":\"2020-04-06T11:49:55.672Z\",\"project_id\":10}],\"event\":{\"id\":6,\"event_type\":\"release\",\"event_timestamp\":\"2018-05-30T20:18:44.000Z\",\"payload\":{\"action\":\"released\",\"released_at\":\"2018-05-30T20:18:44Z\",\"release\":{\"id\":11248810,\"tag_name\":\"1.0.1\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"},\"commits\":[{\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\"date\":\"2018-05-24T16:00:49Z\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"}},{\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\"date\":\"2018-05-21T09:50:49Z\",\"author\":{\"id\":21001067,\"name\":\"mario\",\"email\":\"mario@suitepad.de\"}}]},\"repository\":{\"id\":135493233,\"name\":\"suitepad_api\"},\"event\":\"release_request\"},\"created_at\":\"2020-04-06T11:49:55.554Z\",\"updated_at\":\"2020-04-06T11:49:55.554Z\",\"user_id\":7,\"repository_id\":4},\"event_id\":6},\"tracking_service\":{\"event_commit_sync\":[{\"id\":3,\"event_commit_id\":11,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:49:55.753Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:49:55.734Z\",\"updated_at\":\"2020-04-06T11:49:56.015Z\"},{\"id\":4,\"event_commit_id\":12,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:49:56.035Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:49:56.023Z\",\"updated_at\":\"2020-04-06T11:49:56.070Z\"}]}}"
+					"responseTime": 376,
+					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"linked_tickets_count\":1},{\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"linked_tickets_count\":1}],\"tickets\":[{\"id\":33,\"description\":null,\"code\":1224,\"created_at\":\"2020-04-06T17:01:27.702Z\",\"updated_at\":\"2020-04-06T17:01:27.702Z\",\"project_id\":27},{\"id\":34,\"description\":null,\"code\":12,\"created_at\":\"2020-04-06T17:01:27.742Z\",\"updated_at\":\"2020-04-06T17:01:27.742Z\",\"project_id\":28}],\"event\":{\"id\":19,\"event_type\":\"release\",\"event_timestamp\":\"2018-05-30T20:18:44.000Z\",\"payload\":{\"action\":\"released\",\"released_at\":\"2018-05-30T20:18:44Z\",\"release\":{\"id\":11248810,\"tag_name\":\"1.0.1\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"},\"commits\":[{\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\"date\":\"2018-05-24T16:00:49Z\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"}},{\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\"date\":\"2018-05-21T09:50:49Z\",\"author\":{\"id\":21001067,\"name\":\"mario\",\"email\":\"mario@suitepad.de\"}}]},\"repository\":{\"id\":135493233,\"name\":\"suitepad_api\"},\"event\":\"release_request\"},\"created_at\":\"2020-04-06T17:01:27.674Z\",\"updated_at\":\"2020-04-06T17:01:27.674Z\",\"user_id\":23,\"repository_id\":14},\"event_id\":19},\"tracking_service\":{\"event_commit_sync\":[{\"id\":25,\"event_commit_id\":37,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T17:01:27.792Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T17:01:27.781Z\",\"updated_at\":\"2020-04-06T17:01:27.846Z\"},{\"id\":26,\"event_commit_id\":38,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T17:01:27.871Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T17:01:27.859Z\",\"updated_at\":\"2020-04-06T17:01:27.911Z\"}]}}"
 				},
 				{
-					"id": "cba43cb6-09c2-477a-aa39-d01463c2c70e",
-					"name": "Release Request Event Absent Token",
+					"id": "836d6dde-266d-4bd7-818b-15bfe346fe83",
+					"name": "Release Request Event Duplicate Response",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Token token=",
-								"disabled": false
+								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
-						},
-						"url": {
-							"raw": "localhost:3000/webhooks/git/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"webhooks",
-								"git",
-								""
-							]
-						}
-					},
-					"status": "Forbidden",
-					"code": 403,
-					"_postman_previewlanguage": "json",
-					"_postman_previewtype": "text",
-					"header": [
-						{
-							"key": "Cache-Control",
-							"value": "no-cache",
-							"name": "Cache-Control",
-							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked",
-							"name": "Transfer-Encoding",
-							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-						},
-						{
-							"key": "Vary",
-							"value": "Origin",
-							"name": "Vary",
-							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-						},
-						{
-							"key": "X-Request-Id",
-							"value": "7a04ef0a-da45-454b-b943-4cd52081bddc",
-							"name": "X-Request-Id",
-							"description": "Custom header"
-						},
-						{
-							"key": "X-Runtime",
-							"value": "0.317329",
-							"name": "X-Runtime",
-							"description": "Custom header"
-						}
-					],
-					"cookie": [
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "QXk1S0NvMm9HVnVnNW4xV0dzckZ4d01zNzRTK2FLbFJkT3NBVU1KL3FMR09xUWd4RzJZaVlDU0VPRUVtTEJHbEhiOTZhYlFuYlZkOFlxcU4waVNQUkI3c1U1aE9rK3o3RFdlUnVVeVR5MitUWWo0WVp1Q05QNUU3eEw5ZEEwMUhPUEJPaXNUZklqNlQwMmNYV05WSStrc3czeVpUSnl2RGxENVVwdDBXTG5nM1RoUENNSzlwQVpOUGlOTDFqenFvOUoxek9qQmI3MGZxN0lRdi9ZV3JnanlrQVBncG9IZ1NobmtxZXV1blhrUUhrNmxzZzdOL3NDcC9DU05iNW1HZGhGbkdyUHhKWkN6NXVNT2l1S00xUi80L3VuUlM3aVVRRDZVOXAxZUNDbnBEak5tNGY0bXJWVDBMWDBpOXZjSndyTCtOQURZa1c4cFQwTk9mVWlWeFRnPT0tLWcwSFlZTDg4UFZkblZxazZLdFJSQVE9PQ%3D%3D--4a26f87dc99b01f8c55d86a091c1341cc271f623",
-							"key": "_SmartPaddle_session"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Rp0EOha%2FPVu9COrru0vOI2S9lIfcfYCD5KGn6CaVb3NFLKr%2F0tmMhq9GUSzyPKDabUd9KDdFfhOjqtxVW5MTCgH0EWq%2B8rYiBAwjO9ZUauBUQsf1T%2FM9g9rIDoWvzcvSOfI%2BhSor4wfG0qNYAys%3D--oMvS9goKK4alJvkx--%2Fp1veE4JKg6fIbYy6KRLXg%3D%3D",
-							"key": "_session_id"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Kr2CAnlI%2BA7iUscZGKWSzh93qLADOkvPGQH%2FkCyop9eHnexhW9axwgXIKjPaYWtE8mVVMMDpIbtKfqCU%2BUARmMsC6U5gnqNSV2MDhe8A9epn1eU5uSkpY4SKlLzh3lf0WTAd1BOsV2NtcZ6NAqs%3D--L0ZUUiX0CxA%2BEzL%2F--ORxhmjzfwjzssgfE7QdSSA%3D%3D",
-							"key": "_gringotts_backend_session"
-						}
-					],
-					"responseTime": 331,
-					"body": "{\"error_message\":\"Please provide a valid token!\"}"
-				},
-				{
-					"id": "0a1e3e7d-d46c-4f77-b4ae-c8b6ad70c4c9",
-					"name": "Release Request Event Duplicate event error",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
-							},
-							{
-								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"disabled": false
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -850,13 +938,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "207c1cec-eaa6-4304-999a-296c7a71f590",
+							"value": "8c1024f9-fc33-495a-a29a-0e2ead87b52e",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.086427",
+							"value": "0.028176",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -890,159 +978,12 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 122,
+					"responseTime": 33,
 					"body": "{\"error_message\":[\"Event Creation Error: Payload present across existing event of the same type!\"]}"
-				}
-			]
-		},
-		{
-			"name": "Release Request No Token Forbidden",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
-				},
-				"url": {
-					"raw": "localhost:3000/webhooks/git/",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"webhooks",
-						"git",
-						""
-					]
-				},
-				"description": ""
-			},
-			"response": [
-				{
-					"id": "e8335f22-b706-4f37-82fe-f163b89e7ca2",
-					"name": "Release Request Event Successful",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text",
-								"disabled": false
-							},
-							{
-								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"type": "text",
-								"disabled": false
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
-						},
-						"url": {
-							"raw": "localhost:3000/webhooks/git/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"webhooks",
-								"git",
-								""
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"_postman_previewtype": "text",
-					"header": [
-						{
-							"key": "Cache-Control",
-							"value": "max-age=0, private, must-revalidate",
-							"name": "Cache-Control",
-							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"48c81abf73f334e33f9e54e827669599\"",
-							"name": "ETag",
-							"description": "An identifier for a specific version of a resource, often a message digest"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked",
-							"name": "Transfer-Encoding",
-							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-						},
-						{
-							"key": "Vary",
-							"value": "Origin",
-							"name": "Vary",
-							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-						},
-						{
-							"key": "X-Request-Id",
-							"value": "ff81b9ab-56a0-4323-bcc4-c42009cd0a9e",
-							"name": "X-Request-Id",
-							"description": "Custom header"
-						},
-						{
-							"key": "X-Runtime",
-							"value": "0.817931",
-							"name": "X-Runtime",
-							"description": "Custom header"
-						}
-					],
-					"cookie": [
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "QXk1S0NvMm9HVnVnNW4xV0dzckZ4d01zNzRTK2FLbFJkT3NBVU1KL3FMR09xUWd4RzJZaVlDU0VPRUVtTEJHbEhiOTZhYlFuYlZkOFlxcU4waVNQUkI3c1U1aE9rK3o3RFdlUnVVeVR5MitUWWo0WVp1Q05QNUU3eEw5ZEEwMUhPUEJPaXNUZklqNlQwMmNYV05WSStrc3czeVpUSnl2RGxENVVwdDBXTG5nM1RoUENNSzlwQVpOUGlOTDFqenFvOUoxek9qQmI3MGZxN0lRdi9ZV3JnanlrQVBncG9IZ1NobmtxZXV1blhrUUhrNmxzZzdOL3NDcC9DU05iNW1HZGhGbkdyUHhKWkN6NXVNT2l1S00xUi80L3VuUlM3aVVRRDZVOXAxZUNDbnBEak5tNGY0bXJWVDBMWDBpOXZjSndyTCtOQURZa1c4cFQwTk9mVWlWeFRnPT0tLWcwSFlZTDg4UFZkblZxazZLdFJSQVE9PQ%3D%3D--4a26f87dc99b01f8c55d86a091c1341cc271f623",
-							"key": "_SmartPaddle_session"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Rp0EOha%2FPVu9COrru0vOI2S9lIfcfYCD5KGn6CaVb3NFLKr%2F0tmMhq9GUSzyPKDabUd9KDdFfhOjqtxVW5MTCgH0EWq%2B8rYiBAwjO9ZUauBUQsf1T%2FM9g9rIDoWvzcvSOfI%2BhSor4wfG0qNYAys%3D--oMvS9goKK4alJvkx--%2Fp1veE4JKg6fIbYy6KRLXg%3D%3D",
-							"key": "_session_id"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Kr2CAnlI%2BA7iUscZGKWSzh93qLADOkvPGQH%2FkCyop9eHnexhW9axwgXIKjPaYWtE8mVVMMDpIbtKfqCU%2BUARmMsC6U5gnqNSV2MDhe8A9epn1eU5uSkpY4SKlLzh3lf0WTAd1BOsV2NtcZ6NAqs%3D--L0ZUUiX0CxA%2BEzL%2F--ORxhmjzfwjzssgfE7QdSSA%3D%3D",
-							"key": "_gringotts_backend_session"
-						}
-					],
-					"responseTime": 849,
-					"body": "{\"webhook_service\":{\"commits\":[{\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"linked_tickets_count\":3},{\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"linked_tickets_count\":2}],\"tickets\":[{\"id\":8,\"description\":null,\"code\":1224,\"created_at\":\"2020-04-06T11:43:32.077Z\",\"updated_at\":\"2020-04-06T11:43:32.077Z\",\"project_id\":7},{\"id\":10,\"description\":null,\"code\":22,\"created_at\":\"2020-04-06T11:49:55.593Z\",\"updated_at\":\"2020-04-06T11:49:55.593Z\",\"project_id\":8},{\"id\":11,\"description\":null,\"code\":43,\"created_at\":\"2020-04-06T11:49:55.601Z\",\"updated_at\":\"2020-04-06T11:49:55.601Z\",\"project_id\":9},{\"id\":12,\"description\":null,\"code\":12,\"created_at\":\"2020-04-06T11:49:55.672Z\",\"updated_at\":\"2020-04-06T11:49:55.672Z\",\"project_id\":10}],\"event\":{\"id\":6,\"event_type\":\"release\",\"event_timestamp\":\"2018-05-30T20:18:44.000Z\",\"payload\":{\"action\":\"released\",\"released_at\":\"2018-05-30T20:18:44Z\",\"release\":{\"id\":11248810,\"tag_name\":\"1.0.1\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"},\"commits\":[{\"sha\":\"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\"message\":\"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\"date\":\"2018-05-24T16:00:49Z\",\"author\":{\"id\":21031067,\"name\":\"paul\",\"email\":\"paul@suitepad.de\"}},{\"sha\":\"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\"message\":\"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\"date\":\"2018-05-21T09:50:49Z\",\"author\":{\"id\":21001067,\"name\":\"mario\",\"email\":\"mario@suitepad.de\"}}]},\"repository\":{\"id\":135493233,\"name\":\"suitepad_api\"},\"event\":\"release_request\"},\"created_at\":\"2020-04-06T11:49:55.554Z\",\"updated_at\":\"2020-04-06T11:49:55.554Z\",\"user_id\":7,\"repository_id\":4},\"event_id\":6},\"tracking_service\":{\"event_commit_sync\":[{\"id\":3,\"event_commit_id\":11,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:49:55.753Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:49:55.734Z\",\"updated_at\":\"2020-04-06T11:49:56.015Z\"},{\"id\":4,\"event_commit_id\":12,\"status\":\"successful\",\"sync_timestamp\":\"2020-04-06T11:49:56.035Z\",\"response_payload\":\"{}\",\"created_at\":\"2020-04-06T11:49:56.023Z\",\"updated_at\":\"2020-04-06T11:49:56.070Z\"}]}}"
 				},
 				{
-					"id": "426f96d4-4c21-440d-b046-89a3f58e6506",
-					"name": "Release Request Event Absent Token",
+					"id": "83ef61ec-404c-4a17-a865-2a60f75e8cfb",
+					"name": "Release Request Event Missing Token",
 					"originalRequest": {
 						"method": "POST",
 						"header": [
@@ -1059,7 +1000,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
+							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
 						},
 						"url": {
 							"raw": "localhost:3000/webhooks/git/",
@@ -1105,13 +1046,13 @@
 						},
 						{
 							"key": "X-Request-Id",
-							"value": "7a04ef0a-da45-454b-b943-4cd52081bddc",
+							"value": "f84bd52c-3e4e-4b86-830a-f483467865ea",
 							"name": "X-Request-Id",
 							"description": "Custom header"
 						},
 						{
 							"key": "X-Runtime",
-							"value": "0.317329",
+							"value": "0.037113",
 							"name": "X-Runtime",
 							"description": "Custom header"
 						}
@@ -1145,116 +1086,8 @@
 							"key": "_gringotts_backend_session"
 						}
 					],
-					"responseTime": 331,
+					"responseTime": 65,
 					"body": "{\"error_message\":\"Please provide a valid token!\"}"
-				},
-				{
-					"id": "f813c3bd-b0d8-4458-998b-41f7f005414e",
-					"name": "Release Request Event Duplicate event error",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
-							},
-							{
-								"key": "Authorization",
-								"value": "Token token=eyTbQLsRJLJMQw3FmmPH15Mh",
-								"disabled": false
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"action\": \"released\",\n  \"released_at\": \"2018-05-30T20:18:44Z\",\n  \"release\": {\n    \"id\": 11248810,\n    \"tag_name\": \"1.0.1\",\n    \"author\": {\n      \"id\": 21031067,\n      \"name\": \"paul\",\n      \"email\": \"paul@suitepad.de\"\n    },\n    \"commits\": [\n      {\n        \"sha\": \"78c4ef902de35c95a6b403c3f5c2e536cfbaab2e\",\n        \"message\": \"CHORE: Cleaner logging output\\n\\nRef: #happ-1224, #air-22, #wat-43\",\n        \"date\": \"2018-05-24T16:00:49Z\",\n        \"author\": {\n          \"id\": 21031067,\n          \"name\": \"paul\",\n          \"email\": \"paul@suitepad.de\"\n        }\n      },\n      {\n        \"sha\": \"37a8312ef07a9e729099a1eb8471dc37efa5ff56\",\n        \"message\": \"FIX: don't attempt invalid email notifications\\n\\nRef: #cro-12, #happ-1224\",\n        \"date\": \"2018-05-21T09:50:49Z\",\n        \"author\": {\n          \"id\": 21001067,\n          \"name\": \"mario\",\n          \"email\": \"mario@suitepad.de\"\n        }\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 135493233,\n    \"name\": \"suitepad_api\"\n  }\n}\n"
-						},
-						"url": {
-							"raw": "localhost:3000/webhooks/git/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"webhooks",
-								"git",
-								""
-							]
-						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"_postman_previewtype": "text",
-					"header": [
-						{
-							"key": "Cache-Control",
-							"value": "no-cache",
-							"name": "Cache-Control",
-							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked",
-							"name": "Transfer-Encoding",
-							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-						},
-						{
-							"key": "Vary",
-							"value": "Origin",
-							"name": "Vary",
-							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-						},
-						{
-							"key": "X-Request-Id",
-							"value": "207c1cec-eaa6-4304-999a-296c7a71f590",
-							"name": "X-Request-Id",
-							"description": "Custom header"
-						},
-						{
-							"key": "X-Runtime",
-							"value": "0.086427",
-							"name": "X-Runtime",
-							"description": "Custom header"
-						}
-					],
-					"cookie": [
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "QXk1S0NvMm9HVnVnNW4xV0dzckZ4d01zNzRTK2FLbFJkT3NBVU1KL3FMR09xUWd4RzJZaVlDU0VPRUVtTEJHbEhiOTZhYlFuYlZkOFlxcU4waVNQUkI3c1U1aE9rK3o3RFdlUnVVeVR5MitUWWo0WVp1Q05QNUU3eEw5ZEEwMUhPUEJPaXNUZklqNlQwMmNYV05WSStrc3czeVpUSnl2RGxENVVwdDBXTG5nM1RoUENNSzlwQVpOUGlOTDFqenFvOUoxek9qQmI3MGZxN0lRdi9ZV3JnanlrQVBncG9IZ1NobmtxZXV1blhrUUhrNmxzZzdOL3NDcC9DU05iNW1HZGhGbkdyUHhKWkN6NXVNT2l1S00xUi80L3VuUlM3aVVRRDZVOXAxZUNDbnBEak5tNGY0bXJWVDBMWDBpOXZjSndyTCtOQURZa1c4cFQwTk9mVWlWeFRnPT0tLWcwSFlZTDg4UFZkblZxazZLdFJSQVE9PQ%3D%3D--4a26f87dc99b01f8c55d86a091c1341cc271f623",
-							"key": "_SmartPaddle_session"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Rp0EOha%2FPVu9COrru0vOI2S9lIfcfYCD5KGn6CaVb3NFLKr%2F0tmMhq9GUSzyPKDabUd9KDdFfhOjqtxVW5MTCgH0EWq%2B8rYiBAwjO9ZUauBUQsf1T%2FM9g9rIDoWvzcvSOfI%2BhSor4wfG0qNYAys%3D--oMvS9goKK4alJvkx--%2Fp1veE4JKg6fIbYy6KRLXg%3D%3D",
-							"key": "_session_id"
-						},
-						{
-							"expires": "Tue Jan 19 2038 04:14:07 GMT+0100 (CET)",
-							"httpOnly": true,
-							"domain": "localhost",
-							"path": "/",
-							"secure": false,
-							"value": "Kr2CAnlI%2BA7iUscZGKWSzh93qLADOkvPGQH%2FkCyop9eHnexhW9axwgXIKjPaYWtE8mVVMMDpIbtKfqCU%2BUARmMsC6U5gnqNSV2MDhe8A9epn1eU5uSkpY4SKlLzh3lf0WTAd1BOsV2NtcZ6NAqs%3D--L0ZUUiX0CxA%2BEzL%2F--ORxhmjzfwjzssgfE7QdSSA%3D%3D",
-							"key": "_gringotts_backend_session"
-						}
-					],
-					"responseTime": 122,
-					"body": "{\"error_message\":[\"Event Creation Error: Payload present across existing event of the same type!\"]}"
 				}
 			]
 		}
