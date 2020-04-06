@@ -44,30 +44,129 @@ RSpec.describe(WebhookEventParser) do
     end
   end
 
-  # describe "Service Execution" do
-  #   it "should validate pull request event is created" do
-  #
-  #   end
-  #
-  #   it "should validate push request event is created" do
-  #
-  #   end
-  #
-  #   it "should validate release request event and release is created" do
-  #
-  #   end
-  #
-  #   # rolling back by adding duplicate commit SHAs to the payloads
-  #   it "should no events or commits are created if pull request service rolls back" do
-  #
-  #   end
-  #
-  #   it "should no events or commits are created if push request service rolls back" do
-  #
-  #   end
-  #
-  #   it "should no events or commits are created if release request service rolls back" do
-  #
-  #   end
-  # end
+  describe "Service Execution" do
+    it "should validate pull request event uses pull request parser strategy" do
+      service_instance = execute_service(ideal_pull_request_payload)
+      expect(service_instance.strategy.class).to(be(PullRequestParser))
+    end
+
+    it "should validate pull request event uses push request parser strategy" do
+      service_instance = execute_service(ideal_push_request_payload)
+      expect(service_instance.strategy.class).to(be(PushRequestParser))
+    end
+
+    it "should validate pull request event uses release request parser strategy" do
+      service_instance = execute_service(ideal_release_request_payload)
+      expect(service_instance.strategy.class).to(be(ReleaseRequestParser))
+    end
+
+    it "should validate pull request event is created for action closed" do
+      expect(Event.count).to(eq(0))
+
+      ideal_pull_request_payload[:action] = "closed"
+      service_instance = execute_service(ideal_pull_request_payload)
+      expect(service_instance.errors.blank?).to(be(true))
+      expect(Event.count).to(eq(1))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_object = response_hashie.event
+      expect(event_object.pull_request?).to(be(true))
+    end
+
+    it "should validate pull request event is created for action approved" do
+      expect(Event.count).to(eq(0))
+
+      ideal_pull_request_payload[:action] = "approved"
+      service_instance = execute_service(ideal_pull_request_payload)
+      expect(service_instance.errors.blank?).to(be(true))
+      expect(Event.count).to(eq(1))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_object = response_hashie.event
+      expect(event_object.pull_request?).to(be(true))
+    end
+
+    it "should validate pull request event is created for action created" do
+      expect(Event.count).to(eq(0))
+
+      ideal_pull_request_payload[:action] = "created"
+      service_instance = execute_service(ideal_pull_request_payload)
+      expect(service_instance.errors.blank?).to(be(true))
+      expect(Event.count).to(eq(1))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_object = response_hashie.event
+      expect(event_object.pull_request?).to(be(true))
+    end
+
+    it "should validate push request event is created" do
+      expect(Event.count).to(eq(0))
+
+      service_instance = execute_service(ideal_push_request_payload)
+      expect(service_instance.errors.blank?).to(be(true))
+      expect(Event.count).to(eq(1))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_object = response_hashie.event
+      expect(event_object.push_request?).to(be(true))
+    end
+
+    it "should validate release request event and release is created" do
+      expect(Event.count).to(eq(0))
+      expect(Release.count).to(eq(0))
+
+      service_instance = execute_service(ideal_release_request_payload)
+      expect(service_instance.errors.blank?).to(be(true))
+      expect(Event.count).to(eq(1))
+      expect(Release.count).to(eq(1))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_object = response_hashie.event
+      expect(event_object.release?).to(be(true))
+      expect(event_object.release.present?).to(be(true))
+      release_object = Release.first
+      expect(release_object.event_id).to(eq(event_object.id))
+    end
+  end
+
+  describe "Service Execution Failures" do
+    # rolling back by adding duplicate commit SHAs to the payloads
+    it "should no events or commits are created if pull request service rolls back" do
+      expect(Event.count).to(eq(0))
+
+      commit_data = ideal_pull_request_payload["pull_request"]["commits"]
+      malformed_commit_data = commit_data.concat(commit_data)
+      ideal_pull_request_payload["pull_request"]["commits"] = malformed_commit_data
+      erroneous_service_instance = execute_service(ideal_pull_request_payload)
+      expect(erroneous_service_instance.errors.present?).to(be(true))
+
+      expect(Event.count).to(eq(0))
+    end
+
+    it "should no events or commits are created if push request service rolls back" do
+      expect(Event.count).to(eq(0))
+
+      commit_data = ideal_push_request_payload["commits"]
+      malformed_commit_data = commit_data.concat(commit_data)
+      ideal_push_request_payload["commits"] = malformed_commit_data
+      erroneous_service_instance = execute_service(ideal_push_request_payload)
+      expect(erroneous_service_instance.errors.present?).to(be(true))
+
+      expect(Event.count).to(eq(0))
+    end
+
+    it "should no events or commits are created if release request service rolls back" do
+      expect(Event.count).to(eq(0))
+      expect(Release.count).to(eq(0))
+
+      commit_data = ideal_release_request_payload["release"]["commits"]
+      malformed_commit_data = commit_data.concat(commit_data)
+      ideal_release_request_payload["release"]["commits"] = malformed_commit_data
+      erroneous_service_instance = execute_service(ideal_release_request_payload)
+      expect(erroneous_service_instance.errors.present?).to(be(true))
+
+      expect(Event.count).to(eq(0))
+      expect(Release.count).to(eq(0))
+    end
+  end
 end

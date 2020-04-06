@@ -1,4 +1,6 @@
 class WebhookEventParser < ApplicationService
+  attr_reader :strategy
+
   def initialize(context)
     super()
     @context = Hashie::Mash.new(context)

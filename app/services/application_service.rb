@@ -10,13 +10,11 @@ class ApplicationService
   end
 
   def validate
-    puts "running base service validate"
     @ran_validations = true
     valid?
   end
 
   def execute
-    puts "running base service execute"
     unless @ran_validations
       validate
     end
@@ -24,7 +22,6 @@ class ApplicationService
   end
 
   def execute!
-    puts "running super execute!"
     unless execute
       raise CommitBridgeExceptions::CommitBridgeValidationError, @errors
     end
@@ -55,7 +52,7 @@ class ApplicationService
 
   def raise_rollback_unless_valid
     unless valid?
-      puts "Rolling back"
+      puts "Rolling back the transaction!"
       raise ActiveRecord::Rollback
     end
   end
