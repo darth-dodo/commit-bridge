@@ -36,6 +36,7 @@ gem 'dotenv-rails'
 gem 'rack-cors'
 gem 'rack-attack'
 gem 'redis-rails'
+gem "sentry-raven"
 
 group :development, :test do
   gem 'annotate'
