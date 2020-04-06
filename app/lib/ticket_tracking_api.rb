@@ -1,7 +1,7 @@
 module TicketTrackingApi
-  # z = TicketTrackingApi::Client.new()
-  # payload = {apples: "are super yummy", bananas: "are super funny"}
-  # z.ready_for_release(payload)
+  # new_client = TicketTrackingApi::Client.new()
+  # payload = {"query": "released", "issues": [{"id": 66}]}
+  # new_client.update_tickets_across_commit(payload)
 
   class Client
     include TicketTrackingCommunicator

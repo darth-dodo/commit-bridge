@@ -1,0 +1,122 @@
+{
+  "webhook_service": {
+	"commits": [
+	  {
+		"message": "CHORE: Cleaner logging output\n\nRef: #happ-1224, #air-22, #wat-43",
+		"sha": "78c4ef902de35c95a6b403c3f5c2e536cfbaab2e",
+		"linked_tickets_count": 3
+	  },
+	  {
+		"message": "FIX: don't attempt invalid email notifications\n\nRef: #cro-12, #happ-1224",
+		"sha": "37a8312ef07a9e729099a1eb8471dc37efa5ff56",
+		"linked_tickets_count": 2
+	  }
+	],
+	"tickets": [
+	  {
+		"id": 13,
+		"description": null,
+		"code": 1224,
+		"created_at": "2020-04-06T12:04:58.560Z",
+		"updated_at": "2020-04-06T12:04:58.560Z",
+		"project_id": 11
+	  },
+	  {
+		"id": 14,
+		"description": null,
+		"code": 22,
+		"created_at": "2020-04-06T12:04:58.573Z",
+		"updated_at": "2020-04-06T12:04:58.573Z",
+		"project_id": 12
+	  },
+	  {
+		"id": 15,
+		"description": null,
+		"code": 43,
+		"created_at": "2020-04-06T12:04:58.582Z",
+		"updated_at": "2020-04-06T12:04:58.582Z",
+		"project_id": 13
+	  },
+	  {
+		"id": 16,
+		"description": null,
+		"code": 12,
+		"created_at": "2020-04-06T12:04:58.736Z",
+		"updated_at": "2020-04-06T12:04:58.736Z",
+		"project_id": 14
+	  }
+	],
+	"event": {
+	  "id": 9,
+	  "event_type": "release",
+	  "event_timestamp": "2018-05-30T20:18:44.000Z",
+	  "payload": {
+		"action": "released",
+		"released_at": "2018-05-30T20:18:44Z",
+		"release": {
+		  "id": 11248810,
+		  "tag_name": "1.0.1",
+		  "author": {
+			"id": 21031067,
+			"name": "paul",
+			"email": "paul@suitepad.de"
+		  },
+		  "commits": [
+			{
+			  "sha": "78c4ef902de35c95a6b403c3f5c2e536cfbaab2e",
+			  "message": "CHORE: Cleaner logging output\n\nRef: #happ-1224, #air-22, #wat-43",
+			  "date": "2018-05-24T16:00:49Z",
+			  "author": {
+				"id": 21031067,
+				"name": "paul",
+				"email": "paul@suitepad.de"
+			  }
+			},
+			{
+			  "sha": "37a8312ef07a9e729099a1eb8471dc37efa5ff56",
+			  "message": "FIX: don't attempt invalid email notifications\n\nRef: #cro-12, #happ-1224",
+			  "date": "2018-05-21T09:50:49Z",
+			  "author": {
+				"id": 21001067,
+				"name": "mario",
+				"email": "mario@suitepad.de"
+			  }
+			}
+		  ]
+		},
+		"repository": {
+		  "id": 135493233,
+		  "name": "suitepad_api"
+		},
+		"event": "release_request"
+	  },
+	  "created_at": "2020-04-06T12:04:58.446Z",
+	  "updated_at": "2020-04-06T12:04:58.446Z",
+	  "user_id": 9,
+	  "repository_id": 5
+	},
+	"event_id": 9
+  },
+  "tracking_service": {
+	"event_commit_sync": [
+	  {
+		"id": 9,
+		"event_commit_id": 17,
+		"status": "successful",
+		"sync_timestamp": "2020-04-06T12:04:58.879Z",
+		"response_payload": "{}",
+		"created_at": "2020-04-06T12:04:58.854Z",
+		"updated_at": "2020-04-06T12:04:59.068Z"
+	  },
+	  {
+		"id": 10,
+		"event_commit_id": 18,
+		"status": "successful",
+		"sync_timestamp": "2020-04-06T12:04:59.089Z",
+		"response_payload": "{}",
+		"created_at": "2020-04-06T12:04:59.076Z",
+		"updated_at": "2020-04-06T12:04:59.124Z"
+	  }
+	]
+  }
+}
