@@ -103,7 +103,7 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
     - [x] Pull Request Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
     - [ ] Push Request Parser Service - [P. S.](#post-script)
     - [ ] Release Request Parser Service - [P. S.](#post-script)
-    - [ ] Event Delegator Service
+    - [ ] Event Delegator Service - [PR #27](https://github.com/darth-dodo/commit-bridge/pull/27)
     - [ ] Ticket Tracking API service
 - [ ] Service Edge Cases RSpec - [P. S.](#post-script)
 - [ ] Controller Test Cases
