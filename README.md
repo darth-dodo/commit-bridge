@@ -109,7 +109,7 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
 - [ ] Controller Test Cases
 - [x] Documentation - [PR #26](https://github.com/darth-dodo/commit-bridge/pull/26)
 - [x] Server error management with Sentry  - [PR #28](https://github.com/darth-dodo/commit-bridge/pull/28)
-- [ ] High Level Active Admin setup
+- [ ] High Level Active Admin setup  - [PR #29](https://github.com/darth-dodo/commit-bridge/pull/29)
 
 
 ---
@@ -356,9 +356,16 @@ puts response
 
 ---
 ## Active Admin
+- **Active Admin is not optimized for production usage**
+- The Active Admin can be accessed at `http://localhost:3000/admin/` with the credentials generated during `seeding`
+```
+username: admin@commit-bridge.com
+password: commit-bridge-123
+```
 - The intent of adding an Active Admin was to have a more visual representation of the data
 - The Active Admin can be extended to cover custom use cases if required
 - Currently the Active Admin has just readonly mode by purpose of keeping the data immutable.
+- Based on more information required by the stakeholders, the Active Admin dashboard can be created
 
 
 ---
