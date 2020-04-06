@@ -109,7 +109,7 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
 - [ ] Controller Test Cases
 - [x] Documentation - [PR #26](https://github.com/darth-dodo/commit-bridge/pull/26)
 - [x] Server error management with Sentry  - [PR #28](https://github.com/darth-dodo/commit-bridge/pull/28)
-- [ ] High Level Active Admin setup  - [PR #29](https://github.com/darth-dodo/commit-bridge/pull/29)
+- [x] High Level Active Admin setup  - [PR #29](https://github.com/darth-dodo/commit-bridge/pull/29)
 
 
 ---
