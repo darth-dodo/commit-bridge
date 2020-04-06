@@ -52,5 +52,10 @@ module CommitBridge
     config.middleware.use(ActionDispatch::Flash)
     config.middleware.use(ActionDispatch::Cookies)
     config.middleware.use(ActionDispatch::Session::CookieStore)
+
+    # sentry setup
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_KEY']
+    end
   end
 end
