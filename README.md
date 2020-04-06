@@ -104,9 +104,13 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
     - [ ] Push Request Parser Service - [P. S.](#post-script)
     - [ ] Release Request Parser Service - [P. S.](#post-script)
     - [x] Event Delegator Service - [PR #27](https://github.com/darth-dodo/commit-bridge/pull/27)
-    - [ ] Ticket Tracking API service
+    - [ ] Ticket Tracking API service - [P. S.](#post-script)
 - [ ] Service Edge Cases RSpec - [P. S.](#post-script)
 - [ ] Controller Test Cases
+    - [x] Token based authentication controller testing - [PR #30](https://github.com/darth-dodo/commit-bridge/pull/30)
+    - [ ] Stubbing external services success flow - [P. S.](#post-script)
+    - [ ] Stubbing external services error flow for EventParser - [P. S.](#post-script)
+    - [ ] Stubbing external services error flow for Ticket Tracking API - [P. S.](#post-script)
 - [x] Documentation - [PR #26](https://github.com/darth-dodo/commit-bridge/pull/26)
 - [x] Server error management with Sentry  - [PR #28](https://github.com/darth-dodo/commit-bridge/pull/28)
 - [x] High Level Active Admin setup  - [PR #29](https://github.com/darth-dodo/commit-bridge/pull/29)
