@@ -114,7 +114,7 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
 - [x] Documentation - [PR #26](https://github.com/darth-dodo/commit-bridge/pull/26)
 - [x] Server error management with Sentry  - [PR #28](https://github.com/darth-dodo/commit-bridge/pull/28)
 - [x] High Level Active Admin setup  - [PR #29](https://github.com/darth-dodo/commit-bridge/pull/29)
-
+- [x] RSpec for Event Commit - [PR #31](https://github.com/darth-dodo/commit-bridge/pull/32)
 
 ---
 # Handover Checklist
