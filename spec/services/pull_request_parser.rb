@@ -22,7 +22,7 @@ RSpec.describe(PullRequestParser) do
       ideal_service_payload.delete("pull_request")
       service_instance = execute_service(ideal_service_payload)
       expect(service_instance.errors.present?).to(be(true))
-      expect(service_instance.errors.first).to(eq("Pull request User information is required!"))
+      expect(service_instance.errors.first).to(eq("Pull request User information is required!!"))
     end
 
     it "should validate presence of user information" do
