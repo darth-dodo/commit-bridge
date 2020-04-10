@@ -3,6 +3,7 @@ env:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ""
   POSTGRES_DB: postgres
+  CORS_ORIGINS: "http://localhost:3000/"
 
 name: Rails tests
 on: [push,pull_request]
