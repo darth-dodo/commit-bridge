@@ -1,68 +1,76 @@
-name: Verify
+# .github/workflows/main.yaml
+name: Main
+
 on: [push]
 
 jobs:
-#  linters:
-#    name: Linters
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Setup Ruby
-#        uses: ruby/setup-ruby@v1
-#      - name: Ruby gem cache
-#        uses: actions/cache@v1
-#        with:
-#          path: vendor/bundle
-#          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-gems-
-#      - name: Install gems
-#        run: |
-#          bundle config path vendor/bundle
-#          bundle install --jobs 4 --retry 3
-#
-#      - name: Run linters
-#        run: |
-#          bin/rubocop --parallel
-#          bin/stylelint
-#          bin/prettier
-#          bin/eslint
-#      - name: Run security checks
-#        run: |
-#          bin/brakeman -q -w2
-
-  tests:
-    name: Tests
+  vm-job:
     runs-on: ubuntu-latest
+
+    # If you need DB like PostgreSQL then define service below.
+    # Example for Redis can be found here:
+    # https://github.com/actions/example-services/tree/master/.github/workflows
     services:
       postgres:
-        image: postgres:11
+        image: postgres:10.8
         env:
-          POSTGRES_USER: commit-bridge-app
-          POSTGRES_DB: commitbridgepostgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
-        ports: ["5432:5432"]
+          POSTGRES_DB: postgres
+        ports:
+          # will assign a random free host port
+          - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    # https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
+    strategy:
+      fail-fast: false
+      matrix:
+        # Set N number of parallel jobs you want to run tests on.
+        # Use higher number if you have slow tests to split them on more parallel jobs.
+        # Remember to update ci_node_index below to 0..N-1
+        ci_node_total: [2]
+        # set N-1 indexes for parallel jobs
+        # When you run 2 parallel jobs then first job will have index 0, the second job will have index 1 etc
+        ci_node_index: [0, 1]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-      - name: Install gems
+      - uses: actions/checkout@v1
+
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.0
+
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      # required to compile pg ruby gem
+      - name: install PostgreSQL client
+        run: sudo apt-get install libpq-dev
+
+      - name: Build and create DB
+        env:
+          # use localhost for the host here because we have specified a container for the job.
+          # If we were running the job on the VM this would be postgres
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+          RAILS_ENV: test
         run: |
-          gem install bundler -v 2.1.4
+          gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-
-      - name: Setup test database
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: commit-bridge-app
-        run: |
           bin/rails db:setup
-
       - name: Run tests
-        run: bin/rspec
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+          RAILS_ENV: test
+        run: |
+          bundle exec rspec
