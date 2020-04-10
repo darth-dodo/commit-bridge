@@ -27,9 +27,15 @@ jobs:
     runs-on: ubuntu-18.04
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: postgres
         ports:
-          - 5432:5432
+          # will assign a random free host port
+          - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v2
@@ -43,6 +49,11 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Create database
+        env:
+          # use postgres for the host here because we have specified a container for the job.
+          # If we were running the job on the VM this would be localhost
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
