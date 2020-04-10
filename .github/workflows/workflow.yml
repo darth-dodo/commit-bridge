@@ -26,11 +26,11 @@ jobs:
     runs-on: ubuntu-18.04
     services:
       postgres:
-        image: postgres:9.6
+        image: postgres:10.8
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ""
-          POSTGRES_DB: postgres
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
         ports:
         # will assign a random free host port
         - 5432/tcp
