@@ -51,8 +51,7 @@ jobs:
         run: |
           cp config/database.ci.yml config/database.yml
           bundle install --jobs 4 --retry 3
-          bundle exec rake db:create
-          bundle exec db:migrate
+          rake db:create db:migrate
 
       - name: Run tests
         env:
