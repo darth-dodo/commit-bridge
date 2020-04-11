@@ -11,7 +11,7 @@ jobs:
         image: postgres:10.8
         env:
           POSTGRES_USER: rails_github_actions
-          POSTGRES_DB: rails_github_actions_test
+          POSTGRES_DB: github_actions_postgres
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
         options: >-
@@ -50,6 +50,7 @@ jobs:
           PGUSER: rails_github_actions
         run: |
           cp config/database.ci.yml config/database.yml
+          bundle install --jobs 4 --retry 3
           bundle exec rake db:create
           bundle exec db:migrate
 
