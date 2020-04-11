@@ -49,6 +49,7 @@ jobs:
           PGHOST: localhost
           PGUSER: rails_github_actions
         run: |
+          gem install bundler -v 2.1.4
           cp config/database.ci.yml config/database.yml
           rake db:create db:migrate
 
