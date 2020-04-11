@@ -29,7 +29,7 @@ class ReleaseRequestParser < ApplicationService
     error('Repository information is required!') if @repository_info.blank?
     error('Release Author information is required!') if @event_user_info.blank?
     error('Commit information is required!') if @commit_info.blank?
-    error('Invalid Commits structuring') unless @commit_info.is_a?(Array)
+    error('Invalid Commit payload structuring') unless @commit_info.is_a?(Array)
 
     super()
     valid?
