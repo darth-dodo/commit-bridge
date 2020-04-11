@@ -1,76 +1,61 @@
-# .github/workflows/main.yaml
-name: Main
-
-on: [push]
+name: Rails
+on: push
 
 jobs:
-  vm-job:
+  verify:
+    name: Build
     runs-on: ubuntu-latest
 
-    # If you need DB like PostgreSQL then define service below.
-    # Example for Redis can be found here:
-    # https://github.com/actions/example-services/tree/master/.github/workflows
     services:
       postgres:
-        image: postgres:10.8
+        image: postgres:11
         env:
-          POSTGRES_USER: postgres
+          POSTGRES_USER: rails_github_actions
+          POSTGRES_DB: rails_github_actions_test
           POSTGRES_PASSWORD: ""
-          POSTGRES_DB: postgres
-        ports:
-          # will assign a random free host port
-          - 5432/tcp
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
-    # https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
-    strategy:
-      fail-fast: false
-      matrix:
-        # Set N number of parallel jobs you want to run tests on.
-        # Use higher number if you have slow tests to split them on more parallel jobs.
-        # Remember to update ci_node_index below to 0..N-1
-        ci_node_total: [2]
-        # set N-1 indexes for parallel jobs
-        # When you run 2 parallel jobs then first job will have index 0, the second job will have index 1 etc
-        ci_node_index: [0, 1]
+      # if you need redis
+      # redis:
+      #   image: redis
+      #   ports:
+      #   - 6379:6379
+      #   options: --entrypoint redis-server
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: Set up Ruby 2.6
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6.0
-
-      - uses: actions/cache@v1
+          ruby-version: 2.6.5
+      - name: Set up Node
+        uses: actions/setup-node@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      # required to compile pg ruby gem
-      - name: install PostgreSQL client
-        run: sudo apt-get install libpq-dev
-
-      - name: Build and create DB
-        env:
-          # use localhost for the host here because we have specified a container for the job.
-          # If we were running the job on the VM this would be postgres
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
-          RAILS_ENV: test
+          node-version: 10.13.0
+      - name: Install dependencies
         run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           gem install bundler
-          bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-          bin/rails db:setup
+          yarn install
+      - name: Setup test database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: rails_github_actions
+        run: |
+          cp config/database.ci.yml config/database.yml
+          rake db:create db:migrate
+
       - name: Run tests
         env:
           PGHOST: localhost
-          PGUSER: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+          PGUSER: rails_github_actions
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
-        run: |
-          bundle exec rspec
+        run: rspec
