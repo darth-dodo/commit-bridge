@@ -49,9 +49,9 @@ jobs:
           PGHOST: localhost
           PGUSER: rails_github_actions
         run: |
-          gem install bundler -v 2.1.4
           cp config/database.ci.yml config/database.yml
-          rake db:create db:migrate
+          bundle exec rake db:create
+          bundle exec db:migrate
 
       - name: Run tests
         env:
@@ -59,4 +59,5 @@ jobs:
           PGUSER: rails_github_actions
           PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
-        run: rspec
+        run: |
+          bundle exec rspec
