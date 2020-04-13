@@ -98,7 +98,7 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
     - [x] Adding Token based Authentication action in the `BaseWebhookController`
     - [x] Exception Management in case of invalid requests
 - [x] Model RSpec  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
-- [ ] Service RSpec
+- [x] Service RSpec
     - [x] Commit Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
     - [x] Pull Request Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
     - [x] Push Request Parser Service

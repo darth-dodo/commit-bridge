@@ -18,7 +18,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
   def stub_external_ticketing_service_call_with_exception(exception_status_code)
     stub_request(:post, /#{external_service_root_url}/)
       .to_return(status: exception_status_code,
-    body: success_stubbed_response.to_json,
+    body: error_stubbed_response.to_json,
     headers: { 'Content-Type' => 'application/json' })
   end
 
@@ -136,6 +136,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
 
       event_commit_sync_object = EventCommitSync.first
       expect(event_commit_sync_object.failed?).to(be(true))
+      expect(event_commit_sync_object.response_payload).to(eq(error_stubbed_response))
 
       commit_sha = current_event_commit.commit.sha
       error_message = "API call failed for Commit SHA: #{commit_sha} with status code 400"
@@ -153,6 +154,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
 
       event_commit_sync_object = EventCommitSync.first
       expect(event_commit_sync_object.failed?).to(be(true))
+      expect(event_commit_sync_object.response_payload).to(eq(error_stubbed_response))
 
       commit_sha = current_event_commit.commit.sha
       error_message = "API call failed for Commit SHA: #{commit_sha} with status code 401"
@@ -170,6 +172,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
 
       event_commit_sync_object = EventCommitSync.first
       expect(event_commit_sync_object.failed?).to(be(true))
+      expect(event_commit_sync_object.response_payload).to(eq(error_stubbed_response))
 
       commit_sha = current_event_commit.commit.sha
       error_message = "API call failed for Commit SHA: #{commit_sha} with status code 403"
@@ -187,6 +190,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
 
       event_commit_sync_object = EventCommitSync.first
       expect(event_commit_sync_object.failed?).to(be(true))
+      expect(event_commit_sync_object.response_payload).to(eq(error_stubbed_response))
 
       commit_sha = current_event_commit.commit.sha
       error_message = "API call failed for Commit SHA: #{commit_sha} with status code 500"
