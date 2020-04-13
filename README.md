@@ -98,13 +98,13 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
     - [x] Adding Token based Authentication action in the `BaseWebhookController`
     - [x] Exception Management in case of invalid requests
 - [x] Model RSpec  - [PR #24](https://github.com/darth-dodo/commit-bridge/pull/24)
-- [ ] Service RSpec
+- [x] Service RSpec
     - [x] Commit Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
     - [x] Pull Request Parser Service  - [PR #25](https://github.com/darth-dodo/commit-bridge/pull/25)
-    - [ ] Push Request Parser Service
-    - [ ] Release Request Parser Service
+    - [x] Push Request Parser Service
+    - [x] Release Request Parser Service
     - [x] Event Delegator Service - [PR #27](https://github.com/darth-dodo/commit-bridge/pull/27)
-    - [ ] Ticket Tracking API service
+    - [x] Ticket Tracking API service
 - [ ] Service Edge Cases RSpec - [P. S.](#post-script)
 - [ ] Controller Test Cases
     - [x] Token based authentication controller testing - [PR #30](https://github.com/darth-dodo/commit-bridge/pull/30)
@@ -119,6 +119,8 @@ Rails 5 API application for acting as a bridge between Git service webhooks and 
 # Post Handover PRs
 - [x] RSpec for Event Commit model - [PR #31](https://github.com/darth-dodo/commit-bridge/pull/32)
 - [x] RSpec for Push Event Parser and Release Event Parser Service - [PR #37](https://github.com/darth-dodo/commit-bridge/pull/37)
+- [x] Integrate [WebMock](https://github.com/bblimke/webmock) for mocking external calls - [PR #38](https://github.com/darth-dodo/commit-bridge/pull/38)
+-[x] RSpec for SyncEventCommitsWithTrackingApi Service using WebMock - [PR #38](https://github.com/darth-dodo/commit-bridge/pull/38)
 
 ---
 # Handover Checklist
@@ -181,7 +183,7 @@ password: commit-bridge-123
 - Environment variables are supported through [`dotenv-rails`](https://github.com/bkeepers/dotenv)
 - Sentry is used for exception and stack trace management
 - Redis and Rack Attack for API throttling
-- RSpec, Factory Bot, Shoulda Matchers and Faker for writing Test cases
+- RSpec, Factory Bot, Shoulda Matchers, WebMock and Faker for writing Test cases
 - Faraday for making external web requests
 - Postgres as Datastore
 
@@ -360,6 +362,7 @@ puts response
 - [FactoryBot](https://github.com/thoughtbot/factory_bot/) is used to working with models
 - [Faker](https://github.com/faker-ruby/faker) is used to generate fake data instead of hardcoding values
 - [Timecop](https://github.com/travisjeffery/timecop) is used for moving around time in tests
+- [WebMock](https://github.com/bblimke/webmock) is used for mocking external API calls
 
 
 ---

@@ -55,6 +55,7 @@ group :development, :test do
   gem "shoulda-matchers", "~> 3.1"
   gem "factory_bot_rails", "~> 4.0"
   gem "timecop"
+  gem "webmock"
 end
 
 group :development do

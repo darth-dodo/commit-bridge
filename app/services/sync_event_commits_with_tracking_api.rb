@@ -5,9 +5,12 @@ class SyncEventCommitsWithTrackingApi < ApplicationService
   end
 
   def validate
-    @event = Event.find(@event_id)
+    @event = Event.find_by_id(@event_id)
     error('Event is required for scheduling ticket tracking sync!') if @event.blank?
+    return false unless valid?
+
     @event_commits = @event.event_commits
+    error('Event does not have any commits attached to it!') if @event_commits.blank?
 
     super()
     valid?

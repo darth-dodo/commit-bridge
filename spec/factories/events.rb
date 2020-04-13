@@ -35,12 +35,12 @@ FactoryBot.define do
 
     trait :push_request_payload do
       event_type { :push_request }
-      payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+      payload { JSON.parse(File.read("spec/fixtures/push_request_payload.json")) }
     end
 
     trait :release_request_payload do
       event_type { :release }
-      payload { JSON.parse(File.read("spec/fixtures/pull_request_payload.json")) }
+      payload { JSON.parse(File.read("spec/fixtures/release_request_payload.json")) }
     end
 
     factory :pull_request_event, traits: [:pull_request_payload]
