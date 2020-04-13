@@ -123,4 +123,74 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
       expect(second_sync.successful?).to(be(true))
     end
   end
+
+  describe "Service Execution Errors" do
+    it "should handle 400 from external service" do
+      stub_external_ticketing_service_call_with_exception(400)
+      expect(EventCommitSync.count).to(eq(0))
+
+      current_event_commit = create(:event_commit, event: push_request_event)
+      service_instance = execute_service(push_request_event.id)
+
+      expect(EventCommitSync.count).to(eq(1))
+
+      event_commit_sync_object = EventCommitSync.first
+      expect(event_commit_sync_object.failed?).to(be(true))
+
+      commit_sha = current_event_commit.commit.sha
+      error_message = "API call failed for Commit SHA: #{commit_sha} with status code 400"
+      expect(service_instance.errors.first).to(eq(error_message))
+    end
+
+    it "should handle 401 from external service" do
+      stub_external_ticketing_service_call_with_exception(401)
+      expect(EventCommitSync.count).to(eq(0))
+
+      current_event_commit = create(:event_commit, event: push_request_event)
+      service_instance = execute_service(push_request_event.id)
+
+      expect(EventCommitSync.count).to(eq(1))
+
+      event_commit_sync_object = EventCommitSync.first
+      expect(event_commit_sync_object.failed?).to(be(true))
+
+      commit_sha = current_event_commit.commit.sha
+      error_message = "API call failed for Commit SHA: #{commit_sha} with status code 401"
+      expect(service_instance.errors.first).to(eq(error_message))
+    end
+
+    it "should handle 403 from external service" do
+      stub_external_ticketing_service_call_with_exception(403)
+      expect(EventCommitSync.count).to(eq(0))
+
+      current_event_commit = create(:event_commit, event: push_request_event)
+      service_instance = execute_service(push_request_event.id)
+
+      expect(EventCommitSync.count).to(eq(1))
+
+      event_commit_sync_object = EventCommitSync.first
+      expect(event_commit_sync_object.failed?).to(be(true))
+
+      commit_sha = current_event_commit.commit.sha
+      error_message = "API call failed for Commit SHA: #{commit_sha} with status code 403"
+      expect(service_instance.errors.first).to(eq(error_message))
+    end
+
+    it "should handle 500 from external service" do
+      stub_external_ticketing_service_call_with_exception(500)
+      expect(EventCommitSync.count).to(eq(0))
+
+      current_event_commit = create(:event_commit, event: push_request_event)
+      service_instance = execute_service(push_request_event.id)
+
+      expect(EventCommitSync.count).to(eq(1))
+
+      event_commit_sync_object = EventCommitSync.first
+      expect(event_commit_sync_object.failed?).to(be(true))
+
+      commit_sha = current_event_commit.commit.sha
+      error_message = "API call failed for Commit SHA: #{commit_sha} with status code 500"
+      expect(service_instance.errors.first).to(eq(error_message))
+    end
+  end
 end
