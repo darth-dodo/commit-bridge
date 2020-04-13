@@ -62,4 +62,25 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
         .to(raise_error(ExternalExceptions::BadRequestError))
     end
   end
+  describe "Service Validations" do
+    before(:each) do
+      stub_external_ticketing_service_call_with_success
+    end
+
+    it "should validate that the event should be present" do
+      non_existent_event_id = Faker::Number.number(digits: 2)
+      service_instance = execute_service(non_existent_event_id)
+
+      expect(service_instance.errors.size).to(eq(1))
+      expect(service_instance.errors.first).to(eq("Event is required for scheduling ticket tracking sync!"))
+    end
+
+    it "should validate the event commits are attached to the provided event" do
+      event = create(:event)
+      service_instance = execute_service(event.id)
+
+      expect(service_instance.errors.size).to(eq(1))
+      expect(service_instance.errors.first).to(eq("Event does not have any commits attached to it!"))
+    end
+  end
 end
