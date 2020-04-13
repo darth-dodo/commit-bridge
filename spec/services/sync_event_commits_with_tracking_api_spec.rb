@@ -5,6 +5,8 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
   let(:api_payload) { { "dummy": "payload" } }
   let(:success_stubbed_response) { { "updated_ticket_ids" => [121, 222, 66] } }
   let(:error_stubbed_response) { { "error_message" => "Something went wrong!" } }
+  let(:push_request_event) { create(:push_request_event) }
+  let(:pull_request_event) { create(:pull_request_event) }
 
   def stub_external_ticketing_service_call_with_success
     stub_request(:post, /#{external_service_root_url}/)
@@ -62,6 +64,7 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
         .to(raise_error(ExternalExceptions::BadRequestError))
     end
   end
+
   describe "Service Validations" do
     before(:each) do
       stub_external_ticketing_service_call_with_success
@@ -81,6 +84,43 @@ RSpec.describe("SyncEventCommitsWithTrackingApi") do
 
       expect(service_instance.errors.size).to(eq(1))
       expect(service_instance.errors.first).to(eq("Event does not have any commits attached to it!"))
+    end
+  end
+
+  describe "Service Execution" do
+    it "should check that no sync is created for pull request event" do
+      expect(EventCommitSync.count).to(eq(0))
+
+      stub_external_ticketing_service_call_with_success
+      create(:event_commit, event: pull_request_event)
+      service_instance = execute_service(pull_request_event.id)
+
+      expect(service_instance.errors.blank?).to(be(true))
+
+      expect(EventCommitSync.count).to(eq(0))
+    end
+
+    it "should check that service is successful for push request event" do
+      expect(EventCommitSync.count).to(eq(0))
+
+      stub_external_ticketing_service_call_with_success
+      create(:event_commit, event: push_request_event)
+      create(:event_commit, event: push_request_event)
+
+      service_instance = execute_service(push_request_event.id)
+
+      expect(service_instance.errors.blank?).to(be(true))
+
+      expect(EventCommitSync.count).to(eq(2))
+
+      response_hashie = get_hashie(service_instance.service_response_data)
+      event_commit_sync_objects = response_hashie.event_commit_sync
+
+      first_sync = EventCommitSync.find(event_commit_sync_objects.first.id)
+      second_sync = EventCommitSync.find(event_commit_sync_objects.last.id)
+
+      expect(first_sync.successful?).to(be(true))
+      expect(second_sync.successful?).to(be(true))
     end
   end
 end
