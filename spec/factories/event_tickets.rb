@@ -18,19 +18,9 @@
 #  fk_rails_...  (event_id => events.id)
 #  fk_rails_...  (ticket_id => tickets.id)
 #
-class EventTicket < ApplicationRecord
-  # associations
-  belongs_to :event
-  belongs_to :ticket
-
-  # validations
-  validates_presence_of :event, :ticket
-  validates_uniqueness_of :ticket_id, scope: :event_id, message: "is already attached to the event!"
-  # scopes
-
-  # class methods
-
-  # instance methods
-
-  # callbacks
+FactoryBot.define do
+  factory :event_ticket do
+    association :event
+    association :ticket
+  end
 end
